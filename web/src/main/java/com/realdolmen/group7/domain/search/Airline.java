@@ -1,0 +1,24 @@
+package com.realdolmen.group7.domain.search;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
+
+/**
+ * Created by PMTBF30 on 7/11/2017.
+ */
+@Entity
+public class Airline {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String airlineId;
+    private String name;
+
+    @OneToMany(mappedBy = "airline")
+    private List<Flight> flights;
+}

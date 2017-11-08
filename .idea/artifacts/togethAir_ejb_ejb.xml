@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="togethAir-ejb:ejb">
+    <output-path>$PROJECT_DIR$/ejb/target</output-path>
+    <root id="archive" name="togethAir-ejb.jar">
+      <element id="artifact" artifact-name="togethAir-ejb:ejb exploded" />
+    </root>
+  </artifact>
+</component>
