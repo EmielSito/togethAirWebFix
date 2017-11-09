@@ -19,6 +19,9 @@ public class Seat {
 
     private String SeatNumber;
 
+    public long getId() {
+        return id;
+    }
 
     public ClassType getClassType() {
         return classType;

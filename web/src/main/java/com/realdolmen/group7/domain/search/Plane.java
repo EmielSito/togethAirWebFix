@@ -25,6 +25,15 @@ public class Plane {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;
 
+    public long getId() {
+        return id;
+    }
+
+    private int durationInMinutes;
+
+    @OneToMany
+    private List<Seat> seats;
+
     public String getPlaneNumber() {
         return planeNumber;
     }
@@ -57,11 +66,11 @@ public class Plane {
         this.volumeDiscountAvailable = volumeDiscountAvailable;
     }
 
-    public Date getDurationInMinutes() {
+    public int getDurationInMinutes() {
         return durationInMinutes;
     }
 
-    public void setDurationInMinutes(Date durationInMinutes) {
+    public void setDurationInMinutes(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
     }
 
@@ -76,11 +85,7 @@ public class Plane {
     private boolean volumeDiscountAvailable;
 
 
-    private Date durationInMinutes;
 
-
-    @OneToMany
-    private List<Seat> seats;
 
 
 

@@ -28,7 +28,6 @@ public class FlightRepository {
                 .setParameter("args1",departure).setParameter("args2",destination).getResultList();
     }
 
-    /*
         public List<Location> findByRegion(Region region) {
             TypedQuery<Location> query = em.createQuery("select l from Location l where l.region like :region", Location.class);
             query.setParameter("region", region);
@@ -38,19 +37,19 @@ public class FlightRepository {
 
         public List<Location> findAllLocation() {
             return em.createQuery("select l from Location l", Location.class).getResultList();
-        }*/
+        }
 
     public Seat findByClassType(ClassType type) {
-        return (Seat)em.createQuery("select f from Flight f where f.plane.seat.classType LIKE :args").setParameter("args",type).getSingleResult();
+        return (Seat)em.createQuery("select f from Flight f where f.planes.seats LIKE :args").setParameter("args",type).getSingleResult();
 
     }
 
     public Seat findByNumber(String number) {
         return (Seat)em.createQuery("select f from Flight " +
-                "f where f.plane.seat.seatNumber LIKE :args").setParameter("args",number).getSingleResult();
+                "f where f.planes. LIKE :args").setParameter("args",number).getSingleResult();
     }
 
    public Flight getFlightByPlane(long planeId) {
-       return (Flight)em.createQuery("select fp from flight_plane fp where fp.planeId = :arg").setParameter("arg", planeId).getSingleResult();
+       return (Flight)em.createQuery("select fp from FlightPlane fp where fp.planeId = :arg").setParameter("arg", planeId).getSingleResult();
    }
 }
