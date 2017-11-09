@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="togethAir-web:war">
-    <output-path>$PROJECT_DIR$/web/target</output-path>
-    <root id="archive" name="togethAir-web.war">
-      <element id="artifact" artifact-name="togethAir-web:war exploded" />
-    </root>
-  </artifact>
-</component>
