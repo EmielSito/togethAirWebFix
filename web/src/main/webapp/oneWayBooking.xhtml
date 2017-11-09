@@ -17,16 +17,16 @@
                 <h:commandButton value="Return" action="returnBooking"/>
                 <br/>
 
-                <h:outputLabel for="txtRegion">
-                    <h:outputText value="Flying From"/>
-                </h:outputLabel>
-                <h:inputText id="txtRegion" value="#{region}"></h:inputText>
-                <h:commandButton value="Confirm" action="#{locationrepository.findByRegion()}">
-                    <f
-                </h:commandButton>
+                <h:selectOneMenu value="#{location.airportName}">
+                    <f:selectItems value="#{searchserviceimpl.getLocationByRegion}" var="region" itemValue="#{region}" >
+                        <f:param value=""/>
+                    </f:selectItems>
+                </h:selectOneMenu>
 
                 <h:selectOneMenu value="#{location.airportName}">
-                    <f:selectItems value="#{regionRepository.findAllRegions}" var="region" itemValue="#{region}" />
+                    <f:selectItems value="#{searchserviceimpl.getLocationByRegion}" var="region" itemValue="#{region}" >
+                        <f:param value=""/>
+                    </f:selectItems>
                 </h:selectOneMenu>
                 <br/>
 

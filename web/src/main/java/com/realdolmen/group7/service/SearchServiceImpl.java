@@ -10,33 +10,33 @@ import java.util.Date;
 import java.util.List;
 
 
-public class SearchServiceImpl /*implements SearchService*/ {
+public class SearchServiceImpl implements SearchService {
 
-//    @Inject
-//    private FlightRepository flightRepository;
-//
-//
-//
-//    @Override
-//    public List<Plane> findPlaneByAvailableSeat(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat) {
-//        List<Seat> seatList = new ArrayList<>();
-//        List<Plane> planes = findByDepartureDate(departure, destination, departureDate);
-//        List<Plane> resultPlaneList = new ArrayList<>();
-//        for (Plane p : planes) {
-//            p.getSeats().forEach(s -> {
-//                if (s.getClassType() == type) {
-//                    seatList.add(s);
-//                }
-//                if (seatList.size() >= numberOfSeat) {
-//                    resultPlaneList.add(p);
-//                }
-//            });
-//        }
-//
-//        return resultPlaneList;
-//    }
-//
-//
+    @Inject
+    private FlightRepository flightRepository;
+
+
+
+    @Override
+    public List<Plane> findPlaneByAvailableSeat(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat) {
+        List<Seat> seatList = new ArrayList<>();
+        List<Plane> planes = findByDepartureDate(departure, destination, departureDate);
+        List<Plane> resultPlaneList = new ArrayList<>();
+        for (Plane p : planes) {
+            p.getSeats().forEach(s -> {
+                if (s.getClassType() == type) {
+                    seatList.add(s);
+                }
+                if (seatList.size() >= numberOfSeat) {
+                    resultPlaneList.add(p);
+                }
+            });
+        }
+
+        return resultPlaneList;
+    }
+
+
     public List<Plane> findByDepartureDate(String departure, String destination, Date departureDate) {
 
         List<Plane> planes = new ArrayList<>();
@@ -51,10 +51,22 @@ public class SearchServiceImpl /*implements SearchService*/ {
 
         return planes;
     }
-//
-//    @Override
-//    public Flight getFlightByPlane(long planeId) {
-//        return flightRepository.getFlightByPlane(planeId);
-//    }
+
+    @Override
+    public List<Location> getLocationByRegion(Region region) {
+        List<Location> locations=new ArrayList<>();
+        List<Location> locationList=flightRepository.findAllLocation();
+        for(Location l:locationList){
+            if(l.getRegion().equals(region)){
+                locations.add(l);
+            }
+        }
+       return locations;
+    }
+
+    @Override
+    public List<Flight> getAllFlight() {
+        return  flightRepository.findAllFlights();
+    }
 
 }

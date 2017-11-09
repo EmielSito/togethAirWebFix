@@ -10,13 +10,11 @@ import java.util.List;
  */
 public interface SearchService {
 
-    List<Flight> getFlights(Location destination);
 
-    List<Flight> getFlights(Date departureDate);
-
-    List<Location> getLocations();
-
-    List<Location> getLocations(Region region);
+   List<Plane> findPlaneByAvailableSeat(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat);
+   List<Plane> findByDepartureDate(String departure, String destination, Date departureDate);
+   List<Location> getLocationByRegion(Region region);
+   List<Flight> getAllFlight();
 
 
 }
