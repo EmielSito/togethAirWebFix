@@ -1,5 +1,6 @@
 package com.realdolmen.group7.domain.payment;
 
+
 import javax.persistence.*;
 
 /**

@@ -1,4 +1,5 @@
 package com.realdolmen.group7.domain.users;
+
 import com.realdolmen.group7.domain.booking.Booking;
 
 import javax.persistence.*;
@@ -8,15 +9,15 @@ import java.util.List;
  * Created by ESOBG49 on 6/11/2017.
  */
 @Entity
-@Table
 public class User extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     List<Booking> bookings;
+
 
     public User() {
         super();
@@ -24,6 +25,11 @@ public class User extends Person {
 
     public User(String email, String password) {
         super(email, password);
+    }
+
+
+    public long getId() {
+        return id;
     }
 
     public void setId(int id) {
@@ -37,6 +43,5 @@ public class User extends Person {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
-
 
 }
