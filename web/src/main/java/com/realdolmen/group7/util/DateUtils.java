@@ -22,4 +22,11 @@ public abstract class DateUtils {
         return ChronoUnit.YEARS.between(d, LocalDate.now());
     }
 
+    public static String longDateToStringDate(long input){
+        Date date=new Date(input);
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+        return df2.format(date);
+    }
+
+
 }

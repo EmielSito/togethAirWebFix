@@ -30,7 +30,6 @@ public class SearchController {
 
     public List<Plane> planeListByDeparturedate(String departure, String destination, Date departureDate) {
         return searchService.findByDepartureDate(departure, destination, departureDate);
-
     }
 
     public List<Plane> planeList(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat) {
