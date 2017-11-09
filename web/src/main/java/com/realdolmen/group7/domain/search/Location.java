@@ -24,13 +24,11 @@ public class Location {
 
     private String airportCode;
 
-
     @Enumerated(EnumType.STRING)
     private Region region;
 
     @OneToMany
     private List<Flight> flights;
-
 
     public long getLocationId() {
         return locationId;
@@ -79,9 +77,4 @@ public class Location {
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
     }
-
-
-
-
-
 }

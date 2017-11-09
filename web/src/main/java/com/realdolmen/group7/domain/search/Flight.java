@@ -40,6 +40,7 @@ public class Flight {
         return id;
     }
 
+
     public String getFlightNumber() {
         return flightNumber;
     }

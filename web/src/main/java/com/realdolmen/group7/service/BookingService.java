@@ -12,4 +12,6 @@ public interface BookingService {
 
     public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination,
                                               Date departureDate, int numberOfSeat);
+
+
 }

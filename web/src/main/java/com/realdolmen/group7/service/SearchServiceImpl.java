@@ -70,6 +70,11 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
+    public List<Plane> getPlaneByAirline(String AirlineId) {
+        return null;
+    }
+
+    @Override
     public Flight getFlightByPlane(long planeId) {
         return flightRepository.getFlightByPlane(planeId);
     }

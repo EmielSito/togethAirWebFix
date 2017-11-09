@@ -68,14 +68,6 @@ public class Plane {
         this.departureDate = departureDate;
     }
 
-    public boolean isVolumeDiscountAvailable() {
-        return volumeDiscountAvailable;
-    }
-
-    public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
-        this.volumeDiscountAvailable = volumeDiscountAvailable;
-    }
-
     public int getDurationInMinutes() {
         return durationInMinutes;
     }
@@ -92,6 +84,11 @@ public class Plane {
         this.seats = seats;
     }
 
+    public boolean isVolumeDiscountAvailable() {
+        return volumeDiscountAvailable;
+    }
 
-
+    public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
+        this.volumeDiscountAvailable = volumeDiscountAvailable;
+    }
 }
