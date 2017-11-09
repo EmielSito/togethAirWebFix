@@ -8,6 +8,7 @@ import com.realdolmen.group7.service.BookingService;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Date;
 import java.util.List;
 
 @Named
@@ -17,12 +18,12 @@ public class BookingController {
     @Inject
     private BookingService bookingService;
 
-    public int chooseSeat(String seatNumber) {
-        return bookingService.chooseSeatNumber(seatNumber);
+    public void chooseSeat(String seatNumber) {
+         bookingService.chooseSeatNumber(seatNumber);
+}
 
-    }
-
-    public List<Seat> getAvailableSeatByClassType(ClassType type) {
-        return bookingService.getAvailableSeatByClassType(type);
+    public List<Seat> getAvailableSeatByClassType(String planeNumber, ClassType type, String departure, String destination,
+                                                  Date departureDate, int numberOfSeat) {
+        return bookingService.getAvailableSeatByPlane(planeNumber,type,departure,destination,departureDate,numberOfSeat);
     }
 }

@@ -15,6 +15,7 @@ public interface SearchService {
    List<Plane> findByDepartureDate(String departure, String destination, Date departureDate);
    List<Location> getLocationByRegion(Region region);
    List<Flight> getAllFlight();
+   List<Plane> getPlaneByAirline(String AirlineId);
 
 
 }
