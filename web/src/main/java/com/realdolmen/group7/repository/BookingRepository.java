@@ -10,16 +10,12 @@ public class BookingRepository {
     @PersistenceContext
     EntityManager em;
 
-    public List<Seat> availableSeat(){
-        return em.createQuery("select f.planes.seats from Flight f where f.planes.seats.isAvailable LIKE :args",Seat.class).
-                setParameter("args",true).getResultList();
+
+
+    public void chooseBySeatNumber (Seat seat) {
+        em.merge(seat);
     }
 
-    public int chooseBySeatNumber (String seatNumber) {
-        return  em.createQuery("update Flight.plane.seats SET Flight.plane.seats.isAvailable = :args1 " +
-                "where f.planes.seats.seatNumber=:args2").setParameter("args1",false)
-                .setParameter("args2",seatNumber).executeUpdate();
-    }
 
 
 }

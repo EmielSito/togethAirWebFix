@@ -27,7 +27,6 @@ public class FlightRepository {
                 .setParameter("args1",departure).setParameter("args2",destination).getResultList();
     }
 
-
     public List<Location> findAllLocation() {
         return em.createQuery("select f.departure.airportName from Flight f", Location.class).getResultList();
     }
