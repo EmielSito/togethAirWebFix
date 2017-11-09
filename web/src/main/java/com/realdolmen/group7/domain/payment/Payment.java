@@ -1,7 +1,5 @@
 package com.realdolmen.group7.domain.payment;
 
-import com.realdolmen.group7.domain.booking.Booking;
-
 import javax.persistence.*;
 
 /**
@@ -13,8 +11,7 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private long id;
     @Column(nullable = false)
     private boolean isPaid;
 
@@ -22,7 +19,7 @@ public class Payment {
     private PaymentMethod paymentMethod;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

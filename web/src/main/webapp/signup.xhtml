@@ -9,7 +9,7 @@
     <ui:define name="pageContent">
 
         <h:head>
-            <title>Login Page</title>
+            <title>Signin Page</title>
         </h:head>
         <h:body>
             <h:form>
@@ -28,8 +28,8 @@
 
                 <br/>
 
-                <h:commandButton value="Cancel" action="index"/>
-                <h:commandButton value="LOG IN" action="#{registrationController.login(registrationController.user.email, registrationController.user.password)}"/>
+                <h:commandButton value="Cancel" action=""/>
+                <h:commandButton value="SIGN UP" action="#{registrationController.savePerson()}"/>
             </h:form>
 
         </h:body>

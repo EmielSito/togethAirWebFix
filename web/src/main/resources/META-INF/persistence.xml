@@ -7,6 +7,10 @@
 
     <persistence-unit name="CandyShopPersistenceUnit" transaction-type="JTA">
         <jta-data-source>java:/rd/datasources/RealDolmenDataSource</jta-data-source>
+        <properties>
+            <property name="hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hpm2ddl.auto" value="update"/>
+        </properties>
     </persistence-unit>
 
     <!--

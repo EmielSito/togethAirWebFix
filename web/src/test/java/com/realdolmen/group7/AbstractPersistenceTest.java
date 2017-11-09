@@ -10,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class AbstractPersistenceTest {
-    private static EntityManagerFactory emf;
+  private static EntityManagerFactory emf;
 
     protected EntityManager em;
 

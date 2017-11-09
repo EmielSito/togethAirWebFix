@@ -22,9 +22,6 @@ public class Ticket {
     public Ticket() {
     }
 
-    public long getId() {
-        return id;
-    }
 
     public String getFirstName() {
         return firstName;
