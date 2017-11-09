@@ -20,6 +20,8 @@ public class FlightPojo {
 
     private Airline airline;
 
+    private long planeId;
+
 
     private double price;
 
@@ -57,6 +59,7 @@ public class FlightPojo {
     }
 
     public void setPlane(Plane plane) {
+        setPlaneId(plane.getId());
         this.plane = plane;
     }
 
@@ -74,5 +77,14 @@ public class FlightPojo {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+
+    public long getPlaneId() {
+        return planeId;
+    }
+
+    public void setPlaneId(long planeId) {
+        this.planeId = planeId;
     }
 }

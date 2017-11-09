@@ -6,99 +6,43 @@
 
 <ui:composition template="template.xhtml">
     <ui:define name="pageContent">
-        <h1>Search Rsult</h1>
-
-<!--
-
-
-        <h:form id="table">
-            <h:panelGroup rendered="#{empty SearchResultController.flightPojos}">
-                No flights found
-            </h:panelGroup>
-            <h:panelGroup rendered="#{not empty SearchResultController.flightPojos}">
-                <h:dataTable id="FlightsTable" value="#{SearchResultController.flightPojos}" var="flightPlane"
-                             styleClass="table table-striped">
-
-                    <h:column>
-                        <f:facet name = "header">Flight number</f:facet>
-                        #{flightPlane.flightNumber}
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name = "header">Departure date</f:facet>
-                        #{flightPlane.plane.departureDate}
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name = "header">Departure time</f:facet>
-                        #{flightPlane.plane.departureTime}
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name = "header">Duration (Min)</f:facet>
-                        #{flightPlane.plane.durationInMinutes}
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name = "header">Airline</f:facet>
-                        #{flightPlane.airline.name}
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name = "header">Price</f:facet>
-                        #{flightPlane.price}
-                    </h:column>
-
-
-
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Controls"/>
-                        </f:facet>
-
-                        <h:commandLink styleClass="btn btn-xs btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Remove
-                            <f:ajax render="@form" listener="#{peopleListController.remove(person.id)}"/>
-                        </h:commandLink>
-
-                    </h:column>
-
-
-                </h:dataTable>
-            </h:panelGroup>
-        </h:form>
--->
+        <h1>Search Result</h1>
 
 
 
 
-        <h:dataTable value="#{searchResultController.flightPojos}" var="flightPlane">
+        <h:dataTable border="1" value="#{searchResultController.flightPojos}" var="flightPlane">
 
+
+            <h:column>
+                <f:facet name = "header"> - </f:facet>
+                Option number: #{flightPlane.plane.id}
+            </h:column>
 
             <h:column>
                 <f:facet name = "header">Flight number</f:facet>
-                #{flightPlane.flightNumber}  |------|
+                #{flightPlane.flightNumber}  
             </h:column>
 
             <h:column>
-                <f:facet name = "header">|          Departure date          |</f:facet>
-                #{searchResultController.getConvertedDate(flightPlane.plane.id)}  |------|
+                <f:facet name = "header">Departure date</f:facet>
+                #{searchResultController.getConvertedDate(flightPlane.plane)}
             </h:column>
 
             <h:column>
-                <f:facet name = "header">|          Duration (Min)          |</f:facet>
+                <f:facet name = "header">Duration (Min)</f:facet>
                 <!--#{flightPlane.plane.departureTime}--> <!-- TODO calculate duration-->
-                60 Min  |------|
+                60 Min  
             </h:column>
 
             <h:column>
-                <f:facet name = "header">|          Airline          |</f:facet>
-                #{flightPlane.airline.name}  |------|
+                <f:facet name = "header">Airline</f:facet>
+                #{flightPlane.airline.name} 
             </h:column>
 
             <h:column>
-                <f:facet name = "header">|          Price          |</f:facet>
-                #{flightPlane.price} EURO  |------|
+                <f:facet name = "header">Price</f:facet>
+                #{flightPlane.price} EURO  
             </h:column>
 
 
@@ -106,7 +50,7 @@
                 <!-- <f:facet name = "header">Book Now</f:facet>-->
                 <h:form>
                     <!--TODO navigate to booking page while passing on the selected flight 'FlightNumber'-->
-                    <h:commandButton action = "signup" value = "Book Now" />
+                    <h:commandButton action = "#{SearchResultController.bookNow(flightPlane.plane.id)}" value = "Book Now" />
                 </h:form>
             </h:column>
 

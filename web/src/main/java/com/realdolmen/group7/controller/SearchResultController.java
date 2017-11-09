@@ -38,17 +38,22 @@ public class SearchResultController implements Serializable {
         this.flightPojos = new ArrayList<>();
         this.planes = new ArrayList<>();
 
-        Plane p = new Plane();
+
         Random random = new Random();
 
-        BigDecimal bigDecimal = new BigDecimal(random.nextDouble()+random.nextInt(200)+100);
-        double seatPrice = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_EVEN).doubleValue();
 
-        for (int i=0;i<5;i++) {
+
+        for (int i=0;i<=10;i++) {
+            Plane p = new Plane();
+            BigDecimal bigDecimal = new BigDecimal(random.nextDouble()+random.nextInt(200)+100);
+            double seatPrice = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_EVEN).doubleValue();
+
             p.setId(i);
             p.setPlaneNumber("TESTPLANE" + String.valueOf(i));
             p.setDepartureDate(DateUtils.createDate("2017-" + String.valueOf(random.nextInt(12)) + "-" + String.valueOf(random.nextInt(30))));
-            p.setDurationInMinutes(random.nextInt() + 60);
+
+
+            p.setDurationInMinutes(random.nextInt(60)+60);
 
 
             List<Seat> seatList = new ArrayList<>();
@@ -81,15 +86,10 @@ public class SearchResultController implements Serializable {
     private SearchService searchService;
 
 
-    public String getConvertedDate(long planeId){
-        String result = "not calculated";
+    public String getConvertedDate(Plane plane){
 
-        for(int i = 0; i < flightPojos.size(); i++){
-            if (flightPojos.get(i).getPlane().getId() == planeId){
-                return DateUtils.longDateToStringDate(flightPojos.get(i).getPlane().getDepartureDate().getTime());
-            }
-        }
-        return result;
+                return DateUtils.longDateToStringDate(plane.getDepartureDate().getTime());
+
     }
 
     public List<FlightPojo> getFlightPojos() {
@@ -115,10 +115,10 @@ public class SearchResultController implements Serializable {
 
             //TODO this is for testing
             Airline airline = new Airline();
-            airline.setName("FAKE AIRLINELINE "+String.valueOf(random.nextInt(1)));
+            airline.setName("FAKE AIRLINE "+String.valueOf(i));
             flightPojo.setAirline(airline);
 
-            flightPojo.setFlightNumber("FAKE NUMBER: "+String.valueOf(i));
+            flightPojo.setFlightNumber("FAKE NUMBER "+String.valueOf(i));
 
             //--------------------------
 
@@ -142,6 +142,13 @@ public class SearchResultController implements Serializable {
 
     public void setPlanes(List<Plane> planes) {
         this.planes = planes;
+    }
+
+    public String bookNow(long planeId){
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        // TODO pass plane ID to booking page
+        return "returnBooking?faces-redirect=true";
     }
 
 
