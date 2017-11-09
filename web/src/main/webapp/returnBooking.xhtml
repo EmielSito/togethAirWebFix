@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/template.xhtml">
+    <ui:define name="pageContent">
+
+        <h:head>
+            <title>Booking Page</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:commandButton value="One Way" action=""/>
+                <h:commandButton value="Return" action=""/>
+                <br/>
+
+                <h:outputLabel for="txtFlyingFrom">
+                    <h:outputText value="Flying From"/>
+                </h:outputLabel>
+                <h:inputText id="txtFlyingFrom" value="#{obj.}"></h:inputText>
+                <br/>
+
+                <h:outputLabel for="txtFlyingTo">
+                    <h:outputText value="Flying From"/>
+                </h:outputLabel>
+                <h:inputText id="txtFlyingTo" value="#{obj.}"></h:inputText>
+                <br/>
+
+                <h:commandButton value="Search" action="#{obj.method}"/>
+
+            </h:form>
+
+        </h:body>
+
+    </ui:define>
+</ui:composition>
+
+</html>
