@@ -69,4 +69,11 @@ public class SearchServiceImpl implements SearchService {
         return  flightRepository.findAllFlights();
     }
 
+    @Override
+    public List<Plane> getPlaneByAirline(String AirlineId) {
+        List<Plane>planes=new
+        return null;
+    }
+
+
 }
