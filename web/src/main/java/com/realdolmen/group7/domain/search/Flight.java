@@ -2,6 +2,8 @@ package com.realdolmen.group7.domain.search;
 
 
 
+import com.realdolmen.group7.domain.booking.Booking;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class Flight {
 
     @ManyToOne
     private Airline airline;
+
+    @ManyToMany(mappedBy = "flights")
+    private List<Booking> bookings;
 
     public Long getId() {
         return id;
@@ -78,4 +83,5 @@ public class Flight {
     public void setAirline(Airline airline) {
         this.airline = airline;
     }
+
 }

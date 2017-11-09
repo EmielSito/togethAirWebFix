@@ -1,5 +1,6 @@
 package com.realdolmen.group7.domain.payment;
 
+
 import javax.persistence.*;
 
 /**
@@ -11,18 +12,12 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    /*
+    private long id;
     @Column(nullable = false)
     private boolean isPaid;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
-
-
-    public int getId() {
-        return id;
-    }
 
     public boolean isPaid() {
         return isPaid;
@@ -40,7 +35,7 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-*/
+
 
 
 }

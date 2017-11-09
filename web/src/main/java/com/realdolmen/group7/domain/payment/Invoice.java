@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
 
 

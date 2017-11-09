@@ -11,7 +11,6 @@ import java.util.List;
  */
 @Entity
 public class Airline {
-
     @Id
     @GeneratedValue
     private Long id;
@@ -21,4 +20,29 @@ public class Airline {
 
     @OneToMany(mappedBy = "airline")
     private List<Flight> flights;
+
+    public String getAirlineId() {
+        return airlineId;
+    }
+
+    public void setAirlineId(String airlineId) {
+        this.airlineId = airlineId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
+
 }

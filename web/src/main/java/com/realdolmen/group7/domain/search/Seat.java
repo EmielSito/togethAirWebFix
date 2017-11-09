@@ -12,12 +12,37 @@ public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Enumerated(EnumType.STRING)
     private ClassType classType;
 
     private String SeatNumber;
+
+
+    public ClassType getClassType() {
+        return classType;
+    }
+
+    public void setClassType(ClassType classType) {
+        this.classType = classType;
+    }
+
+    public String getSeatNumber() {
+        return SeatNumber;
+    }
+
+    public void setSeatNumber(String seatNumber) {
+        SeatNumber = seatNumber;
+    }
+
+    public double getBasePrice() {
+        return basePrice;
+    }
+
+    public void setBasePrice(double basePrice) {
+        this.basePrice = basePrice;
+    }
 
     private double basePrice;
 
