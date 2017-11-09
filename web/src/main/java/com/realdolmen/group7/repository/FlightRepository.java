@@ -32,5 +32,9 @@ public class FlightRepository {
     }
 
 
+    public Flight getFlightByPlane(long planeId) {
+        return (Flight)em.createQuery("select fp from flight_plane fp where fp.planeId = :arg").setParameter("arg", planeId).getSingleResult();
+    }
+
 
 }
