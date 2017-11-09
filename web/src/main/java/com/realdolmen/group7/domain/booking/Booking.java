@@ -1,6 +1,5 @@
 package com.realdolmen.group7.domain.booking;
 
-
 import com.realdolmen.group7.domain.payment.Payment;
 import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.users.User;

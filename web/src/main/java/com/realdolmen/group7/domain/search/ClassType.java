@@ -18,4 +18,6 @@ ECONOMY("Economy class");
         return classType;
     }
 
+    BUSINESS, ECONOMIC
+
 }
