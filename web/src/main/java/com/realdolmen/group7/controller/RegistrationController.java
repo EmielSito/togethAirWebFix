@@ -1,7 +1,9 @@
 package com.realdolmen.group7.controller;
 
+import com.realdolmen.group7.domain.users.Person;
 import com.realdolmen.group7.domain.users.User;
-import com.realdolmen.group7.repository.UserRepository;
+import com.realdolmen.group7.service.RegistrationService;
+
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -16,22 +18,27 @@ import java.io.Serializable;
 public class RegistrationController implements Serializable {
 
     @Inject
-    private UserRepository userRepository;
+    RegistrationService registrationService;
 
-    private User user;
+    private Person user = new User();
 
-    public User getUser() {
+    public Person getUser() {
         return user;
     }
 
- /*   public int getId(){
-        return user.getId();
-    }*/
+    public String savePerson() {
+        registrationService.save(user);
+        //go back to the last page
+        return "oneWayBooking?faces-redirect=true";
+    }
 
-    public String registerUser(){
-        userRepository.save(user);
-        this.user = new User();
-        return "index?faces-redirect=true";
+    public String login(String email, String password) {
+        Person user = registrationService.findByEmail(email);
+        if(!user.getPassword().equals(password)) {
+            return "login?faces-redirect=true" ;
+        }
+        //go back to the last page
+        return "booking?faces-redirect=true";
     }
 
 
