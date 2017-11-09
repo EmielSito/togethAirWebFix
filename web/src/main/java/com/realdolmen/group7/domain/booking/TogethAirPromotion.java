@@ -1,4 +1,4 @@
-package com.realdolmen.group7.domain.booking;
+package com.realdolmen.group7.togetHair.domain.booking;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

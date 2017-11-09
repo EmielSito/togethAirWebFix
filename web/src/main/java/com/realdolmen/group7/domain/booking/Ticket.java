@@ -1,6 +1,7 @@
 package com.realdolmen.group7.domain.booking;
 
 import javax.persistence.*;
+import java.awt.print.Book;
 
 
 /**

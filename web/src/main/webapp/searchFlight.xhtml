@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/template.xhtml">
+    <ui:define name="pageContent">
+
+        <h1>Flight</h1>
+        <body>
+        <h:outputText value="#{msgs['pages.welcome.para']}" />
+
+        <h:form>
+
+            <p>
+                <h:outputLabel value="Departure:" />
+                <h:inputText rendered="#{registrationBean.editable}"
+                             value="#{registrationBean.lastName}" />
+                <h:outputText rendered="#{not registrationBean.editable}"
+                              value="#{registrationBean.lastName}" />
+
+                <h:outputLabel value="Destination:" />
+                <h:inputText rendered="#{registrationBean.editable}"
+                             value="#{registrationBean.lastName}" />
+                <h:outputText rendered="#{not registrationBean.editable}"
+                              value="#{registrationBean.lastName}" />
+
+            </p>
+            <p>
+
+                <h:outputLabel value="one-way" /><h:selectBooleanCheckbox
+                    valueChangeListener="#{registrationBean.ajaxListener}"
+                    onchange="this.form.submit()"/>
+
+                <h:outputText value="#{registrationBean.firstName}"
+                              rendered="#{not registrationBean.editable}" />
+
+
+
+                <h:outputLabel value="return" /><h:selectBooleanCheckbox
+                    valueChangeListener="#{registrationBean.ajaxListener}"
+                    onchange="this.form.submit()"/>
+
+                <h:outputText value="#{registrationBean.firstName}"
+                              rendered="#{not registrationBean.editable}" />
+
+
+            </p>
+            <p>
+
+            <h:outputLabel value="DepartureDate:" />
+            <h:inputText rendered="#{registrationBean.editable}"
+                         value="#{registrationBean.lastName}" />
+            <h:outputText rendered="#{not registrationBean.editable}"
+                          value="#{registrationBean.lastName}" />
+
+                <h:outputLabel value="ReturnDate:" />
+                <h:inputText rendered="#{registrationBean.editable}"
+                             value="#{registrationBean.lastName}" />
+                <h:outputText rendered="#{not registrationBean.editable}"
+                              value="#{registrationBean.lastName}" />
+
+            </p>
+
+            <p>
+                <h:outputLabel value="Select:" />
+                <h:selectOneRadio value="#{registrationBean.gender}">
+
+                    <f:selectItem itemLabel="First class" itemValue="first class" />
+                    <f:selectItem itemLabel="Business" itemValue="business" />
+                    <f:selectItem itemLabel="Economic" itemValue="economic" />
+                </h:selectOneRadio>
+
+            </p>
+            <p>
+                <h:outputLabel value="Airline:" />
+                <h:inputText rendered="#{registrationBean.editable}" id="email"
+                             value="#{registrationBean.email}">
+                    <!-- <f:validateLength minimun="2"/>-->
+
+                </h:inputText>
+                <h:message for="email" />
+                <h:outputText rendered="#{not registrationBean.editable}"
+                              value="#{registrationBean.email}">
+
+                </h:outputText>
+            </p>
+            <p>
+                <h:outputLabel value="Service level:" />
+                <h:selectOneListbox rendered="#{registrationBean.editable}"
+                                    value="#{registrationBean.serviceLevel}">
+                    <f:selectItem itemLabel="Basic" itemValue="basic" />
+                    <f:selectItem itemLabel="Higher" itemValue="higher" />
+                </h:selectOneListbox>
+            </p>
+            <p>
+                <h:outputLabel value="Phone:" />
+                <h:inputText rendered="#{registrationBean.editable}"
+                             value="#{registrationBean.phoneNumber}" />
+                <h:outputText rendered="#{not registrationBean.editable}"
+                              value="#{registrationBean.phoneNumber}">
+
+                </h:outputText>
+            </p>
+            <p>
+                <h:outputLabel value="Account:" />
+                <h:inputText id="account" rendered="#{registrationBean.editable}"
+                             value="#{registrationBean.accountNumber}">
+
+                </h:inputText>
+                <h:message for="account" />
+                <h:outputText rendered="#{not registrationBean.editable}"
+                              value="#{registrationBean.accountNumber}" />
+
+
+            </p>
+            <p>
+                <h:commandButton
+                        action="#{registrationBean.doRegistrationAction}"
+                        value="register" />
+
+            </p>
+        </h:form>
+        </body>
+    </ui:define>
+</ui:composition>
+
+</html>

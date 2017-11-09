@@ -1,6 +1,5 @@
 package com.realdolmen.group7.controller;
 
-
 import com.realdolmen.group7.domain.users.User;
 import com.realdolmen.group7.repository.UserRepository;
 
@@ -15,8 +14,6 @@ import java.io.Serializable;
 @Named
 @SessionScoped
 public class RegistrationController implements Serializable {
-
-
 
     @Inject
     private UserRepository userRepository;

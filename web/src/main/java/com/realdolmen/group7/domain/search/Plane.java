@@ -15,18 +15,15 @@ public class Plane {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
     private String planeNumber;
+
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureTime;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;
-
-    @OneToMany
-    private List<Seat> seats;
-
-
 
     public String getPlaneNumber() {
         return planeNumber;
@@ -46,14 +43,6 @@ public class Plane {
 
     public Date getDepartureDate() {
         return departureDate;
-    }
-
-    public List<Seat> getSeats() {
-        return seats;
-    }
-
-    public void setSeats(List<Seat> seats) {
-        this.seats = seats;
     }
 
     public void setDepartureDate(Date departureDate) {
@@ -76,6 +65,13 @@ public class Plane {
         this.durationInMinutes = durationInMinutes;
     }
 
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
 
     private boolean volumeDiscountAvailable;
 
@@ -83,7 +79,8 @@ public class Plane {
     private Date durationInMinutes;
 
 
-
+    @OneToMany
+    private List<Seat> seats;
 
 
 

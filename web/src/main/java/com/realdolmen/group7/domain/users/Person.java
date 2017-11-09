@@ -5,6 +5,7 @@ package com.realdolmen.group7.domain.users;
  */
 public abstract class Person {
 
+
     private String email;
 
     private String password;
@@ -33,6 +34,10 @@ public abstract class Person {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void signup() {
+
     }
 
 }
