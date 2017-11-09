@@ -32,7 +32,7 @@ public class Plane {
     private boolean volumeDiscountAvailable;
 
 
-    private Date durationInMinutes;
+    private int durationInMinutes;
 
 
     public long getId() {
@@ -75,11 +75,11 @@ public class Plane {
         this.volumeDiscountAvailable = volumeDiscountAvailable;
     }
 
-    public Date getDurationInMinutes() {
+    public int getDurationInMinutes() {
         return durationInMinutes;
     }
 
-    public void setDurationInMinutes(Date durationInMinutes) {
+    public void setDurationInMinutes(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
     }
 

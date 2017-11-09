@@ -57,4 +57,5 @@ public class SearchServiceImpl implements SearchService {
         return flightRepository.getFlightByPlane(planeId);
     }
 
+
 }
