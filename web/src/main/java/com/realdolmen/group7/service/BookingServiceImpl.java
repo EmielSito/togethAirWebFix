@@ -39,5 +39,4 @@ public class BookingServiceImpl implements BookingService {
         return seatList;
     }
 
-
 }

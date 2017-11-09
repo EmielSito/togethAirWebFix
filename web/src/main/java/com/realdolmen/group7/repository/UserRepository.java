@@ -16,10 +16,7 @@ public class UserRepository implements Serializable {
     @PersistenceContext
     private EntityManager entityManager;
 
-
-
-
-
+    
     public User save(User user){
         entityManager.persist(user);
         return user;

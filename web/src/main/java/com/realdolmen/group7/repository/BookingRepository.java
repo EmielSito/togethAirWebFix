@@ -16,8 +16,10 @@ public class BookingRepository {
     }
 
     public int chooseBySeatNumber (String seatNumber) {
-        return  em.createQuery("update f.planes.seats SET f.planes.seats.isAvailable = :args1 " +
+        return  em.createQuery("update Flight.plane.seats SET Flight.plane.seats.isAvailable = :args1 " +
                 "where f.planes.seats.seatNumber=:args2").setParameter("args1",false)
                 .setParameter("args2",seatNumber).executeUpdate();
     }
+
+
 }

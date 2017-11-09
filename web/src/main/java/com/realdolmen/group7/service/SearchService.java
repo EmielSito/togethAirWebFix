@@ -12,6 +12,9 @@ public interface SearchService {
 
 
    List<Plane> findPlaneByAvailableSeat(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat);
-    public List<Plane> findByDepartureDate(String departure, String destination, Date departureDate);
+   List<Plane> findByDepartureDate(String departure, String destination, Date departureDate);
+   List<Location> getLocationByRegion(Region region);
+   List<Flight> getAllFlight();
+
 
 }

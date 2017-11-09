@@ -52,4 +52,21 @@ public class SearchServiceImpl implements SearchService {
         return planes;
     }
 
+    @Override
+    public List<Location> getLocationByRegion(Region region) {
+        List<Location> locations=new ArrayList<>();
+        List<Location> locationList=flightRepository.findAllLocation();
+        for(Location l:locationList){
+            if(l.getRegion().equals(region)){
+                locations.add(l);
+            }
+        }
+       return locations;
+    }
+
+    @Override
+    public List<Flight> getAllFlight() {
+        return  flightRepository.findAllFlights();
+    }
+
 }

@@ -1,8 +1,7 @@
 package com.realdolmen.group7.controller;
 
 
-import com.realdolmen.group7.domain.search.ClassType;
-import com.realdolmen.group7.domain.search.Plane;
+import com.realdolmen.group7.domain.search.*;
 import com.realdolmen.group7.service.SearchServiceImpl;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -23,6 +22,12 @@ public class SearchController {
     }
     public List<Plane> planeList(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat){
        return searchService.findPlaneByAvailableSeat(type,departure,destination,departureDate,numberOfSeat);
+    }
+    public List<Location> getLocationByRegion(Region region){
+        return searchService.getLocationByRegion(region);
+    }
+    public List<Flight> getAllFlight(){
+        return searchService.getAllFlight();
     }
 
 }
