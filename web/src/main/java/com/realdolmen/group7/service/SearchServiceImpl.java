@@ -71,7 +71,11 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public List<Plane> getPlaneByAirline(String AirlineId) {
-        List<Plane>planes=new
+      /*  List<Plane>planes=new ArrayList<>();
+
+        for(Plane p: planes){
+            if()
+        }*/
         return null;
     }
 
