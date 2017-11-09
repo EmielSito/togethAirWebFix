@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by ESOBG49 on 7/11/2017.
  */
-public interface SearchService {
+public interface FlightRepository {
 
     List<Flight> getFlights(Location destination);
 
@@ -19,6 +19,7 @@ public interface SearchService {
     List<Location> getLocations();
 
     List<Location> getLocations(Region region);
+
 
 
 }

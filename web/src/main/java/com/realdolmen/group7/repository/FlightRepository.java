@@ -1,9 +1,9 @@
 package com.realdolmen.group7.repository;
 
-
 import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.search.Location;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Date;
@@ -12,9 +12,8 @@ import java.util.List;
 /**
  * Created by PMTBF30 on 7/11/2017.
  */
-
+@Stateless
 public class FlightRepository {
-
 
     @PersistenceContext
     EntityManager em;

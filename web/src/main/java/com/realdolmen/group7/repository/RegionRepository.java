@@ -1,5 +1,7 @@
 package com.realdolmen.group7.repository;
 
+import com.realdolmen.group7.domain.search.Flight;
+import com.realdolmen.group7.domain.search.Location;
 import com.realdolmen.group7.domain.search.Region;
 
 import javax.ejb.Stateless;

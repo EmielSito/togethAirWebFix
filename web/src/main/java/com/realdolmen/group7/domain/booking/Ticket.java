@@ -1,6 +1,7 @@
 package com.realdolmen.group7.domain.booking;
 
 import javax.persistence.*;
+import java.awt.print.Book;
 
 /**
  * Created by ESOBG49 on 6/11/2017.
@@ -12,7 +13,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-/*    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String firstName;
 
     @Column(nullable = false, length = 50)
@@ -39,6 +40,6 @@ public class Ticket {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }*/
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.realdolmen.group7;
 
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
