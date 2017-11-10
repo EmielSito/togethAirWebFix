@@ -5,9 +5,7 @@ import com.realdolmen.group7.repository.FlightRepository;
 
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 public class SearchServiceImpl implements SearchService {
@@ -70,10 +68,24 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Plane> getPlaneByAirline(String AirlineId) {
-        List<Plane>planes=new
-        return null;
+    public Set<Region> getAllRegions() {
+        Set<Region>regions=new HashSet<>();
+        regions.add(Region.EUROPE);
+        regions.add(Region.AFRICA);
+        regions.add(Region.ASIA);
+        regions.add(Region.USA);
+        regions.add(Region.AUSTRALIA);
+
+        return regions;
     }
+
+//    @Override
+//    public List<Plane> getPlaneByAirline(String AirlineId) {
+//        List<Plane>planes=new
+//        return null;
+//    }
+
+
 
 
 }

@@ -19,7 +19,7 @@ public class RegistrationService {
     UserRepository personRepository;
 
     public Person save(Person person) {
-        return personRepository.save(person);
+        return personRepository.save((User) person);
     }
 
     public Person findByEmail(String email) {

@@ -4,6 +4,7 @@ import com.realdolmen.group7.domain.search.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by ESOBG49 on 7/11/2017.
@@ -15,7 +16,8 @@ public interface SearchService {
    List<Plane> findByDepartureDate(String departure, String destination, Date departureDate);
    List<Location> getLocationByRegion(Region region);
    List<Flight> getAllFlight();
-   List<Plane> getPlaneByAirline(String AirlineId);
+   Set<Region>getAllRegions();
+   //List<Plane> getPlaneByAirline(String AirlineId);
 
 
 }

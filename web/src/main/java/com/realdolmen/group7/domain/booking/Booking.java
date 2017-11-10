@@ -22,8 +22,6 @@ public class Booking {
     @Column(nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "booking")
-    private List<Flight> flights;
 
     @Column(nullable = false)
     @OneToOne(fetch = FetchType.LAZY)

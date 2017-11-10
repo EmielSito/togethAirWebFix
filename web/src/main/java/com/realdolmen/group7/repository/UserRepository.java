@@ -1,6 +1,7 @@
 package com.realdolmen.group7.repository;
 
 
+import com.realdolmen.group7.domain.users.Person;
 import com.realdolmen.group7.domain.users.User;
 
 import javax.persistence.EntityManager;
@@ -30,11 +31,15 @@ public class UserRepository implements Serializable {
 
 
     public List<User> findAll(){
-        return entityManager.createQuery("select u FROM user u", User.class).getResultList();
+        return entityManager.createQuery("select u FROM User u", User.class).getResultList();
     }
 
     public void remove(int userId){
         entityManager.remove(findById(userId));
+    }
+
+    public Person findByEmail(String email){
+        return entityManager.find(Person.class, email);
     }
 
 
