@@ -3,6 +3,7 @@ package com.realdolmen.group7.controller;
 
 import com.realdolmen.group7.domain.search.*;
 import com.realdolmen.group7.service.SearchServiceImpl;
+
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,20 +15,31 @@ import java.util.List;
 public class SearchController {
 
     @Inject
-   private SearchServiceImpl searchService;
+    private SearchServiceImpl searchService;
 
-    public List<Plane> planeListByDeparturedate(String departure, String destination, Date departureDate){
-       return searchService.findByDepartureDate(departure, destination, departureDate);
 
+
+    public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type) {
+        return searchService.getAvailableSeat(planeNumber, departure, destination, departureDate, type);
     }
-    public List<Plane> planeList(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat){
-       return searchService.findPlaneByAvailableSeat(type,departure,destination,departureDate,numberOfSeat);
+
+    public List<Plane> getByDepartureDate(Date departureDate, String departure, String destination) {
+        return searchService.getByDepartureDate(departureDate,departure,destination);
     }
-    public List<Location> getLocationByRegion(Region region){
+
+    public List<Plane> getPlaneByAirline(String airlineId) {
+        return searchService.getPlaneByAirline(airlineId);
+    }
+
+    public List<Location> getLocationByRegion(Region region) {
         return searchService.getLocationByRegion(region);
     }
-    public List<Flight> getAllFlight(){
+
+    public List<Flight> getAllFlight() {
         return searchService.getAllFlight();
     }
-
+    public List<Plane> getPlaneByAvailableSeat(String planeNumber, String departure, String destination,
+                                               Date departureDate, ClassType type, int numberOfSeat){
+        return searchService.getPlaneByAvailableSeat(planeNumber,departure,destination,departureDate,type,numberOfSeat);
+    }
 }

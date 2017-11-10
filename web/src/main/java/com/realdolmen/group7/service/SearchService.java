@@ -11,11 +11,14 @@ import java.util.List;
 public interface SearchService {
 
 
-   List<Plane> findPlaneByAvailableSeat(ClassType type, String departure, String destination, Date departureDate, int numberOfSeat);
-   List<Plane> findByDepartureDate(String departure, String destination, Date departureDate);
-   List<Location> getLocationByRegion(Region region);
-   List<Flight> getAllFlight();
-   List<Plane> getPlaneByAirline(String AirlineId);
+
+   public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type);
+   public List<Plane> getByDepartureDate( Date departureDate, String departure, String destination);
+   public List<Plane> getPlaneByAirline(String airlineId);
+   public List<Location> getLocationByRegion (Region region);
+   public List<Flight> getAllFlight();
+   public List<Plane> getPlaneByAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type,int numberOfSeat);
+
 
 
 }

@@ -10,8 +10,6 @@ public class BookingRepository {
     @PersistenceContext
     EntityManager em;
 
-
-
     public void chooseBySeatNumber (Seat seat) {
         em.merge(seat);
     }

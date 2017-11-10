@@ -2,7 +2,6 @@ package com.realdolmen.group7.controller;
 
 import com.realdolmen.group7.domain.users.Person;
 import com.realdolmen.group7.domain.users.User;
-import com.realdolmen.group7.service.UserServiceBean;
 
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
