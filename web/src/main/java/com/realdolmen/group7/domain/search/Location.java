@@ -80,7 +80,4 @@ public class Location {
     @OneToMany
     private List<Flight> flights;
 
-
-
-
 }

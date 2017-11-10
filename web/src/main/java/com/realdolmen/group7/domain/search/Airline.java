@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class Airline {
     private String name;
 
     @OneToMany(mappedBy = "airline")
-    private List<Flight> flights;
+    private List<Flight> flights = new ArrayList<>();
 
     public String getAirlineId() {
         return airlineId;

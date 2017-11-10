@@ -1,9 +1,12 @@
 package com.realdolmen.group7.domain.payment;
 
 
+import com.realdolmen.group7.domain.search.Plane;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class VolumeDiscount {
@@ -15,6 +18,9 @@ public class VolumeDiscount {
     private int numberOfTickets;
 
     private double percent;
+
+    @ManyToOne
+    private Plane plane;
 
     public int getNumberOfTickets() {
         return numberOfTickets;

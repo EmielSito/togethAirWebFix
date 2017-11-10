@@ -17,9 +17,25 @@ public abstract class DateUtils {
         }
     }
 
+
+    public static Date createDateAndTime(String yyyyMMdd_HHmmss) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(yyyyMMdd_HHmmss);
+        } catch (ParseException e) {
+            throw new RuntimeException("Unable to parse date", e);
+        }
+    }
+
+
+
     public static long yearsFrom(Date date) {
         LocalDate d = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
         return ChronoUnit.YEARS.between(d, LocalDate.now());
     }
 
+    public static String longDateToStringDate(long input) {
+        Date date = new Date(input);
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+        return df2.format(date);
+    }
 }

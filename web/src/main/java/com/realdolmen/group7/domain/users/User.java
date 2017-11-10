@@ -15,7 +15,7 @@ public class User extends Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     List<Booking> bookings;
 
     public User() {

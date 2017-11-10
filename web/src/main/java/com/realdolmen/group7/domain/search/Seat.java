@@ -21,6 +21,9 @@ public class Seat {
 
     private boolean isAvailable;
 
+    @ManyToOne
+    private Plane plane;
+
     public boolean isAvailable() {
         return isAvailable;
     }

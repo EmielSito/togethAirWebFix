@@ -28,24 +28,20 @@ public class BookingServiceImpl implements BookingService {
     @Inject
     private SeatRepository seatRepository;
 
-    private List<Seat> availableSeat = new ArrayList<>();
-
     @Override
-    public void chooseSeatNumber(String seatNumber) {
+    public void chooseSeatNumber(List<Seat> seats) {
 
-        for (Seat s : availableSeat) {
-            if (s.getSeatNumber().equals(seatNumber)) {
-                s.setAvailable(false);
-                seatRepository.updateSeat(s);
-                break;
-            }
+        for (Seat s : seats) {
+            s.setAvailable(false);
+            seatRepository.updateSeat(s);
         }
+
     }
+
 
     public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination,
                                               Date departureDate, int numberOfSeat) {
-        availableSeat = seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
-        return availableSeat;
+        return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
     }
 
 }

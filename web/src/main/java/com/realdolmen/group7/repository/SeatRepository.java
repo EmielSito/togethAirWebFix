@@ -30,10 +30,7 @@ public class SeatRepository {
                 .setParameter("args2",departure).setParameter("args3",destination).setParameter("args4",departureDate)
                 .setParameter("args5",type).getResultList();
     }
-    public void updateAvailableSeat(){
 
-
-    }
 
 
 
