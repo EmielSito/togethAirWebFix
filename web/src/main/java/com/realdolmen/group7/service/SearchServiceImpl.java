@@ -1,10 +1,7 @@
 package com.realdolmen.group7.service;
 
 import com.realdolmen.group7.domain.search.*;
-import com.realdolmen.group7.repository.FlightRepository;
-import com.realdolmen.group7.repository.LocationRepository;
-import com.realdolmen.group7.repository.PlaneRepository;
-import com.realdolmen.group7.repository.SeatRepository;
+import com.realdolmen.group7.repository.*;
 
 
 import javax.inject.Inject;
@@ -23,6 +20,8 @@ public class SearchServiceImpl implements SearchService {
     private SeatRepository seatRepository;
     @Inject
     private LocationRepository locationRepository;
+    @Inject
+    private AirlineRepository airlineRepository;
 
 
     @Override
@@ -63,6 +62,21 @@ public class SearchServiceImpl implements SearchService {
                }
            }
            return resultPlaneList;
+    }
+
+    @Override
+    public List<Airline> getAllAirline() {
+        return airlineRepository.findAllAirline();
+    }
+
+    @Override
+    public Airline getAirlineByName(String name) {
+        return airlineRepository.findByName(name);
+    }
+
+    @Override
+    public List<Location> getAllLocation() {
+        return locationRepository.findAllLocation();
     }
 
 }

@@ -1,6 +1,9 @@
 package com.realdolmen.group7.domain.search;
 
+import com.realdolmen.group7.domain.payment.VolumeDiscount;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,11 +16,23 @@ public class Plane {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
+    @OneToMany
+    private List<Seat> seats;
 
     private String planeNumber;
 
+    public List<VolumeDiscount> getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(List<VolumeDiscount> discount) {
+        this.discount = discount;
+    }
+
+    @OneToMany
+    private List<VolumeDiscount> discount=new ArrayList<>();
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureTime;
@@ -79,8 +94,6 @@ public class Plane {
     private Date durationInMinutes;
 
 
-    @OneToMany
-    private List<Seat> seats;
 
 
 
