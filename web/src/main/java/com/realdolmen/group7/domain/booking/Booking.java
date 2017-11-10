@@ -14,10 +14,11 @@ import java.util.List;
 @Entity
 public class Booking {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+/*
     @ManyToOne
     @Column(nullable = false)
     private User user;
@@ -41,6 +42,7 @@ public class Booking {
     @JoinTable(name = "booking_flight", joinColumns = @JoinColumn(name = "booking_id"),
             inverseJoinColumns = @JoinColumn(name = "flight_id"))
     private List<Flight> flights;
+*/
 
 
 }
