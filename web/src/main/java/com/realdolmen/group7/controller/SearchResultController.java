@@ -145,7 +145,6 @@ public class SearchResultController implements Serializable {
     }
 
     public String bookNow(long planeId){
-        FacesContext context = FacesContext.getCurrentInstance();
 
         // TODO pass plane ID to booking page
         return "returnBooking?faces-redirect=true";
