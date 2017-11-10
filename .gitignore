@@ -20,3 +20,4 @@ workspace.xml
 *.rar
 */target
 /.idea/
+*.iml
