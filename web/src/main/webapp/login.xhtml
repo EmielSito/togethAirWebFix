@@ -17,19 +17,19 @@
                 <h:outputLabel for="txtEmail">
                     <h:outputText value="Email"/>
                 </h:outputLabel>
-                <h:inputText id="txtEmail" value="#{loginController.}"></h:inputText>
+                <h:inputText id="txtEmail" value="#{registrationController.user.email}"></h:inputText>
 
                 <br/>
 
                 <h:outputLabel for="txtPsw">
                     <h:outputText value="Password"/>
                 </h:outputLabel>
-                <h:inputText id="txtPsw" value="#{obj.password}"></h:inputText>
+                <h:inputText id="txtPsw" value="#{registrationController.user.password}"></h:inputText>
 
                 <br/>
 
                 <h:commandButton value="Cancel" action="index"/>
-                <h:commandButton value="LOG IN" action="#{obj.login}"/>
+                <h:commandButton value="LOG IN" action="#{registrationController.login(registrationController.user.email, registrationController.user.password)}"/>
             </h:form>
 
         </h:body>

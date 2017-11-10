@@ -1,10 +1,8 @@
-<!--
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
--->
 
 <ui:composition template="template.xhtml">
     <ui:define name="pageContent">
@@ -50,10 +48,10 @@
 
             <h:column>
                 <!-- <f:facet name = "header">Book Now</f:facet>-->
-
+                <h:form>
                     <!--TODO navigate to booking page while passing on the selected flight 'FlightNumber'-->
                     <h:commandButton action = "#{SearchResultController.bookNow(flightPlane.plane.id)}" value = "Book Now" />
-
+                </h:form>
             </h:column>
 
 

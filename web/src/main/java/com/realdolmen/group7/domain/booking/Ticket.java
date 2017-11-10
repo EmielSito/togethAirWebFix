@@ -3,6 +3,7 @@ package com.realdolmen.group7.domain.booking;
 import javax.persistence.*;
 import java.awt.print.Book;
 
+
 /**
  * Created by ESOBG49 on 6/11/2017.
  */
