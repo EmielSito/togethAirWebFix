@@ -13,23 +13,49 @@
         </h:head>
         <h:body>
             <h:form>
-                <h:commandButton value="One Way" action=""/>
-                <h:commandButton value="Return" action="/returnBooking"/>
+                <h:commandButton value="One Way" action="oneWayBooking"/>
+                <h:commandButton value="Return" action="returnBooking"/>
                 <br/>
+
+                <h:form>
+                <h:selectOneMenu value="#{location.airportName}" var="selection">
+                    <f:selectItems value="#{searchServiceImpl.getAllRegions}"/>
+                        <f:ajax event="change" render="location" listener="#{test.changeLocation}"/>
+                </h:selectOneMenu>
+
+                <h:selectOneMenu id="location">
+                    <f:selectItems value="#{searchServiceImpl.getLocationByRegion}"/>
+                </h:selectOneMenu>
+                </h:form>
+                <br/>
+
+                <!--h:selectOneMenu value="#{test.test}" var="selection" >
+                    <f:selectItems value="#{test.regions}"/>
+                    <f:ajax event="change" render="location" listener="#{test.changeLocation}"/>
+                </h:selectOneMenu>
+                <h:selectOneMenu id="location" >
+                    <f:selectItems value="#{test.location}"/>
+                </h:selectOneMenu-->
 
                 <h:outputLabel for="txtFlyingFrom">
                     <h:outputText value="Flying From"/>
                 </h:outputLabel>
-                <h:inputText id="txtFlyingFrom" value="#{obj.}"></h:inputText>
+                <h:inputText id="txtFlyingFrom" value="#{flight.departure}" required="true"/>
                 <br/>
 
                 <h:outputLabel for="txtFlyingTo">
                     <h:outputText value="Flying From"/>
                 </h:outputLabel>
-                <h:inputText id="txtFlyingTo" value="#{obj.}"></h:inputText>
+                <h:inputText id="txtFlyingTo" value="#{flight.destination}" required="true"/>
                 <br/>
 
-                <h:commandButton value="Search" action="#{obj.method}"/>
+                <h:outputLabel for="txtDepartureDate">
+                    <h:outputText value="Departure"/>
+                </h:outputLabel>
+                <h:inputText id="txtDepartureDate" value="#{plane.departureTime}" required="true"/>
+                <br/>
+
+                <h:commandButton value="Search" action="#{searchServiceImpl.getAllFlight}"/>
 
             </h:form>
 

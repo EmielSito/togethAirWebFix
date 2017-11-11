@@ -1,6 +1,5 @@
 package com.realdolmen.group7.repository;
 
-
 import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Seat;
 
