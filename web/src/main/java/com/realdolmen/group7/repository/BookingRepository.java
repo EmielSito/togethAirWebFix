@@ -12,10 +12,5 @@ public class BookingRepository {
 
 
 
-    public void chooseBySeatNumber (Seat seat) {
-        em.merge(seat);
-    }
-
-
 
 }

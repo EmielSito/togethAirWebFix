@@ -21,8 +21,6 @@ public class AirlineRepository {
     }
 
     public Airline findByName(String name) {
-        return em.find(Airline.class, name);
+        return  em.createQuery("select f.airline from Flight f", Airline.class).getSingleResult();
     }
-
-
 }

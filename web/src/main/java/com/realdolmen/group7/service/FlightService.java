@@ -12,14 +12,5 @@ import java.util.List;
  */
 public interface FlightService {
 
-    List<Flight> getFlights(Location destination);
-
-    List<Flight> getFlights(Date departureDate);
-
-    List<Location> getLocations();
-
-    List<Location> getLocations(Region region);
-
-
 
 }
