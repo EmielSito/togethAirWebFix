@@ -18,6 +18,7 @@ public class BookingController {
     @Inject
     private BookingService bookingService;
 
+
     public void chooseSeat(List<Seat> seats) {
         bookingService.chooseSeatNumber(seats);
     }
