@@ -20,6 +20,9 @@ public class Ticket {
     @Column(nullable = false, length = 50)
     private String lastName;
 
+    @ManyToOne
+    private Booking booking;
+
     public Ticket() {
     }
 
