@@ -5,6 +5,7 @@ package com.realdolmen.group7.domain.search;
 import com.realdolmen.group7.domain.booking.Booking;
 
 import javax.persistence.*;
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +29,16 @@ public class Flight {
     @ManyToOne
     private Location destination;
 
-    @OneToMany
+    @OneToMany(mappedBy = "flight")
     private List<Plane> planes = new ArrayList<>();
 
     @ManyToOne
     private Airline airline;
 
-    @ManyToMany(mappedBy = "flights")
-    private List<Booking> bookings = new ArrayList<>();
 
     public Long getId() {
         return id;
     }
-
 
     public String getFlightNumber() {
         return flightNumber;
@@ -81,4 +79,8 @@ public class Flight {
     public void setAirline(Airline airline) {
         this.airline = airline;
     }
+
+
+
+
 }

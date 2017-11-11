@@ -18,7 +18,7 @@ public class RegistrationService {
     @Inject
     UserRepository personRepository;
 
-    public Person save(Person person) {
+    public Person save(User person) {
         return personRepository.save(person);
     }
 

@@ -20,7 +20,7 @@ public class RegistrationController implements Serializable {
     @Inject
     RegistrationService registrationService;
 
-    private Person user = new User();
+    private User user = new User();
 
     public Person getUser() {
         return user;
@@ -34,8 +34,8 @@ public class RegistrationController implements Serializable {
 
     public String login(String email, String password) {
         Person user = registrationService.findByEmail(email);
-        if(!user.getPassword().equals(password)) {
-            return "login?faces-redirect=true" ;
+        if (!user.getPassword().equals(password)) {
+            return "login?faces-redirect=true";
         }
         //go back to the last page
         return "booking?faces-redirect=true";

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,11 +16,23 @@ public class Airline {
     @GeneratedValue()
     private Long id;
 
+    @OneToMany(mappedBy = "airline")
+    private List<Flight> flights = new ArrayList<>();
+
     private String airlineId;
     private String name;
 
-    @OneToMany(mappedBy = "airline")
-    private List<Flight> flights;
+    public Long getId() {
+        return id;
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
 
     public String getAirlineId() {
         return airlineId;
@@ -37,12 +50,13 @@ public class Airline {
         this.name = name;
     }
 
-    public List<Flight> getFlights() {
-        return flights;
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "id=" + id +
+                ", flights=" + flights +
+                ", airlineId='" + airlineId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
-
-    public void setFlights(List<Flight> flights) {
-        this.flights = flights;
-    }
-
 }

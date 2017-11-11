@@ -12,16 +12,25 @@ public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Enumerated(EnumType.STRING)
     private ClassType classType;
 
-    private String seatNumber;
+    private String SeatNumber;
 
     private boolean isAvailable;
 
-    private double basePrice;
+    @ManyToOne
+    private Plane plane;
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 
     public ClassType getClassType() {
         return classType;
@@ -32,19 +41,11 @@ public class Seat {
     }
 
     public String getSeatNumber() {
-        return seatNumber;
+        return SeatNumber;
     }
 
     public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+        SeatNumber = seatNumber;
     }
 
     public double getBasePrice() {
@@ -54,4 +55,12 @@ public class Seat {
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
     }
+
+    private double basePrice;
+
+
+
+
+
+
 }

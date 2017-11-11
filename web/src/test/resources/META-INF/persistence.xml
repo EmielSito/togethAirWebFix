@@ -7,7 +7,7 @@
 
 
 
-    <persistence-unit name="CandyShopPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="NewPersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
 
@@ -22,6 +22,7 @@
         <class>com.realdolmen.group7.domain.booking.Booking</class>
         <class>com.realdolmen.group7.domain.payment.Payment</class>
         <class>com.realdolmen.group7.domain.booking.Ticket</class>
+        <class>com.realdolmen.group7.domain.payment.VolumeDiscount</class>
 
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

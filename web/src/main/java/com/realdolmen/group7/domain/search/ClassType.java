@@ -5,6 +5,6 @@ package com.realdolmen.group7.domain.search;
  */
 public enum ClassType {
 
-    BUSINESS, ECONOMIC
+    BUSINESS, ECONOMY
 
 }

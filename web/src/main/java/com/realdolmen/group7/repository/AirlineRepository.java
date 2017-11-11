@@ -1,7 +1,6 @@
 package com.realdolmen.group7.repository;
 
 import com.realdolmen.group7.domain.search.Airline;
-import com.realdolmen.group7.repository.experiment.GenericDao;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,28 +20,7 @@ public class AirlineRepository {
         return em.createQuery("select a from Airline a", Airline.class).getResultList();
     }
 
-    public Object findById(String airlineId) {
-        return em.find(Airline.class, airlineId);
-    }
-
     public Airline findByName(String name) {
-        return em.find(Airline.class, name);
-    }
-
-    public void save(Airline airline) {
-        em.persist(airline);
-    }
-
-    public void update(Airline airline) {
-        em.merge(airline);
-    }
-
-    public void delete(Airline airline) {
-        em.remove(airline);
-    }
-
-    public void deleteById(String airlineId) {
-        em.remove(findById(airlineId));
-
+        return  em.createQuery("select f.airline from Flight f", Airline.class).getSingleResult();
     }
 }

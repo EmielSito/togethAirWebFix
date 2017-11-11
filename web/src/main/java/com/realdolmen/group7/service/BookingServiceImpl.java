@@ -5,6 +5,7 @@ import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Plane;
 import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.BookingRepository;
+import com.realdolmen.group7.repository.SeatRepository;
 
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -24,44 +25,23 @@ public class BookingServiceImpl implements BookingService {
     @Inject
     private SearchServiceImpl searchService;
 
-    private List<Seat> seatAvailable;
+    @Inject
+    private SeatRepository seatRepository;
 
     @Override
-    public void chooseSeatNumber(String seatNumber) {
-        for (Seat s : seatAvailable) {
-            if (s.getSeatNumber().equals(seatNumber)) {
-                s.setAvailable(false);
-                bookingRepository.chooseBySeatNumber(s);
+    public void chooseSeatNumber(List<Seat> seats) {
 
-            }
+        for (Seat s : seats) {
+            s.setAvailable(false);
+            seatRepository.updateSeat(s);
         }
+
     }
 
 
     public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination,
                                               Date departureDate, int numberOfSeat) {
-
-
-
-//        whateverRepository.find
-
-        List<Seat> seatList = new ArrayList<>();
-        List<Plane> planes = searchService.findPlaneByAvailableSeat(type, departure, destination, departureDate, numberOfSeat);
-        seatAvailable = new ArrayList<>();
-        for (Plane p : planes) {
-            if (p.getPlaneNumber().equals(planeNumber)) {
-                seatList = p.getSeats();
-                for (Seat s : seatList) {
-                    if (s.isAvailable() && s.getClassType().equals(type)) {
-                        seatAvailable.add(s);
-                    }
-                }
-                return seatAvailable;
-            }
-        }
-
-        // Ooit hier komen?
-        throw new RuntimeException("Plane not found with plane number " + planeNumber);
+        return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
     }
 
 }

@@ -1,6 +1,9 @@
 package com.realdolmen.group7.domain.search;
 
+import com.realdolmen.group7.domain.payment.VolumeDiscount;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,24 +13,41 @@ import java.util.List;
 @Entity
 public class Plane {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
-    private Date departureDate;
-
-    @OneToMany
+    @OneToMany(mappedBy = "plane")
     private List<Seat> seats;
 
     private String planeNumber;
 
-    private int durationInMinutes;
+    public List<VolumeDiscount> getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(List<VolumeDiscount> discount) {
+        this.discount = discount;
+    }
+
+    @OneToMany(mappedBy = "plane")
+    private List<VolumeDiscount> discount=new ArrayList<>();
+
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date departureDate;
 
     private boolean volumeDiscountAvailable;
 
-    public long getId() {
-        return id;
+    @ManyToOne
+    private Flight flight;
+
+    public String getPlaneNumber() {
+        return planeNumber;
+    }
+
+    public void setPlaneNumber(String planeNumber) {
+        this.planeNumber = planeNumber;
     }
 
     public Date getDepartureDate() {
@@ -38,6 +58,14 @@ public class Plane {
         this.departureDate = departureDate;
     }
 
+    public boolean isVolumeDiscountAvailable() {
+        return volumeDiscountAvailable;
+    }
+
+    public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
+        this.volumeDiscountAvailable = volumeDiscountAvailable;
+    }
+
     public List<Seat> getSeats() {
         return seats;
     }
@@ -46,27 +74,16 @@ public class Plane {
         this.seats = seats;
     }
 
-    public String getPlaneNumber() {
-        return planeNumber;
-    }
 
-    public void setPlaneNumber(String planeNumber) {
-        this.planeNumber = planeNumber;
-    }
 
-    public int getDurationInMinutes() {
-        return durationInMinutes;
-    }
 
-    public void setDurationInMinutes(int durationInMinutes) {
-        this.durationInMinutes = durationInMinutes;
-    }
 
-    public boolean isVolumeDiscountAvailable() {
-        return volumeDiscountAvailable;
-    }
 
-    public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
-        this.volumeDiscountAvailable = volumeDiscountAvailable;
-    }
+
+
+
+
+
+
+
 }

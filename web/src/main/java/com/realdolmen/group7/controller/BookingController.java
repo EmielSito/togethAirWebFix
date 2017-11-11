@@ -18,12 +18,13 @@ public class BookingController {
     @Inject
     private BookingService bookingService;
 
-    public void chooseSeat(String seatNumber) {
-         bookingService.chooseSeatNumber(seatNumber);
-}
+    public void chooseSeat(List<Seat> seats) {
+        bookingService.chooseSeatNumber(seats);
+    }
 
-    public List<Seat> getAvailableSeatByClassType(String planeNumber, ClassType type, String departure, String destination,
+    public List<Seat> getAvailableSeatByClassType(String planeNumber, ClassType type,
+                                                  String departure, String destination,
                                                   Date departureDate, int numberOfSeat) {
-        return bookingService.getAvailableSeatByPlane(planeNumber,type,departure,destination,departureDate,numberOfSeat);
+        return bookingService.getAvailableSeatByPlane(planeNumber, type, departure, destination, departureDate, numberOfSeat);
     }
 }

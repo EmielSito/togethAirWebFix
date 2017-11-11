@@ -18,7 +18,7 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     private User user;
@@ -27,8 +27,8 @@ public class Booking {
     private Payment payment;
 
     @Column(nullable = false)
-    @OneToMany
-    private List<Ticket> tickets;
+    @OneToMany(mappedBy = "booking")
+    private List<Ticket> tickets = new ArrayList<>();
 
     //private List<TogethAirPromotion> togethAirPromotions;
 
@@ -41,5 +41,59 @@ public class Booking {
             inverseJoinColumns = @JoinColumn(name = "flight_id"))
     private List<Flight> flights = new ArrayList<>();
 
+    public Long getId() {
+        return id;
+    }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public Date getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", user=" + user +
+                ", payment=" + payment +
+                ", tickets=" + tickets +
+                ", bookingDate=" + bookingDate +
+                ", flights=" + flights +
+                '}';
+    }
 }

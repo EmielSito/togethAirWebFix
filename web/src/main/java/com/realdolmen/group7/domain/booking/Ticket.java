@@ -12,7 +12,7 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String firstName;
@@ -20,9 +20,12 @@ public class Ticket {
     @Column(nullable = false, length = 50)
     private String lastName;
 
-    public Ticket() {
-    }
+    @ManyToOne
+    private Booking booking;
 
+    public Long getId() {
+        return id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -40,4 +43,21 @@ public class Ticket {
         this.lastName = lastName;
     }
 
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", booking=" + booking +
+                '}';
+    }
 }

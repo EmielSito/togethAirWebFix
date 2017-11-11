@@ -12,12 +12,17 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     @Column(nullable = false)
     private boolean isPaid;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
+
+    public Long getId() {
+        return id;
+    }
 
     public boolean isPaid() {
         return isPaid;
@@ -35,7 +40,12 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", isPaid=" + isPaid +
+                ", paymentMethod=" + paymentMethod +
+                '}';
+    }
 }
