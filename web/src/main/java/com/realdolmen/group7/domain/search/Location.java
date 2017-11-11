@@ -18,17 +18,17 @@ public class Location {
     @Column(nullable = false)
     private long locationId;
 
-    private String airportName;
-
-    private String airportCountry;
-
-    private String airportCode;
-
     @Enumerated(EnumType.STRING)
     private Region region;
 
     @OneToMany
     private List<Flight> flights;
+
+    private String airportName;
+
+    private String airportCountry;
+
+    private String airportCode;
 
     public long getLocationId() {
         return locationId;

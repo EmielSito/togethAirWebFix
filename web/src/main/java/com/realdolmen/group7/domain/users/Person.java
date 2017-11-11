@@ -1,10 +1,17 @@
 package com.realdolmen.group7.domain.users;
 
+import javax.persistence.*;
+
 /**
  * Created by ESOBG49 on 7/11/2017.
  */
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Person {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String email;
 
@@ -34,10 +41,6 @@ public abstract class Person {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void signup() {
-
     }
 
 }

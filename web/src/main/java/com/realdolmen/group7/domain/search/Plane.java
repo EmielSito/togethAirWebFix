@@ -10,47 +10,24 @@ import java.util.List;
 @Entity
 public class Plane {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-
-    private String planeNumber;
-
-
-    @Temporal(value = TemporalType.TIMESTAMP)
-    private Date departureTime;
+    private Long id;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;
 
-    public long getId() {
-        return id;
-    }
-
-    private int durationInMinutes;
-
     @OneToMany
     private List<Seat> seats;
 
+    private String planeNumber;
+
+    private int durationInMinutes;
+
     private boolean volumeDiscountAvailable;
 
-    public String getPlaneNumber() {
-        return planeNumber;
-    }
-
-    public void setPlaneNumber(String planeNumber) {
-        this.planeNumber = planeNumber;
-    }
-
-    public Date getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(Date departureTime) {
-        this.departureTime = departureTime;
+    public long getId() {
+        return id;
     }
 
     public Date getDepartureDate() {
@@ -61,20 +38,28 @@ public class Plane {
         this.departureDate = departureDate;
     }
 
-    public int getDurationInMinutes() {
-        return durationInMinutes;
-    }
-
-    public void setDurationInMinutes(int durationInMinutes) {
-        this.durationInMinutes = durationInMinutes;
-    }
-
     public List<Seat> getSeats() {
         return seats;
     }
 
     public void setSeats(List<Seat> seats) {
         this.seats = seats;
+    }
+
+    public String getPlaneNumber() {
+        return planeNumber;
+    }
+
+    public void setPlaneNumber(String planeNumber) {
+        this.planeNumber = planeNumber;
+    }
+
+    public int getDurationInMinutes() {
+        return durationInMinutes;
+    }
+
+    public void setDurationInMinutes(int durationInMinutes) {
+        this.durationInMinutes = durationInMinutes;
     }
 
     public boolean isVolumeDiscountAvailable() {

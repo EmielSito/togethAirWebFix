@@ -41,22 +41,27 @@ public class BookingServiceImpl implements BookingService {
     public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination,
                                               Date departureDate, int numberOfSeat) {
 
+
+
+//        whateverRepository.find
+
         List<Seat> seatList = new ArrayList<>();
         List<Plane> planes = searchService.findPlaneByAvailableSeat(type, departure, destination, departureDate, numberOfSeat);
         seatAvailable = new ArrayList<>();
         for (Plane p : planes) {
             if (p.getPlaneNumber().equals(planeNumber)) {
                 seatList = p.getSeats();
-            }
-        }
-        for (Seat s : seatList) {
-            if (s.isAvailable() == true && s.getClassType().equals(type)) {
-                seatAvailable.add(s);
+                for (Seat s : seatList) {
+                    if (s.isAvailable() && s.getClassType().equals(type)) {
+                        seatAvailable.add(s);
+                    }
+                }
+                return seatAvailable;
             }
         }
 
-        return seatAvailable;
-
+        // Ooit hier komen?
+        throw new RuntimeException("Plane not found with plane number " + planeNumber);
     }
 
 }

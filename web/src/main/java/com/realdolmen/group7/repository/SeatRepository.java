@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 /**
  * Created by PMTBF30 on 7/11/2017.
  */
-@Stateless
 public class SeatRepository {
 
     @PersistenceContext

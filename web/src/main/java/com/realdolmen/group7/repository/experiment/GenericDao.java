@@ -9,7 +9,7 @@ import java.util.List;
 public interface GenericDao <T, ENTITYID extends Serializable> {
 
 
-    ENTITYID create(T newInstance);
+    ENTITYID save(T newInstance);
 
     T findById(ENTITYID id);
 

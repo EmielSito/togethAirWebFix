@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 public class Airline {
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private Long id;
 
     private String airlineId;

@@ -6,6 +6,7 @@ import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.users.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Booking {
     @ManyToMany
     @JoinTable(name = "booking_flight", joinColumns = @JoinColumn(name = "booking_id"),
             inverseJoinColumns = @JoinColumn(name = "flight_id"))
-    private List<Flight> flights;
+    private List<Flight> flights = new ArrayList<>();
 
 
 }

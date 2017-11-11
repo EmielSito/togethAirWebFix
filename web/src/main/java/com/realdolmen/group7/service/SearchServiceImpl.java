@@ -2,6 +2,7 @@ package com.realdolmen.group7.service;
 
 import com.realdolmen.group7.domain.search.*;
 import com.realdolmen.group7.repository.FlightRepository;
+import com.realdolmen.group7.repository.LocationRepository;
 
 
 import javax.inject.Inject;
@@ -14,6 +15,8 @@ public class SearchServiceImpl implements SearchService {
 
     @Inject
     private FlightRepository flightRepository;
+
+    private LocationRepository locationRepository;
 
 
 
@@ -55,7 +58,7 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public List<Location> getLocationByRegion(Region region) {
         List<Location> locations=new ArrayList<>();
-        List<Location> locationList=flightRepository.findAllLocation();
+        List<Location> locationList=locationRepository.findAllLocation();
         for(Location l:locationList){
             if(l.getRegion().equals(region)){
                 locations.add(l);
