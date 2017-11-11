@@ -1,8 +1,8 @@
 package com.realdolmen.group7.domain;
 
+
 import com.realdolmen.group7.AbstractPersistenceTest;
 import com.realdolmen.group7.domain.search.Flight;
-import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -11,13 +11,11 @@ import static org.junit.Assert.assertNotNull;
  */
 
 public class FlightTest extends AbstractPersistenceTest {
-   @Test
+    @org.junit.Test
     public void candyCanBePersisted() throws Exception {
         Flight f = new Flight();
 
         em.persist(f);
         assertNotNull(f.getId());
-
-
     }
 }

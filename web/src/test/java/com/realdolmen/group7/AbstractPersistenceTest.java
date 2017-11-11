@@ -1,5 +1,6 @@
 package com.realdolmen.group7;
 
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -10,13 +11,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class AbstractPersistenceTest {
-    private static EntityManagerFactory emf;
+   private static EntityManagerFactory emf;
 
     protected EntityManager em;
 
     @BeforeClass
     public static void initializeEntityManagerFactory() {
-        emf = Persistence.createEntityManagerFactory("NewPersistenceUnit");
+        emf = Persistence.createEntityManagerFactory("CandyShopPersistenceUnit");
     }
 
     @Before
