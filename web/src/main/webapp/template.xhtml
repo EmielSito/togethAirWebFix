@@ -11,11 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <title>#{msgs['page.template.title']}</title>
-
-        <h:outputScript library="jquery-2.2.1" name="jquery.js"/>
         <h:outputScript library="bootstrap-3.3.6" name="/js/bootstrap.js"/>
         <h:outputScript type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }</h:outputScript>
         <h:outputScript library="bootstrap-3.3.6" name="/js/jquery.min.js"/>
+        <h:outputScript library="jquery-2.2.1" name="jquery.js"/>
         <h:outputScript library="bootstrap-3.3.6" name="/js/modernizr.custom.js"/>
         <ui:insert name="customScripts"/>
 
@@ -94,7 +93,7 @@
                 $pageContent.fadeIn();
             });
         </h:outputScript>
-        <h:outputScript library="bootstrap-3.3.6" name="/js/jquery.flexslider.js"/>
+        <h:outputScript defer="" library="bootstrap-3.3.6" name="/js/jquery.flexslider.js"/>
         <h:outputScript library="bootstrap-3.3.6" name="/js/easyResponsiveTabs.js"/>
         <h:outputScript library="bootstrap-3.3.6" name="/js/jquery-ui.js"/>
         <h:outputScript library="bootstrap-3.3.6" name="/js/script.js"/>

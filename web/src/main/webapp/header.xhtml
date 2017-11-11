@@ -39,14 +39,14 @@
                 <div class="top-nav">
                     <span class="menu"><h:graphicImage library="bootstrap-3.3.6" name="/images/menu.png" alt="Menu image"/></span>
                     <ul class="nav1">
-                        <li class="active"><h:link value="Flights" outcome="index"/></li>
-                        <li><h:link value="Hotels" outcome="hotels"/></li>
-                        <li><h:link value="Holidays" outcome="holidays"/></li>
-                        <li><h:link value="Flight+Hotel" outcome="flights-hotels"/></li>
-                        <li><h:link value="Bus" outcome="bus"/></li>
-                        <li><h:link value="Trains" outcome="trains"/></li>
-                        <li><h:link value="Weekend Getaways" outcome="weekend"/></li>
-                        <li><h:link value="Deals" outcome="deals"/></li>
+                        <li class="active"><h:link value="#{msgs['header.navbar.flights']}" outcome="index"/></li>
+                        <li><h:link value="#{msgs['header.navbar.hotels']}" outcome="hotels"/></li>
+                        <li><h:link value="#{msgs['header.navbar.holidays']}" outcome="holidays"/></li>
+                        <li><h:link value="#{msgs['header.navbar.flightshotels']}" outcome="flights-hotels"/></li>
+                        <li><h:link value="#{msgs['header.navbar.bus']}" outcome="bus"/></li>
+                        <li><h:link value="#{msgs['header.navbar.trains']}" outcome="trains"/></li>
+                        <li><h:link value="#{msgs['header.navbar.getaways']}" outcome="weekend"/></li>
+                        <li><h:link value="#{msgs['header.navbar.deals']}" outcome="deals"/></li>
                     </ul>
                     <div class="clearfix"> </div>
                     <!-- script-for-menu -->
@@ -61,36 +61,36 @@
                     <!-- /script-for-menu -->
                 </div>
                 <div class="dropdown-grids">
-                    <div id="loginContainer"><a href="#" id="loginButton"><span>Login</span></a>
+                    <div id="loginContainer"><h:link id="loginButton"><span>#{msgs['header.login.login']}</span></h:link>
                         <div id="loginBox">
                             <h:form id="loginForm" prependId="false">
                                 <div class="login-grids">
                                     <div class="login-grid-left">
                                         <fieldset id="body">
                                             <fieldset>
-                                                <h:outputLabel for="email">Email Address</h:outputLabel>
+                                                <h:outputLabel for="email" value="#{msgs['header.login.email']}"/>
                                                 <h:inputText value="email" name="email" id="email"/>
                                             </fieldset>
                                             <fieldset>
-                                                <h:outputLabel for="password">Password</h:outputLabel>
+                                                <h:outputLabel for="password" value="#{msgs['header.login.password']}"/>
                                                 <h:inputSecret  id="password" name="password"/>
                                             </fieldset>
-                                            <h:commandButton value="Sign in" id="login" type="submit" action="index"/>
+                                            <h:commandButton value="#{msgs['header.login.signin']}" id="login" type="submit" action="index"/>
                                             <!--<h:outputLabel for="rememberme"><h:selectBooleanCheckbox name="rememberme"/>Remember me</h:outputLabel>-->
                                         </fieldset>
-                                        <span><a href="#">Forgot your password?</a></span>
+                                        <span><h:link value="#{msgs['header.login.forgetpassword']}" outcome="index"/></span>
                                         <div class="or-grid">
                                             <p>OR</p>
                                         </div>
                                         <div class="social-sits">
                                             <div class="facebook-button">
-                                                <a href="#">Connect with Facebook</a>
+                                                <h:link value="#{msgs['header.login.facebook']}" outcome="index"/>
                                             </div>
                                             <div class="chrome-button">
-                                                <a href="#">Connect with Google</a>
+                                                <h:link value="#{msgs['header.login.google']}" outcome="index"/>
                                             </div>
                                             <div class="button-bottom">
-                                                <p>New account? <h:link value="Sign up" outcome="signup"/></p>
+                                                <h:outputLabel>#{msgs['header.login.signup']}<h:link value="#{msgs['header.login.signupaction']}" outcome="signup"/></h:outputLabel>
                                             </div>
                                         </div>
                                     </div>

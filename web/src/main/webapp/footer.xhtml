@@ -6,6 +6,64 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition>
-    <h1>This is a default footer</h1>
+    <!-- footer -->
+    <div class="footer">
+        <!-- container -->
+        <div class="container">
+            <div class="footer-top-grids">
+                <div class="footer-grids">
+                    <div class="col-md-3 footer-grid">
+                        <h4>#{msgs['footer.products.products']}</h4>
+                        <ul>
+                            <li><h:link value="#{msgs['footer.products.international']}" outcome="index"/></li>
+                            <li><h:link value="#{msgs['footer.products.domestic']}" outcome="index"/></li>
+                            <li><h:outputLink value="http://www.trivago.be" target="_blank">#{msgs['footer.products.hotels']}</h:outputLink></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-grid">
+                        <h4>#{msgs['footer.company.company']}</h4>
+                        <ul>
+                            <li><a href="../../about.html">#{msgs['footer.company.aboutus']}</a></li>
+                            <li><a href="../../faqs.html">#{msgs['footer.company.faqs']}</a></li>
+                            <li><a href="../../terms.html">#{msgs['footer.company.termsconditions']}</a></li>
+                            <li><a href="../../privacy.html">#{msgs['footer.company.privacy']}</a></li>
+                            <li><a href="../../contact.html">#{msgs['footer.company.contact']}</a></li>
+                            <li><a href="#">#{msgs['footer.company.careers']}</a></li>
+                            <li><a href="../../blog.html">#{msgs['footer.company.blog']}</a></li>
+                            <li><a href="../../booking.html">#{msgs['footer.company.feedback']}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-grid">
+                        <h4>#{msgs['footer.travel.travelresources']}</h4>
+                        <ul>
+                            <li><h:link value="#{msgs['footer.travel.flights']}" outcome="index"/></li>
+                            <li><h:link value="#{msgs['footer.travel.etickets']}" outcome="index"/></li>
+                            <li><h:link value="#{msgs['footer.travel.complete']}" outcome="index"/></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-grid">
+                        <h4>#{msgs['footer.links.links']}</h4>
+                        <ul class="chf_footer_list">
+                            <li><h:outputLink value="http://www.trivago.be" target="_blank">#{msgs['footer.links.trivago']}</h:outputLink></li>
+                            <li><h:outputLink value="https://www.brusselsairlines.com/" target="_blank">#{msgs['footer.links.brussels']}</h:outputLink></li>
+                            <li><h:outputLink value="https://www.britishairways.com/travel/home/public/en_be" target="_blank">#{msgs['footer.links.british']}</h:outputLink></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <!-- //container -->
+    </div>
+    <!-- //footer -->
+    <div class="footer-bottom-grids">
+        <!-- container -->
+        <div class="container">
+            <div class="copyright">
+                <p>#{msgs['footer.copyright.copyright']}<h:outputLink value="http://w3layouts.com/" target="_blank">#{msgs['footer.copyright.copyright']}</h:outputLink></p>
+            </div>
+
+        </div>
+    </div>
 </ui:composition>
 </html>
