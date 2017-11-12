@@ -18,13 +18,13 @@ public class RegistrationService {
     @Inject
     UserRepository personRepository;
 
-    public Person save(Person person) {
+   /* public Person save(Person person) {
         return personRepository.save(person);
     }
 
     public Person findByEmail(String email) {
         User user = (User) personRepository.findByEmail(email);
         return user;
-    }
+    }*/
 
 }

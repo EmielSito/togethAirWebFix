@@ -7,7 +7,12 @@ public enum PaymentMethod {
     CREDITCARD("CreditCard"),
     ENDORSEMENT("Endorsement");
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
     private final String paymentMethod;
+
 
     private PaymentMethod(final String paymentMethod) {
         this.paymentMethod = paymentMethod;

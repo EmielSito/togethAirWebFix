@@ -48,12 +48,12 @@ public class SearchResultController implements Serializable {
             BigDecimal bigDecimal = new BigDecimal(random.nextDouble()+random.nextInt(200)+100);
             double seatPrice = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_EVEN).doubleValue();
 
-            p.setId(i);
+        /*    p.setId(i);
             p.setPlaneNumber("TESTPLANE" + String.valueOf(i));
             p.setDepartureDate(DateUtils.createDate("2017-" + String.valueOf(random.nextInt(12)) + "-" + String.valueOf(random.nextInt(30))));
 
 
-            p.setDurationInMinutes(random.nextInt(60)+60);
+            p.setDurationInMinutes(random.nextInt(60)+60);*/
 
 
             List<Seat> seatList = new ArrayList<>();

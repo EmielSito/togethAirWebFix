@@ -1,6 +1,7 @@
 package com.realdolmen.group7.service;
 
 
+import com.realdolmen.group7.domain.payment.PaymentMethod;
 import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Plane;
 import com.realdolmen.group7.domain.search.Seat;
@@ -35,13 +36,29 @@ public class BookingServiceImpl implements BookingService {
             s.setAvailable(false);
             seatRepository.updateSeat(s);
         }
-
     }
-
 
     public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination,
                                               Date departureDate, int numberOfSeat) {
         return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
     }
+
+   /* @Override
+    public Plane getPlaneInResultSearch(String planeNumber) {
+        return ;
+    }
+*/
+
+    @Override
+    public void getPaymentMethod() {
+
+        if (PaymentMethod.valueOf("CreditCard").equals("CreditCard")) {
+
+        }
+        if (PaymentMethod.valueOf("Endorsement").equals("Endorsement")) {
+
+        }
+    }
+
 
 }

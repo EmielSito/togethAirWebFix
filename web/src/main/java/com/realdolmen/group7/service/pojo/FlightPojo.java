@@ -59,7 +59,7 @@ public class FlightPojo {
     }
 
     public void setPlane(Plane plane) {
-        setPlaneId(plane.getId());
+      //  setPlaneId(plane.getId());
         this.plane = plane;
     }
 

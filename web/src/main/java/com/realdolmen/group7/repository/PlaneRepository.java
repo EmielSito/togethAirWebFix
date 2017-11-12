@@ -1,5 +1,6 @@
 package com.realdolmen.group7.repository;
 
+import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.search.Plane;
 
 import javax.persistence.EntityManager;
@@ -23,6 +24,11 @@ public class PlaneRepository {
         return em.createQuery("select p from Airline a join a.flights f join f.planes p where a.airlineId =:args",Plane.class)
                 .setParameter("args",airlineId)
                 .getResultList();
+    }
+
+
+    public Plane findPlaneById(String planeNumber ){
+        return em.find(Plane.class, planeNumber);
     }
 
 }

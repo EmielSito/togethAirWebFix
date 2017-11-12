@@ -27,13 +27,13 @@ public class RegistrationController implements Serializable {
     }
 
     public String savePerson() {
-        registrationService.save(user);
+      //  registrationService.save(user);
         //go back to the last page
         return "oneWayBooking?faces-redirect=true";
     }
 
     public String login(String email, String password) {
-        Person user = registrationService.findByEmail(email);
+       // Person user = registrationService.findByEmail(email);
         if(!user.getPassword().equals(password)) {
             return "login?faces-redirect=true" ;
         }
