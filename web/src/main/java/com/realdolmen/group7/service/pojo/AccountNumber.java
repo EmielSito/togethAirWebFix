@@ -9,14 +9,14 @@ public class AccountNumber implements Serializable{
     private String number;
     private String postfix;
 
-    private Date expiredate;
+    private Date expirydate;
 
-    public Date getExpiredate() {
-        return expiredate;
+    public Date getExpirydate() {
+        return expirydate;
     }
 
-    public void setExpiredate(Date expiredate) {
-        this.expiredate = expiredate;
+    public void setExpirydate(Date expirydate) {
+        this.expirydate = expirydate;
     }
 
     private static final long serialVersionUID = 1L;

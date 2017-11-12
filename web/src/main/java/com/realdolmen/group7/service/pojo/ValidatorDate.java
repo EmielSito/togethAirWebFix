@@ -1,60 +1,53 @@
 package com.realdolmen.group7.service.pojo;
 
+import com.realdolmen.group7.domain.payment.PaymentMethod;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 
 
 @FacesValidator("ValidatorDate")
 public class ValidatorDate implements Validator {
 
+    @NotNull
     private AccountNumber accountNumber;
+
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 
-
         try {
-            if () {
-                throw new ValidatorException(new FacesMessage("A valid date"));
+            if (compareDate(new Date(), accountNumber.getExpirydate()) == 0 ) {
+                throw new ValidatorException(new FacesMessage(" Valid  date "));
             } else {
-                throw new ValidatorException(new FacesMessage("date dont figure in the database"));
+                throw new ValidatorException(new FacesMessage(" No valid date "));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void validateDate(Date date) {
 
-        String date1="dd/MM/yyyy";
-                DateFormat formatter = new SimpleDateFormat();
-
-
-        formatter.setCalendar(Calendar.getInstance());
-
-        try {
-            date = formatter.parse(formatter.format(date));
-            date = formatter.parse("dd/MM/yyyy");
-
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public static int compareDate(Date date, Date expireDate) {
+        if (date.getYear() <= expireDate.getYear() &&
+                date.getMonth() <= expireDate.getMonth() &&
+                date.getDate() <= expireDate.getDate()) {
+            return 0;
+        } else if (date.getYear() > date.getYear()) {
+            return -1;
+        } else {
+            return 1;
         }
-
-
-
-
-
     }
 
+
 }
+
+

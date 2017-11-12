@@ -10,7 +10,7 @@
     <ui:define name="pageContent">
 
         <h:head>
-            <title>BookingPage</title>
+            <title>Booking page</title>
         </h:head>
         <h:body>
 
@@ -42,7 +42,7 @@
                     <h:outputLabel value="ExpireDate"/>
                     <h:inputText id="dueDate" required="true" value="#{submitRepairBean.dueDate}">
                         <f:convertDateTime pattern="dd-MM-yyyy"/>
-                        <f:validator validatorId="be.kdg.repaircafe.validators.DueDateValidator"/>
+                        <f:validator validatorId="ValidatorDate"/>
                     </h:inputText>
 
 

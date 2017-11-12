@@ -22,11 +22,7 @@ public class FlightPojo {
 
     private long planeId;
 
-
     private double price;
-
-
-
 
 
     public String getFlightNumber() {

@@ -1,11 +1,8 @@
 package com.realdolmen.group7.controller;
 
-
 import com.realdolmen.group7.domain.booking.Ticket;
 import com.realdolmen.group7.domain.payment.Payment;
-import com.realdolmen.group7.domain.payment.PaymentMethod;
 import com.realdolmen.group7.domain.search.ClassType;
-import com.realdolmen.group7.domain.search.Plane;
 import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.service.BookingService;
 import com.realdolmen.group7.service.pojo.AccountNumber;
@@ -19,7 +16,8 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class BookingController {
+public class BookingController{
+
 
     @Inject
     private BookingService bookingService;
@@ -27,11 +25,10 @@ public class BookingController {
     private Payment payment=new Payment();
     private AccountNumber accountNumber=new AccountNumber();
 
+
     public AccountNumber getAccountNumber() {
         return accountNumber;
     }
-
-
     public void getPaymentMethod() {
          bookingService.getPaymentMethod();
     }
