@@ -14,7 +14,6 @@ public class Airline {
     @Id
     @GeneratedValue
     private Long id;
-/*
 
     private String airlineId;
     private String name;
@@ -45,6 +44,5 @@ public class Airline {
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
     }
-*/
 
 }

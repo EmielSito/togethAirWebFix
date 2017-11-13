@@ -11,6 +11,7 @@ import java.util.List;
 public class Plane {
 
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -25,14 +26,23 @@ public class Plane {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;
 
+    @OneToMany
+    private List<Seat> seats;
+
+
+    private boolean volumeDiscountAvailable;
+
+
+    private int durationInMinutes;
+
+
     public long getId() {
         return id;
     }
 
-    private int durationInMinutes;
-
-    @OneToMany
-    private List<Seat> seats;
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getPlaneNumber() {
         return planeNumber;
@@ -58,14 +68,6 @@ public class Plane {
         this.departureDate = departureDate;
     }
 
-    public boolean isVolumeDiscountAvailable() {
-        return volumeDiscountAvailable;
-    }
-
-    public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
-        this.volumeDiscountAvailable = volumeDiscountAvailable;
-    }
-
     public int getDurationInMinutes() {
         return durationInMinutes;
     }
@@ -82,14 +84,11 @@ public class Plane {
         this.seats = seats;
     }
 
-    private boolean volumeDiscountAvailable;
+    public boolean isVolumeDiscountAvailable() {
+        return volumeDiscountAvailable;
+    }
 
-
-
-
-
-
-
-
-
+    public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
+        this.volumeDiscountAvailable = volumeDiscountAvailable;
+    }
 }

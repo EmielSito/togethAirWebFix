@@ -10,31 +10,47 @@
     <ui:define name="pageContent">
 
         <h:head>
-            <title>Signin Page</title>
+            <title>Signup Page</title>
         </h:head>
         <h:body>
             <h:form>
+                <h:outputLabel for="txtFn">
+                    <h:outputText value="First Name"/>
+                </h:outputLabel>
+                <h:inputText id="txtFn" value="#{registrationController.user.firstName}" required="true" requiredMessage="Please enter your password."/>
+                <br/>
+
+                <h:outputLabel for="txtLn">
+                    <h:outputText value="Last Name"/>
+                </h:outputLabel>
+                <h:inputText id="txtLn" value="#{registrationController.user.lastName}" required="true" requiredMessage="Please enter your password."/>
+                <br/>
+
+                <h:outputLabel for="txtTn">
+                    <h:outputText value="Telefoon Number"/>
+                </h:outputLabel>
+                <h:inputText id="txtTn" value="#{registrationController.user.telefoonNumber}"/>
+                <br/>
 
                 <h:outputLabel for="txtEmail">
                     <h:outputText value="Email"/>
                 </h:outputLabel>
-                <h:inputText id="txtEmail" value="#{registrationController.user.email}" required="true"
+                <p:inputText id="txtEmail" value="#{registrationController.user.email}" required="true"
                              validatorMessage="Invalid email format" requiredMessage="Please enter your email address.">
                     <f:validateRegex
                             pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                    </h:inputText>
-
+                </p:inputText>
                 <br/>
 
                 <h:outputLabel for="txtPsw">
                     <h:outputText value="Password"/>
                 </h:outputLabel>
-                <h:inputText id="txtPsw" value="#{registrationController.user.password}" required="true" requiredMessage="Please enter your password."/>
+                <h:inputSecret id="txtPsw" value="#{registrationController.user.password}" required="true" requiredMessage="Please enter your password."/>
 
                 <br/>
 
-                <h:commandButton value="Cancel" action=""/>
-                <h:commandButton value="SIGN UP" action="#{registrationController.savePerson()}"/>
+                <h:commandButton value="Cancel" action="index.html"/>
+                <h:commandButton value="SIGN UP" action="#{registrationController.savePerson}"/>
             </h:form>
 
         </h:body>

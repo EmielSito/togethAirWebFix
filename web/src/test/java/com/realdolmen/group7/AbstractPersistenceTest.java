@@ -11,13 +11,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class AbstractPersistenceTest {
-    private static EntityManagerFactory emf;
+   private static EntityManagerFactory emf;
 
     protected EntityManager em;
 
     @BeforeClass
     public static void initializeEntityManagerFactory() {
-        emf = Persistence.createEntityManagerFactory("CandyShopPersistenceUnit");
+        emf = Persistence.createEntityManagerFactory("NEWPersistenceUnit");
     }
 
     @Before

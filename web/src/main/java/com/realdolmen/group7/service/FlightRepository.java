@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface FlightRepository {
 
+
     List<Flight> getFlights(Location destination);
 
     List<Flight> getFlights(Date departureDate);

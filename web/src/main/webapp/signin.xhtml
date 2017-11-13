@@ -18,8 +18,8 @@
                 </h:outputLabel>
                 <h:inputText id="txtEmail" value="#{user.email}" required="true"
                              validatorMessage="Invalid email format" requiredMessage="Please enter your email address.">
-                    <f:validateRegex
-                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                    <!--f:validateRegex
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /-->
                 </h:inputText>
 
                 <br/>
@@ -27,7 +27,7 @@
                 <h:outputLabel for="txtPsw">
                     <h:outputText value="Password"/>
                 </h:outputLabel>
-                <h:inputText id="txtPsw" value="#{user.password}" required="true"/>
+                <h:inputSecret id="txtPsw" value="#{user.password}" required="true"/>
 
                 <br/>
 

@@ -19,8 +19,14 @@ public class Seat {
 
     private String SeatNumber;
 
-    public long getId() {
-        return id;
+    private boolean isAvailable;
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public ClassType getClassType() {

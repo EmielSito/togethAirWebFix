@@ -9,12 +9,18 @@ import java.util.List;
  * Created by ESOBG49 on 6/11/2017.
  */
 @Entity
-public class User extends Person {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-/*
+
+    private String firstName;
+    private String lastName;
+    private String telefoonNumber;
+    private String email;
+    private String password;
+
     @OneToMany(mappedBy = "user")
     List<Booking> bookings;
 
@@ -24,9 +30,9 @@ public class User extends Person {
     }
 
     public User(String email, String password) {
-        super(email, password);
+        this.email=email;
+        this.password=password;
     }
-
 
     public long getId() {
         return id;
@@ -36,6 +42,47 @@ public class User extends Person {
         this.id = id;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getTelefoonNumber() {
+        return telefoonNumber;
+    }
+
+    public void setTelefoonNumber(String telefoonNumber) {
+        this.telefoonNumber = telefoonNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public List<Booking> getBookings() {
         return bookings;
     }
@@ -43,5 +90,10 @@ public class User extends Person {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
-    */
+
+
+    public void signup() {
+
+    }
+
 }

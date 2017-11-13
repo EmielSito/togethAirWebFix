@@ -5,9 +5,10 @@ import com.realdolmen.group7.repository.FlightRepository;
 
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.*;
 
-
+@Named
 public class SearchServiceImpl implements SearchService {
 
     @Inject
@@ -68,13 +69,14 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public Set<Region> getAllRegions() {
-        Set<Region>regions=new HashSet<>();
-        regions.add(Region.EUROPE);
-        regions.add(Region.AFRICA);
-        regions.add(Region.ASIA);
-        regions.add(Region.USA);
-        regions.add(Region.AUSTRALIA);
+    public List<Region> getAllRegions() {
+        List<Region> regions = Arrays.asList(Region.values());
+//        Set<Region>regions=new HashSet<>();
+//        regions.add(Region.NORTHERNEUROPE);
+//        regions.add(Region.NORTHERNAFRICA);
+//        regions.add(Region.CENTRALASIA);
+//        regions.add(Region.NORTHERNAFRICA);
+//        regions.add(Region.CENTRALASIA);
 
         return regions;
     }
@@ -84,6 +86,11 @@ public class SearchServiceImpl implements SearchService {
 //        List<Plane>planes=new
 //        return null;
 //    }
+    public Map<String,List<String>> mappingRegionLocations(Region region){
+        Map<String,List<String>>locationsMap=new HashMap<>();
+        locationsMap.put("region",getLocationByRegion(region));
+        return locationsMap;
+    }
 
 
 

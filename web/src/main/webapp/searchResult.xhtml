@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="pageContent">
+        <h1>Search Result</h1>
+
+
+
+
+        <h:dataTable border="1" value="#{searchResultController.flightPojos}" var="flightPlane">
+
+
+            <h:column>
+                <f:facet name = "header"> - </f:facet>
+                Option number: #{flightPlane.plane.id}
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Flight number</f:facet>
+                #{flightPlane.flightNumber}  
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Departure date</f:facet>
+                #{searchResultController.getConvertedDate(flightPlane.plane)}
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Duration (Min)</f:facet>
+                <!--#{flightPlane.plane.departureTime}--> <!-- TODO calculate duration-->
+                60 Min  
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Airline</f:facet>
+                #{flightPlane.airline.name} 
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Price</f:facet>
+                #{flightPlane.price} EURO  
+            </h:column>
+
+
+            <h:column>
+                <!-- <f:facet name = "header">Book Now</f:facet>-->
+                <h:form>
+                    <!--TODO navigate to booking page while passing on the selected flight 'FlightNumber'-->
+                    <h:commandButton action = "#{SearchResultController.bookNow(flightPlane.plane.id)}" value = "Book Now" />
+                </h:form>
+            </h:column>
+
+
+
+            <!-- TODO  ALSO SHOW AMONT OF DISCOUNT  WHERE IT IS AVAILABLE -->
+        </h:dataTable>
+
+
+
+
+
+    </ui:define>
+</ui:composition>
+</html>

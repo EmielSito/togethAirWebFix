@@ -4,6 +4,7 @@ import com.realdolmen.group7.domain.search.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -16,7 +17,8 @@ public interface SearchService {
    List<Plane> findByDepartureDate(String departure, String destination, Date departureDate);
    List<Location> getLocationByRegion(Region region);
    List<Flight> getAllFlight();
-   Set<Region>getAllRegions();
+   List<Region>getAllRegions();
+   public Map<String,List<String>> mappingRegionLocations(Region region);
    //List<Plane> getPlaneByAirline(String AirlineId);
 
 
