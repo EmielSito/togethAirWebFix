@@ -21,7 +21,7 @@ public interface SearchService {
 
    public List<Flight> getAllFlight();
 
-   public List<Plane> getPlaneByAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type, int numberOfSeat);
+   public List<Plane> getPlaneByAvailableSeat(String departure, String destination, Date departureDate, ClassType type, int numberOfSeat);
 
    public List<Airline> getAllAirline();
 

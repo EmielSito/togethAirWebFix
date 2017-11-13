@@ -25,7 +25,7 @@ public class Plane {
     private Flight flight;
 
     @OneToMany(mappedBy = "plane")
-    private List<VolumeDiscount> discount=new ArrayList<>();
+    private List<VolumeDiscount> discount = new ArrayList<>();
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;

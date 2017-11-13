@@ -15,7 +15,6 @@ public class SeatRepositoryTest extends AbstractPersistenceTest {
 
     private SeatRepository seatRepository;
 
-
     @Before
     public void setUp() throws Exception {
         seatRepository = new SeatRepository();
@@ -29,7 +28,8 @@ public class SeatRepositoryTest extends AbstractPersistenceTest {
     @Test
     public void findAvailableSeatsByClassType() throws Exception {
 
-        List<Seat> seatList = seatRepository.findAvailableSeatsByClassType("0","1","1",DateUtils.createDate("2017-11-10 16:25:51"), ClassType.BUSINESS);
+        List<Seat> seats = seatRepository.findAvailableSeatsByClassType("testPlane111", ClassType.BUSINESS);
+        assertEquals(2, seats.size());
     }
 
     @Test

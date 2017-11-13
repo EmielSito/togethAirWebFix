@@ -25,7 +25,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type) {
-        return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
+        return seatRepository.findAvailableSeatsByClassType(planeNumber, type);
 
     }
 
@@ -51,12 +51,12 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Plane> getPlaneByAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type, int numberOfSeat) {
+    public List<Plane> getPlaneByAvailableSeat(String departure, String destination, Date departureDate, ClassType type, int numberOfSeat) {
         List<Plane> planes=planeRepository.findByDepartureDate(departureDate,departure,destination);
         List<Seat> seats;
         List<Plane>resultPlaneList=new ArrayList<>();
            for(Plane p:planes) {
-               seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), departure, destination, departureDate, type);
+               seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), type);
                if (seats.size() >= numberOfSeat) {
                    resultPlaneList.add(p);
                }

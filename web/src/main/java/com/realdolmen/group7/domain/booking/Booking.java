@@ -42,4 +42,5 @@ public class Booking {
     private List<Flight> flights = new ArrayList<>();
 
 
+    private boolean credircardDiscount;
 }

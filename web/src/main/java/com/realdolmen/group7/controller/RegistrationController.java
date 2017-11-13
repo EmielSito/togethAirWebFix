@@ -44,5 +44,4 @@ public class RegistrationController implements Serializable {
         return "oneWayBooking?faces-redirect=true";
     }
 
-
 }
