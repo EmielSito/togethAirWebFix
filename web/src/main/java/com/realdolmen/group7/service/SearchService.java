@@ -18,7 +18,7 @@ public interface SearchService {
    List<Location> getLocationByRegion(Region region);
    List<Flight> getAllFlight();
    List<Region>getAllRegions();
-   public Map<String,List<String>> mappingRegionLocations(Region region);
+   //public Map<String,List<String>> mappingRegionLocations(Region region);
    //List<Plane> getPlaneByAirline(String AirlineId);
 
 

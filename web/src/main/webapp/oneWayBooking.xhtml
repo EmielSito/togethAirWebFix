@@ -20,12 +20,12 @@
 
                 <h:form>
                 <h:selectOneMenu value="#{searchController}" var="selection">
-                    <f:selectItems value="#{searchServiceImpl.getAllRegions}"/>
+                    <f:selectItems value="#{searchController.getAllRegions}"/><!--controller gebruiken-->
                         <f:ajax event="change" render="location" listener="#{test.changeLocation}"/>
                 </h:selectOneMenu>
 
                 <h:selectOneMenu id="location">
-                    <f:selectItems value="#{searchServiceImpl.getLocationByRegion}"/>
+                    <f:selectItems value="#{searchController.getLocationByRegion}"/>
                 </h:selectOneMenu>
                 </h:form>
                 <br/>

@@ -86,11 +86,11 @@ public class SearchServiceImpl implements SearchService {
 //        List<Plane>planes=new
 //        return null;
 //    }
-    public Map<String,List<String>> mappingRegionLocations(Region region){
-        Map<String,List<String>>locationsMap=new HashMap<>();
-        locationsMap.put("region",getLocationByRegion(region));
-        return locationsMap;
-    }
+//    public Map<String,List<String>> mappingRegionLocations(Region region){
+//        Map<String,List<String>>locationsMap=new HashMap<>();
+//        locationsMap.put("region",getLocationByRegion(region));
+//        return locationsMap;
+//    }
 
 
 

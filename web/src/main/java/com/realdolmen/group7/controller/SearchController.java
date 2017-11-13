@@ -29,5 +29,6 @@ public class SearchController {
     public List<Flight> getAllFlight(){
         return searchService.getAllFlight();
     }
+    public List<Region> getAllRegions(){return searchService.getAllRegions();}
 
 }
