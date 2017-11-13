@@ -16,15 +16,14 @@ import javax.inject.Inject;
 public class RegistrationService {
 
     @Inject
-    UserRepository personRepository;
+    UserRepository userRepository;
 
-    public Person save(Person person) {
-        return personRepository.save(person);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
-    public Person findByEmail(String email) {
-        User user = (User) personRepository.findByEmail(email);
-        return user;
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 }

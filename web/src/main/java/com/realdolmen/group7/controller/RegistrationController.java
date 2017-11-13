@@ -8,6 +8,7 @@ import com.realdolmen.group7.service.RegistrationService;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 /**
@@ -20,25 +21,27 @@ public class RegistrationController implements Serializable {
     @Inject
     RegistrationService registrationService;
 
-    private Person user = new User();
+    private User user = new User();
 
-    public Person getUser() {
+    public User getUser() {
         return user;
     }
 
+    @Transactional
     public String savePerson() {
-        registrationService.save(user);
+        user = registrationService.save(user);
         //go back to the last page
         return "oneWayBooking?faces-redirect=true";
     }
 
+    @Transactional
     public String login(String email, String password) {
-        Person user = registrationService.findByEmail(email);
+        User user = registrationService.findByEmail(email);
         if(!user.getPassword().equals(password)) {
             return "login?faces-redirect=true" ;
         }
         //go back to the last page
-        return "booking?faces-redirect=true";
+        return "oneWayBooking?faces-redirect=true";
     }
 
 

@@ -23,7 +23,6 @@ public class SearchServiceImpl implements SearchService {
     @Inject
     private AirlineRepository airlineRepository;
 
-
     @Override
     public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type) {
         return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
@@ -45,6 +44,7 @@ public class SearchServiceImpl implements SearchService {
     public List<Location> getLocationByRegion(Region region) {
         return locationRepository.getLocationByRegion(region);
     }
+
     @Override
     public List<Flight> getAllFlight() {
         return flightRepository.findAllFlights();

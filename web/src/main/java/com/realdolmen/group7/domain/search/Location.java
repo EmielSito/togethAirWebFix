@@ -16,11 +16,26 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public long getLocationId() {
+    @Column(nullable = false)
+    private String locationId;
+
+    @Enumerated(EnumType.STRING)
+    private Region region;
+
+    @OneToMany
+    private List<Flight> flights;
+
+    private String airportName;
+
+    private String airportCountry;
+
+    private String airportCode;
+
+    public String getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(long locationId) {
+    public void setLocationId(String locationId) {
         this.locationId = locationId;
     }
 
@@ -64,20 +79,11 @@ public class Location {
         this.flights = flights;
     }
 
-    @Column(nullable = false)
-    private long locationId;
-
-    private String airportName;
-
-    private String airportCountry;
-
-    private String airportCode;
 
 
-    @Enumerated(EnumType.STRING)
-    private Region region;
 
-    @OneToMany
-    private List<Flight> flights;
+
+
+
 
 }

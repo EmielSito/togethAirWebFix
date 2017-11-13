@@ -14,27 +14,28 @@ import java.util.List;
 public class UserRepository implements Serializable {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    EntityManager em;
 
-    
-    public User save(User user){
-        entityManager.persist(user);
+    public User save(User user) {
+        em.persist(user);
         return user;
     }
 
-
-
-    public User findById(int id){
-        return entityManager.find(User.class, id);
+    public User findById(int id) {
+        return em.find(User.class, id);
     }
 
+    public User findByEmail(String email) {
 
-    public List<User> findAll(){
-        return entityManager.createQuery("select u FROM user u", User.class).getResultList();
+        return em.createQuery("select u from User u where u.email like :args", User.class).setParameter("args", email).getSingleResult();
     }
 
-    public void remove(int userId){
-        entityManager.remove(findById(userId));
+    public List<User> findAll() {
+        return em.createQuery("select u FROM User u", User.class).getResultList();
+    }
+
+    public void remove(int userId) {
+        em.remove(findById(userId));
     }
 
 

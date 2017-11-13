@@ -14,9 +14,8 @@ public class LocationRepository {
 
 
     public List<Location> findAllLocation() {
-        return em.createQuery("select f.departure.airportCode from Flight f", Location.class).getResultList();
+        return em.createQuery("select l from Location l", Location.class).getResultList();
     }
-
 
     public List<Location> getLocationByRegion(Region region){
         return em.createQuery("select l from Location l where l.region=:args", Location.class).setParameter("args", region).getResultList();

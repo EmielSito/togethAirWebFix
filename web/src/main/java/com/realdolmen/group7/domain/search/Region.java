@@ -27,7 +27,8 @@ public enum  Region {
 
     private final String classType;
 
-    private Region(final String classType) {
+    Region(final String classType) {
+
         this.classType = classType;
     }
 

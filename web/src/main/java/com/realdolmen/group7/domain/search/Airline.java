@@ -1,9 +1,6 @@
 package com.realdolmen.group7.domain.search;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +10,18 @@ import java.util.List;
 @Entity
 public class Airline {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String airlineId;
-    private String name;
+    private String airlineName;
 
     @OneToMany(mappedBy = "airline")
     private List<Flight> flights = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
 
     public String getAirlineId() {
         return airlineId;
@@ -30,12 +31,12 @@ public class Airline {
         this.airlineId = airlineId;
     }
 
-    public String getName() {
-        return name;
+    public String getAirlineName() {
+        return airlineName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
     }
 
     public List<Flight> getFlights() {
@@ -46,4 +47,13 @@ public class Airline {
         this.flights = flights;
     }
 
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "id=" + id +
+                ", airlineId='" + airlineId + '\'' +
+                ", airlineName='" + airlineName + '\'' +
+                ", flights=" + flights +
+                '}';
+    }
 }

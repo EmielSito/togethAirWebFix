@@ -12,9 +12,8 @@ import static org.junit.Assert.assertNotNull;
 
 public class FlightTest extends AbstractPersistenceTest {
     @org.junit.Test
-    public void candyCanBePersisted() throws Exception {
+    public void flightCanBePersisted() throws Exception {
         Flight f = new Flight();
-
         em.persist(f);
         assertNotNull(f.getId());
     }

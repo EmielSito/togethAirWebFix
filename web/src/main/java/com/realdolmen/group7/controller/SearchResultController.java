@@ -48,12 +48,12 @@ public class SearchResultController implements Serializable {
             BigDecimal bigDecimal = new BigDecimal(random.nextDouble()+random.nextInt(200)+100);
             double seatPrice = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_EVEN).doubleValue();
 
-            p.setId(i);
+            //p.setId(i);
             p.setPlaneNumber("TESTPLANE" + String.valueOf(i));
             p.setDepartureDate(DateUtils.createDate("2017-" + String.valueOf(random.nextInt(12)) + "-" + String.valueOf(random.nextInt(30))));
 
 
-            p.setDurationInMinutes(random.nextInt(60)+60);
+            //p.setDurationInMinutes(random.nextInt(60)+60);
 
 
             List<Seat> seatList = new ArrayList<>();
@@ -92,7 +92,7 @@ public class SearchResultController implements Serializable {
 
     }
 
-    public List<FlightPojo> getFlightPojos() {
+    /*public List<FlightPojo> getFlightPojos() {
 
 
         // TODO  lets try to get the controller that is used on the searchpage and pass on to the next page for processing
@@ -107,10 +107,10 @@ public class SearchResultController implements Serializable {
             FlightPojo flightPojo = new FlightPojo();
 
             //TODO this is for production
-            /*Flight flight = searchService.getFlightByPlane(plane.getId()); // get the flight
+            *//*Flight flight = searchService.getFlightByPlane(plane.getId()); // get the flight
             flightPojo.setAirline(flight.getAirline());
             flightPojo.setDeparture(flight.getDeparture());
-            flightPojo.setDestination(flight.getDestination());*/
+            flightPojo.setDestination(flight.getDestination());*//*
             Random random = new Random();
 
             //TODO this is for testing
@@ -130,7 +130,7 @@ public class SearchResultController implements Serializable {
 
 
         return flightPojos;
-    }
+    }*/
 
     public void setFlightPojos(List<FlightPojo> flightPojos) {
         this.flightPojos = flightPojos;

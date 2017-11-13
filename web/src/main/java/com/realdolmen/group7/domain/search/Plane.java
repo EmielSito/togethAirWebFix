@@ -19,9 +19,22 @@ public class Plane {
     private Long id;
 
     @OneToMany(mappedBy = "plane")
-    private List<Seat> seats;
+    private List<Seat> seats = new ArrayList<>();
+
+    @ManyToOne
+    private Flight flight;
+
+    @OneToMany(mappedBy = "plane")
+    private List<VolumeDiscount> discount=new ArrayList<>();
+
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date departureDate;
 
     private String planeNumber;
+
+    public Long getId() {
+        return id;
+    }
 
     public List<VolumeDiscount> getDiscount() {
         return discount;
@@ -30,17 +43,6 @@ public class Plane {
     public void setDiscount(List<VolumeDiscount> discount) {
         this.discount = discount;
     }
-
-    @OneToMany(mappedBy = "plane")
-    private List<VolumeDiscount> discount=new ArrayList<>();
-
-    @Temporal(value = TemporalType.TIMESTAMP)
-    private Date departureDate;
-
-    private boolean volumeDiscountAvailable;
-
-    @ManyToOne
-    private Flight flight;
 
     public String getPlaneNumber() {
         return planeNumber;
@@ -58,14 +60,6 @@ public class Plane {
         this.departureDate = departureDate;
     }
 
-    public boolean isVolumeDiscountAvailable() {
-        return volumeDiscountAvailable;
-    }
-
-    public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
-        this.volumeDiscountAvailable = volumeDiscountAvailable;
-    }
-
     public List<Seat> getSeats() {
         return seats;
     }
@@ -74,16 +68,15 @@ public class Plane {
         this.seats = seats;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "Plane{" +
+                "id=" + id +
+                ", seats=" + seats +
+                ", flight=" + flight +
+                ", discount=" + discount +
+                ", departureDate=" + departureDate +
+                ", planeNumber='" + planeNumber + '\'' +
+                '}';
+    }
 }

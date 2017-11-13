@@ -15,12 +15,16 @@ public class VolumeDiscount {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    private Plane plane;
+
     private int numberOfTickets;
 
     private double percent;
 
-    @ManyToOne
-    private Plane plane;
+    public Long getId() {
+        return id;
+    }
 
     public int getNumberOfTickets() {
         return numberOfTickets;
@@ -38,5 +42,11 @@ public class VolumeDiscount {
         this.percent = percent;
     }
 
+    public Plane getPlane() {
+        return plane;
+    }
 
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
 }

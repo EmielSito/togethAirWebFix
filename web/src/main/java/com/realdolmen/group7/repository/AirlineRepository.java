@@ -21,6 +21,6 @@ public class AirlineRepository {
     }
 
     public Airline findByName(String name) {
-        return  em.createQuery("select f.airline from Flight f", Airline.class).getSingleResult();
+        return  em.createQuery("select a from Airline a where a.airlineName like :args", Airline.class).setParameter("args", name).getSingleResult();
     }
 }
