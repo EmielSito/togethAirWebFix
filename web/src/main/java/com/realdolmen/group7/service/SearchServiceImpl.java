@@ -3,14 +3,15 @@ package com.realdolmen.group7.service;
 import com.realdolmen.group7.domain.search.*;
 import com.realdolmen.group7.repository.*;
 
-
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 
-public class SearchServiceImpl implements SearchService {
+public class SearchServiceImpl implements Serializable {
 
     @Inject
     private FlightRepository flightRepository;
@@ -23,60 +24,67 @@ public class SearchServiceImpl implements SearchService {
     @Inject
     private AirlineRepository airlineRepository;
 
-    @Override
+    
     public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type) {
-        return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
+        return seatRepository.findAvailableSeatsByClassType(planeNumber, type);
 
     }
 
-    @Override
+    
     public List<Plane> getByDepartureDate(Date departureDate, String departure, String destination) {
         return planeRepository.findByDepartureDate(departureDate, departure, destination);
 
     }
 
-    @Override
+    
     public List<Plane> getPlaneByAirline(String airlineId) {
         return planeRepository.findPlaneByAirline(airlineId);
     }
 
-    @Override
+    
     public List<Location> getLocationByRegion(Region region) {
         return locationRepository.getLocationByRegion(region);
     }
 
-    @Override
+    
     public List<Flight> getAllFlight() {
         return flightRepository.findAllFlights();
     }
 
-    @Override
-    public List<Plane> getPlaneByAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type, int numberOfSeat) {
-        List<Plane> planes=planeRepository.findByDepartureDate(departureDate,departure,destination);
+
+    public List<Plane> getPlaneByAvailableSeat(String departureDate, String departure, String destination, ClassType type, int numberOfSeat) {
+        List<Plane> planes =planeRepository.findByDepartureDateWithoutTime(departureDate,departure,destination);
         List<Seat> seats;
-        List<Plane>resultPlaneList=new ArrayList<>();
+
+        List<Plane> newList = new ArrayList<>();
+
            for(Plane p:planes) {
-               seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), departure, destination, departureDate, type);
+               seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), type);
                if (seats.size() >= numberOfSeat) {
-                   resultPlaneList.add(p);
+                   newList.add(p);
                }
            }
-           return resultPlaneList;
+           return newList;
     }
 
-    @Override
+    
     public List<Airline> getAllAirline() {
         return airlineRepository.findAllAirline();
     }
 
-    @Override
+    
     public Airline getAirlineByName(String name) {
         return airlineRepository.findByName(name);
     }
 
-    @Override
+    
     public List<Location> getAllLocation() {
         return locationRepository.findAllLocation();
+    }
+
+
+    public List<Region> getAllRegions() {
+        return Arrays.asList(Region.values());
     }
 
 }

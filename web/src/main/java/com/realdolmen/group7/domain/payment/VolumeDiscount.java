@@ -22,6 +22,10 @@ public class VolumeDiscount {
 
     private double percent;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

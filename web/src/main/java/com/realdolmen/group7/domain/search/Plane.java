@@ -18,19 +18,31 @@ public class Plane {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "plane")
+    @OneToMany(mappedBy = "plane", fetch = FetchType.EAGER)
     private List<Seat> seats = new ArrayList<>();
 
     @ManyToOne
     private Flight flight;
 
-    @OneToMany(mappedBy = "plane")
+    @OneToMany(mappedBy = "plane", fetch = FetchType.EAGER)
     private List<VolumeDiscount> discount=new ArrayList<>();
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;
 
     private String planeNumber;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
 
     public Long getId() {
         return id;

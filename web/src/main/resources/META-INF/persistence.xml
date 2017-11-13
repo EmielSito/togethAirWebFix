@@ -15,7 +15,7 @@
 
     <!--
         Automatic schema export has been deliberately disabled. When you want to reload your dataschema, run a
-        persistence unit test. Otherwise all your data will disappear whenever you restart Wildfly.
+        persistence uregiontest. Otherwise all your data will disappear whenever you restart Wildfly.
     -->
 
 </persistence>

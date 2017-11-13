@@ -36,10 +36,66 @@ public class Booking {
     @Temporal(TemporalType.DATE)
     private Date bookingDate;
 
+    private boolean payWithCreditCard;
+
     @ManyToMany
     @JoinTable(name = "booking_flight", joinColumns = @JoinColumn(name = "booking_id"),
             inverseJoinColumns = @JoinColumn(name = "flight_id"))
     private List<Flight> flights = new ArrayList<>();
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public boolean isPayWithCreditCard() {
+        return payWithCreditCard;
+    }
+
+    public void setPayWithCreditCard(boolean payWithCrediCard) {
+        this.payWithCreditCard = payWithCrediCard;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public Date getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
 }

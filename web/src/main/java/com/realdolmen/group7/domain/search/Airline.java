@@ -1,5 +1,6 @@
 package com.realdolmen.group7.domain.search;
 
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,11 @@ public class Airline {
 
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
