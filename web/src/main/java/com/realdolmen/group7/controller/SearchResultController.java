@@ -29,6 +29,8 @@ public class SearchResultController implements Serializable {
     private List<Plane> planes = new ArrayList<>();
     private List<FlightPojo> flightPojos = new ArrayList<>();
     private long selectedPlane;
+    private Long planeId;
+    private Plane plane;
 
     @Inject
     private SearchServiceImpl searchService;
@@ -36,7 +38,6 @@ public class SearchResultController implements Serializable {
     private VolumeDiscountRepository volumeDiscountRepository;
     @Inject
     private SearchController searchController;
-
 
     @Inject
     private PlaneRepository planeRepository;
@@ -111,12 +112,30 @@ public class SearchResultController implements Serializable {
     }
 
 
-    public String bookNow(long planeId) throws Exception {
+    public String bookNow(long planeId) {
 
-        // TODO testing the error page
-        throw new Exception("This is a test,  I repeat this is a test");
+        for(Plane p: planes) {
+            if(p.getId() == planeId) {
+                plane = p;
+                break;
+            }
+        }
+        return "detailsPage?faces-redirect=true";
     }
 
+    public Long getPlaneId() {
+        return planeId;
+    }
 
+    public void setPlaneId(Long planeId) {
+        this.planeId = planeId;
+    }
 
+    public Plane getPlane() {
+        return plane;
+    }
+
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
 }

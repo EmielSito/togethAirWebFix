@@ -53,4 +53,14 @@ public class VolumeDiscount {
     public void setPlane(Plane plane) {
         this.plane = plane;
     }
+
+    @Override
+    public String toString() {
+        return "VolumeDiscount{" +
+                "id=" + id +
+                ", plane=" + plane +
+                ", numberOfTickets=" + numberOfTickets +
+                ", percent=" + percent +
+                '}';
+    }
 }

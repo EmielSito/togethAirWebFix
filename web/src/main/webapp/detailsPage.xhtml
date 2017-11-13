@@ -14,22 +14,57 @@
         <h:body>
             <h:form>
 
-                <h:outputLabel for="txtEmail">
-                    <h:outputText value="Flight Number"/>
+                <h:outputLabel for="pNumber">
+                    <h:outputText value="Plane Number"/>
                 </h:outputLabel>
-                <h:outputText id="txtEmail" value="#{obj.}"></h:outputText>
+                <h:outputText id="pNumber" value="#{detailsPageController.searchResultController.plane.planeNumber}"></h:outputText>
 
                 <br/>
 
-                <h:outputLabel for="txtPsw">
-                    <h:outputText value="Password"/>
+                <h:outputLabel for="depDate">
+                    <h:outputText value="Departure Date"/>
                 </h:outputLabel>
-                <h:inputText id="txtPsw" value="#{obj.password}"></h:inputText>
+                <h:inputText id="depDate" value="#{detailsPageController.searchResultController.plane.departureDate}"></h:inputText>
+
+                <br/>
+
+                <h:outputLabel for="ArrDate">
+                    <h:outputText value="Arrival Date"/>
+                </h:outputLabel>
+                <h:inputText id="ArrDate" value="#{detailsPageController.searchResultController.plane.arrivalDate}"></h:inputText>
+
+                <br/>
+
+                <h:outputLabel for="airline">
+                    <h:outputText value="Airline"/>
+                </h:outputLabel>
+                <h:inputText id="airline" value="#{detailsPageController.searchResultController.plane.flight.airline}"></h:inputText>
+
+                <br/>
+
+                <h:outputLabel for="departure">
+                    <h:outputText value="Departure"/>
+                </h:outputLabel>
+                <h:inputText id="departure" value="#{detailsPageController.searchResultController.plane.flight.departure}"></h:inputText>
+
+                <br/>
+
+                <h:outputLabel for="destination">
+                    <h:outputText value="destination"/>
+                </h:outputLabel>
+                <h:inputText id="destination" value="#{detailsPageController.searchResultController.plane.flight.destination}"></h:inputText>
+
+                <br/>
+
+                <h:outputLabel for="discount">
+                    <h:outputText value="Discount"/>
+                </h:outputLabel>
+                <h:inputText id="discount" value="#{detailsPageController.searchResultController.plane.discount}"></h:inputText>
 
                 <br/>
 
                 <h:commandButton value="Cancel" action="index"/>
-                <h:commandButton value="SIGN IN" action="#{obj.signin}"/>
+                <h:commandButton value="SIGN IN" action="booking"/>
             </h:form>
 
         </h:body>

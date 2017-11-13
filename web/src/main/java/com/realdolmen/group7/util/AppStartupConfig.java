@@ -18,7 +18,7 @@ import java.util.Properties;
 public class AppStartupConfig {
 
     private final String CONFIGPROPERTIESNAME = "AppConfig.properties"; // Name of the .properties file we're using to configure our app.
-    private final String CONFIGPROPERTIESPATH = "C:/Project/"; // directory path of where the .properties file is located
+    private final String CONFIGPROPERTIESPATH = "C:\\eru-illuvatar/"; // directory path of where the .properties file is located
     private File propertiesFile;
     private Properties properties = new Properties();
 

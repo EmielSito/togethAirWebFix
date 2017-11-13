@@ -30,6 +30,9 @@ public class Plane {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;
 
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date arrivalDate;
+
     private String planeNumber;
 
     public void setId(Long id) {
@@ -72,6 +75,14 @@ public class Plane {
         this.departureDate = departureDate;
     }
 
+    public Date getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
     public List<Seat> getSeats() {
         return seats;
     }
@@ -88,6 +99,7 @@ public class Plane {
                 ", flight=" + flight +
                 ", discount=" + discount +
                 ", departureDate=" + departureDate +
+                ", arrivalDate=" + arrivalDate +
                 ", planeNumber='" + planeNumber + '\'' +
                 '}';
     }
