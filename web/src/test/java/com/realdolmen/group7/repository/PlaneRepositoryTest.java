@@ -30,6 +30,12 @@ public class PlaneRepositoryTest extends AbstractPersistenceTest{
     }
 
     @Test
+    public void findByDepartureDateWithoutTime() throws Exception {
+        List<Plane> planes = planeRepository.findByDepartureDateWithoutTime("2018-10-15", "Zaventem", "Imam Khomeini");
+        assertEquals(1, planes.size());
+    }
+
+    @Test
     public void findPlaneByAirline() throws Exception {
         List<Plane> planes = planeRepository.findPlaneByAirline("KLM156");
         assertEquals(2, planes.size());

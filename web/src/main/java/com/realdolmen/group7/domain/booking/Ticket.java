@@ -1,7 +1,6 @@
 package com.realdolmen.group7.domain.booking;
 
 import javax.persistence.*;
-import java.awt.print.Book;
 
 
 /**
@@ -43,4 +42,19 @@ public class Ticket {
         this.lastName = lastName;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <link href="#{request.contextPath}/css/styles.css" rel="stylesheet" type="text/css"/>
+    <title>OOOh no no no</title>
+</h:head>
+
+<h:body>
+    <h1 align="center">We're so sorry</h1>
+    <div align="center" class="highlighted errorMessage">
+        <h2>
+            <h:outputText escape="false" value="Please forgive our adorable hard-working minions, they'll do a better job next time."/>
+        </h2>
+    </div>
+    <br/>
+    <div align="center" class="errorDetails">
+        <img align="middle" width="150" height="170" src="#{request.contextPath}/images/plane.jpg" alt="Ooooops"/>
+        <br/>
+        <img align="middle" src="#{request.contextPath}/images/oops.jpg" alt="Ooooops"/><br/>
+        <b>Error details</b> <br/>
+        #{flash.keep.errorDetails}
+    </div>
+
+
+</h:body>
+</html>

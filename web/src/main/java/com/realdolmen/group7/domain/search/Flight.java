@@ -2,10 +2,7 @@ package com.realdolmen.group7.domain.search;
 
 
 
-import com.realdolmen.group7.domain.booking.Booking;
-
 import javax.persistence.*;
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +32,9 @@ public class Flight {
     @ManyToOne
     private Airline airline;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;

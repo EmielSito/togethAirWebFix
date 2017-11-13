@@ -27,6 +27,16 @@
    <!-- Write your navigation rules here. You are encouraged to use CDI for 
       creating @Named managed beans. -->
 
+
+   <factory>
+      <exception-handler-factory>
+         com.realdolmen.group7.controller.exceptionHandler.MainExceptionHandlerFactory
+      </exception-handler-factory>
+   </factory>
+
+
+
+
    <application>
       <locale-config>
          <default-locale>en</default-locale>

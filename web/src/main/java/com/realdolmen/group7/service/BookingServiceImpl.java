@@ -2,7 +2,6 @@ package com.realdolmen.group7.service;
 
 import com.realdolmen.group7.domain.payment.Payment;
 import com.realdolmen.group7.domain.search.ClassType;
-import com.realdolmen.group7.domain.search.Plane;
 import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.BookingRepository;
 import com.realdolmen.group7.repository.PaymentRepository;
@@ -11,7 +10,6 @@ import com.realdolmen.group7.repository.SeatRepository;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +31,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void chooseSeatNumber(List<Seat> seats) {
-
         for (Seat s : seats) {
             s.setAvailable(false);
             seatRepository.updateSeat(s);

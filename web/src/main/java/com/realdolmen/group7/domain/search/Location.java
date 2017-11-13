@@ -31,6 +31,14 @@ public class Location {
 
     private String airportCode;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getLocationId() {
         return locationId;
     }

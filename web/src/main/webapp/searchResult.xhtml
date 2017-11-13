@@ -4,45 +4,51 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+
 <ui:composition template="template.xhtml">
     <ui:define name="pageContent">
         <h1>Search Result</h1>
-
-
 
 
         <h:dataTable border="1" value="#{searchResultController.flightPojos}" var="flightPlane">
 
 
             <h:column>
-                <f:facet name = "header"> - </f:facet>
+                <f:facet name="header"> - </f:facet>
                 Option number: #{flightPlane.plane.id}
             </h:column>
 
             <h:column>
-                <f:facet name = "header">Flight number</f:facet>
-                #{flightPlane.flightNumber}  
+                <f:facet name="header">Flight number</f:facet>
+                #{flightPlane.flightNumber}
             </h:column>
 
             <h:column>
-                <f:facet name = "header">Departure date</f:facet>
+                <f:facet name="header">Departure date</f:facet>
                 #{searchResultController.getConvertedDate(flightPlane.plane)}
             </h:column>
 
             <h:column>
-                <f:facet name = "header">Duration (Min)</f:facet>
-                <!--#{flightPlane.plane.departureTime}--> <!-- TODO calculate duration-->
-                60 Min  
+                <f:facet name="header">Duration (Min)</f:facet>
+                <!-- TODO calculate duration-->
+                60 Min
             </h:column>
 
             <h:column>
-                <f:facet name = "header">Airline</f:facet>
-                #{flightPlane.airline.name} 
+                <f:facet name="header">Airline</f:facet>
+                #{flightPlane.airline.airlineName}
             </h:column>
 
             <h:column>
-                <f:facet name = "header">Price</f:facet>
-                #{flightPlane.price} EURO  
+                <f:facet name="header">Price</f:facet>
+                #{flightPlane.price} EURO
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Available discounts</f:facet>
+                Volume discount tickets: #{flightPlane.numberOfTickets}
+                <br/>
+                percentage: #{flightPlane.percentage}
             </h:column>
 
 
@@ -50,17 +56,13 @@
                 <!-- <f:facet name = "header">Book Now</f:facet>-->
                 <h:form>
                     <!--TODO navigate to booking page while passing on the selected flight 'FlightNumber'-->
-                    <h:commandButton action = "#{SearchResultController.bookNow(flightPlane.plane.id)}" value = "Book Now" />
+                    <h:commandButton action="#{searchResultController.bookNow(flightPlane.plane.id)}" value="Book Now"/>
                 </h:form>
             </h:column>
 
 
-
-            <!-- TODO  ALSO SHOW AMONT OF DISCOUNT  WHERE IT IS AVAILABLE -->
+            <!-- TODO  ALSO SHOW AMOUNT OF DISCOUNT  WHERE IT IS AVAILABLE -->
         </h:dataTable>
-
-
-
 
 
     </ui:define>
