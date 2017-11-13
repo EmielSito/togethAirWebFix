@@ -4,13 +4,14 @@ import com.realdolmen.group7.domain.search.Location;
 import com.realdolmen.group7.domain.search.Region;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  * Created by PMTBF30 on 7/11/2017.
  */
-@Stateless
+@Named
 public class LocationRepository {
 
     @PersistenceContext

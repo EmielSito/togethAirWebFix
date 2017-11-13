@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="/template.xhtml">
     <ui:define name="pageContent">
@@ -16,19 +15,19 @@
             <h:form>
                 <h:commandButton value="One Way" action="oneWayBooking"/>
                 <h:commandButton value="Return" action="returnBooking"/>
-                <br/>
+                <br/><br/><br/>
 
                 <h:form>
-                <h:selectOneMenu value="#{searchController}" var="selection">
-                    <f:selectItems value="#{searchController.getAllRegions}"/><!--controller gebruiken-->
-                        <f:ajax event="change" render="location" listener="#{test.changeLocation}"/>
+                <h:selectOneMenu value="#{searchController.test}" var="selection">
+                    <f:selectItems value="#{searchController.getAllRegions()}"/>
+                        <f:ajax event="change" render="location" listener="#{searchController.getChangeLocation}"/>
                 </h:selectOneMenu>
 
                 <h:selectOneMenu id="location">
-                    <f:selectItems value="#{searchController.getLocationByRegion}"/>
+                    <f:selectItems value="#{searchController.locations}"/>
                 </h:selectOneMenu>
                 </h:form>
-                <br/>
+                <br/><br/><br/>
 
                 <!--h:selectOneMenu value="#{test.test}" var="selection" >
                     <f:selectItems value="#{test.regions}"/>
@@ -42,21 +41,42 @@
                     <h:outputText value="Flying From"/>
                 </h:outputLabel>
                 <h:inputText id="txtFlyingFrom" value="#{flight.departure}" required="true"/>
-                <br/>
+                <br/><br/><br/>
 
                 <h:outputLabel for="txtFlyingTo">
-                    <h:outputText value="Flying From"/>
+                    <h:outputText value="Flying To"/>
                 </h:outputLabel>
                 <h:inputText id="txtFlyingTo" value="#{flight.destination}" required="true"/>
-                <br/>
+                <br/><br/><br/>
 
                 <h:outputLabel for="txtDepartureDate">
-                    <h:outputText value="Departure"/>
+                    <h:outputText value="Departure Date"/>
                 </h:outputLabel>
                 <h:inputText id="txtDepartureDate" value="#{plane.departureTime}" required="true"/>
-                <br/>
+                <br/><br/><br/>
 
-                <h:commandButton value="Search" action="#{searchServiceImpl.getAllFlight}"/>
+                <h:outputLabel for="active">
+                    <h:outputText value="Business"/>
+                </h:outputLabel>
+                <h:selectBooleanCheckbox id="active" value="#{searchController.business}"  >
+                    <f:ajax render="inactive" listener="#{searchController.onActiveStatusChange}" />
+                </h:selectBooleanCheckbox>
+                <br/><br/>
+
+                <h:outputLabel for="inactive">
+                    <h:outputText value="Economy"/>
+                </h:outputLabel>
+                <h:selectBooleanCheckbox id="inactive" value="#{searchController.economy}"  >
+                    <f:ajax render="active" listener="#{searchController.onInactiveStatusChange}" />
+                </h:selectBooleanCheckbox>
+                <br/><br/><br/>
+
+                <h:outputLabel for="txtNbreSeats">
+                    <h:outputText value="Number of Seats: "/>
+                </h:outputLabel>
+                <h:inputText id="txtNbreSeats" value="#{searchController.}" required="true"/>
+
+                <h:commandButton value="Search" action="#{searchController.getAllFlight}"/>
 
             </h:form>
 

@@ -6,12 +6,13 @@ import com.realdolmen.group7.repository.UserRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * Created by ESOBG49 on 7/11/2017.
  */
 
-
+@Named
 @ApplicationScoped
 public class RegistrationService {
 
