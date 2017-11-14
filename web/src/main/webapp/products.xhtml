@@ -191,40 +191,34 @@
                             </div>
                         </div>-->
                         <div class="col-md-9 product-right">
-                            <ui:repeat value="#{planeBean.planeList}" var="searchResult">
+                            <ui:repeat value="#{searchResultController.planes}" var="searchResult">
                             <div class="product-right-grids">
                                 <div class="product-right-top">
                                     <div class="p-left">
                                         <div class="p-right-img">
                                             <h:form>
-                                            <h:commandLink action="p-single">
-                                                <f:setPropertyActionListener value="#{searchResult}" target="#{detailsBean.selectedPlane}"/>
-                                            </h:commandLink>
+                                            <h:commandLink action="#{searchResultController.bookNow(searchResult.id)}"/>
                                             </h:form>
                                         </div>
                                     </div>
                                     <div class="p-right">
                                         <div class="col-md-6 p-right-left">
                                             <h:form>
-                                                <h:commandLink action="p-single" value="#{msgs['products.results.title1']}#{searchResult.departureLocation}#{msgs['products.results.title2']}#{searchResult.destinationLocation}">
-                                                    <f:setPropertyActionListener value="#{searchResult}" target="#{detailsBean.selectedPlane}"/>
-                                                </h:commandLink>
+                                                <h:commandLink action="#{searchResultController.bookNow(searchResult.id)}" value="#{msgs['products.results.title1']}#{searchResult.flight.departure.airportName}#{msgs['products.results.title2']}#{searchResult.flight.destination.airportName}"/>
                                             </h:form>
-                                            <p>#{msgs['products.results.departure']}#{searchResult.departureDateTime}</p>
-                                            <p>#{msgs['products.results.arrival']}#{searchResult.arrivalDateTime}</p>
+                                            <p>#{msgs['products.results.departure']}#{searchResult.departureDate}</p>
+                                            <p>#{msgs['products.results.arrival']}#{searchResult.arrivalDate}</p>
                                             <br/>
                                             <p class="p-call">
                                                 <h:form>
-                                                    <h:commandLink action="p-single" value="#{msgs['products.results.check']}">
-                                                        <f:setPropertyActionListener value="#{searchResult}" target="#{detailsBean.selectedPlane}"/>
-                                                    </h:commandLink>
+                                                    <h:commandLink action="#{searchResultController.bookNow(searchResult.id)}" value="#{msgs['products.results.check']}"/>
                                                 </h:form>
                                             </p>
                                         </div>
                                         <div class="col-md-6 p-right-right">
-                                            <h6>#{searchResult.airlineCompany}</h6>
+                                            <h6>#{searchResult.flight.airline.airlineName}</h6>
                                             <br/>
-                                            <span class="p-offer"><h:outputText value="#{msgs['products.results.euro']}" escape="false"/>#{searchResult.reducedPrice}</span><span class="p-last-price"><h:outputText value="#{msgs['products.results.euro']}" escape="false"/>#{searchResult.originalPrice}</span>
+                                            <!--<span class="p-offer"></span>--><span class="p-offer"><h:outputText value="#{msgs['products.results.euro']}" escape="false"/>#{searchResultController.getBasePrice(searchResult)}</span>
                                         </div>
                                         <div class="clearfix"> </div>
                                     </div>

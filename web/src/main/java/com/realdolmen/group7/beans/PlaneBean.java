@@ -18,9 +18,6 @@ public class PlaneBean implements Serializable{
     private List<Plane> planeList = new ArrayList<>();
 
     public PlaneBean(){
-        HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        Locale locale = (Locale) session.getAttribute("locale");
-        FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
         planeList.add(new Plane("Rome",
                 "Brussels",
                 "Brussels Airlines",

@@ -9,298 +9,246 @@
 
 >
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="content">
-            <!-- banner -->
-            <div class="banner">
-                <!-- container -->
-                <div class="container">
-                    <div class="col-md-4 banner-left">
-                        <section class="slider2">
-                            <div class="flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <div class="slider-info">
-                                            <h:graphicImage library="bootstrap-3.3.6" name="/images/1.jpg" alt="1st holiday image"/>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="slider-info">
-                                            <h:graphicImage library="bootstrap-3.3.6" name="/images/2.jpg" alt="2nd holiday image"/>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="slider-info">
-                                            <h:graphicImage library="bootstrap-3.3.6" name="/images/3.jpg" alt="3rd holiday image"/>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="slider-info">
-                                            <h:graphicImage library="bootstrap-3.3.6" name="/images/4.jpg" alt="4th holiday image"/>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="slider-info">
-                                            <h:graphicImage library="bootstrap-3.3.6" name="/images/5.jpg" alt="5th holiday image"/>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-                        <!--FlexSlider-->
-                    </div>
-                    <div class="col-md-8 banner-right">
-                        <div class="sap_tabs">
-                            <div class="booking-info">
-                                <h2>#{msgs['index.search.title']}</h2>
-                            </div>
-                            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-                                <ul class="resp-tabs-list">
-                                    <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>#{msgs['index.search.return']}</span></li>
-                                    <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>#{msgs['index.search.oneway']}</span></li>
-                                    <!--<div class="clearfix"></div>-->
-                                </ul>
-                                <!---->
-                                <div class="resp-tabs-container">
-                                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                                        <div class="facts">
-                                            <div class="booking-form">
-                                                <!--strat-date-piker-->
-                                                <h:outputScript>
-                                                    $(function() {
-                                                        $( "#datepicker,#datepicker1" ).datepicker();
-                                                    });
-                                                </h:outputScript>
-                                                <!---/End-date-piker-->
-                                                <!-- Set here the key for your domain in order to hide the watermark on the web server -->
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+        <!-- banner -->
+        <div class="banner">
+            <!-- container -->
+            <div class="container">
+                <div class="col-md-4 banner-left">
+                    <section class="slider2">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slider-info">
+                                        <h:graphicImage library="bootstrap-3.3.6" name="/images/1.jpg"
+                                                        alt="1st holiday image"/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="slider-info">
+                                        <h:graphicImage library="bootstrap-3.3.6" name="/images/2.jpg"
+                                                        alt="2nd holiday image"/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="slider-info">
+                                        <h:graphicImage library="bootstrap-3.3.6" name="/images/3.jpg"
+                                                        alt="3rd holiday image"/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="slider-info">
+                                        <h:graphicImage library="bootstrap-3.3.6" name="/images/4.jpg"
+                                                        alt="4th holiday image"/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="slider-info">
+                                        <h:graphicImage library="bootstrap-3.3.6" name="/images/5.jpg"
+                                                        alt="5th holiday image"/>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!--FlexSlider-->
+                </div>
+                <div class="col-md-8 banner-right">
+                    <div class="sap_tabs">
+                        <div class="booking-info">
+                            <h2>#{msgs['index.search.title']}</h2>
+                        </div>
+                        <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                            <div class="facts">
+                                <div class="booking-form">
+                                    <!-- Set here the key for your domain in order to hide the watermark on the web server -->
 
-                                                <div class="online_reservation">
-                                                    <div class="b_room">
-                                                        <div class="booking_room">
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li  class="span1_of_1 desti">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.flyingfrom']}" for="flyingfrom"/></h5>
-                                                                        <div class="book_date">
-                                                                            <h:form>
-                                                                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                                                                                <h:inputText name="flyingfrom" id="flyingfrom" a:placeholder="#{msgs['index.search.departure']}" styleClass="typeahead1 input-md form-control tt-input" required="true"/>
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li  class="span1_of_1 left desti">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.flyingto']}" for="flyingto"/></h5>
-                                                                        <div class="book_date">
-                                                                            <h:form>
-                                                                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                                                                                <h:inputText name="flyingto" id="flyingto" a:placeholder="#{msgs['index.search.destination']}" styleClass="typeahead1 input-md form-control tt-input" required="true"/>
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!--<div class="clearfix"></div>-->
-                                                                </ul>
-                                                            </div>
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li  class="span1_of_1">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.departuredate']}" for="departure"/></h5>
-                                                                        <div class="book_date">
-                                                                            <h:form>
-                                                                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                                                                <p:calendar placeholder="mm/dd/yyyy" name="departure" id="departure" required="true" />
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li  class="span1_of_1 left">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.returndate']}" for="return"/></h5>
-                                                                        <div class="book_date">
-                                                                            <h:form>
-                                                                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                                                                <p:calendar placeholder="mm/dd/yyyy" name="return" id="return" required="true" />
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="span1_of_1 left adult">
-                                                                       <h5><h:outputLabel value="#{msgs['index.search.passengers']}" for="passengers"/></h5>
-                                                                       <div class="section_room">
-                                                                           <h:selectOneMenu id="passengers" name="passengers" onchange="change_country(this.value)" styleClass="frm-field required">
-                                                                               <f:selectItem itemValue="1" itemLabel="1"/>
-                                                                               <f:selectItem itemValue="2" itemLabel="2"/>
-                                                                               <f:selectItem itemValue="3" itemLabel="3"/>
-                                                                               <f:selectItem itemValue="4" itemLabel="4"/>
-                                                                               <f:selectItem itemValue="5" itemLabel="5"/>
-                                                                               <f:selectItem itemValue="6" itemLabel="6"/>
-                                                                               <f:selectItem itemValue="7" itemLabel="7"/>
-                                                                               <f:selectItem itemValue="8" itemLabel="8"/>
-                                                                               <f:selectItem itemValue="9" itemLabel="9"/>
-                                                                               <f:selectItem itemValue="10" itemLabel="10"/>
-                                                                           </h:selectOneMenu>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li class="span1_of_1 economy">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.class']}" for="class"/></h5>
-                                                                        <!--start section_room-->
-                                                                        <div class="section_room">
-                                                                            <h:selectOneMenu id="class" onchange="change_country(this.value)" styleClass="frm-field required">
-                                                                                <f:selectItem itemValue="Economy" itemLabel="#{msgs['index.search.economy']}"/>
-                                                                                <f:selectItem itemValue="Business" itemLabel="#{msgs['index.search.business']}"/>
-                                                                            </h:selectOneMenu>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!--<div class="clearfix"></div>-->
-                                                                </ul>
-                                                            </div>
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li class="span1_of_3">
-                                                                        <div class="date_btn">
-                                                                            <h:form>
-                                                                                <h:link outcome="products" value="#{msgs['index.search.search']}"/>
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!--<div class="clearfix"></div>-->
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="clearfix"></div>
+                                    <div class="online_reservation">
+                                        <div class="b_room">
+                                            <div class="booking_room">
+
+                                                <h:form>
+                                                    <div class="reservation">
+                                                        <ul>
+                                                            <li class="span1_of_1 desti">
+                                                                <h5><h:outputLabel
+                                                                        value="#{msgs['index.search.flyingfrom']}"
+                                                                        for="flyingfrom"/></h5>
+                                                                <div class="book_date">
+                                                                            <span class="glyphicon glyphicon-map-marker"
+                                                                                  aria-hidden="true"></span>
+                                                                    <h:inputText
+                                                                            value="#{searchController.departure}"
+                                                                            name="flyingfrom" id="flyingfrom"
+                                                                            a:placeholder="#{msgs['index.search.departure']}"
+                                                                            styleClass="typeahead1 input-md form-control tt-input"
+                                                                            required="true"/>
+                                                                </div>
+                                                            </li>
+                                                            <li class="span1_of_1 left desti">
+                                                                <h5><h:outputLabel
+                                                                        value="#{msgs['index.search.flyingto']}"
+                                                                        for="flyingto"/></h5>
+                                                                <div class="book_date">
+
+                                                                            <span class="glyphicon glyphicon-map-marker"
+                                                                                  aria-hidden="true"></span>
+                                                                    <h:inputText
+                                                                            value="#{searchController.destination}"
+                                                                            name="flyingto" id="flyingto"
+                                                                            a:placeholder="#{msgs['index.search.destination']}"
+                                                                            styleClass="typeahead1 input-md form-control tt-input"
+                                                                            required="true"/>
+
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
                                                     </div>
-                                                </div>
-                                                <!---->
+                                                    <div class="reservation">
+                                                        <ul>
+                                                            <li class="span1_of_1">
+                                                                <h5><h:outputLabel
+                                                                        value="#{msgs['index.search.departuredate']}"
+                                                                        for="departure"/>
+                                                                </h5>
+                                                                <div class="book_date">
+
+                                                                            <span class="glyphicon glyphicon-calendar"
+                                                                                  aria-hidden="true"></span>
+                                                                    <p:calendar
+                                                                            value="#{searchController.departureDate}"
+                                                                            name="departure" id="departure"
+                                                                            placeholder="dd/mm/yyyy"
+                                                                            pattern="dd/mm/yyyy">
+                                                                        <p:ajax event="dateSelect"
+                                                                                listener="#{searchController.onDepartureDateSelect}"/>
+                                                                    </p:calendar>
+                                                                </div>
+                                                            </li>
+                                                            <li class="span1_of_1 left">
+                                                                <h5><h:outputLabel
+                                                                        value="#{msgs['index.search.returndate']}"
+                                                                        for="return"/>
+                                                                </h5>
+                                                                <div class="book_date">
+
+                                                                            <span class="glyphicon glyphicon-calendar"
+                                                                                  aria-hidden="true"></span>
+                                                                    <p:calendar
+                                                                            value="#{searchController.returnDate}"
+                                                                            placeholder="dd/mm/yyyy"
+                                                                            name="return" id="return"
+                                                                            pattern="dd/mm/yyyy">
+                                                                        <p:ajax event="dateSelect"
+                                                                                listener="#{searchController.onReturnDateSelect}"/>
+                                                                    </p:calendar>
+                                                                </div>
+                                                            </li>
+                                                            <li class="span1_of_1 left adult">
+                                                                <h5><h:outputLabel
+                                                                        value="#{msgs['index.search.passengers']}"
+                                                                        for="passengers"/></h5>
+                                                                <div class="section_room">
+                                                                    <h:selectOneMenu
+                                                                            value="#{searchController.numberOfSeats}"
+                                                                            id="passengers" name="passengers"
+                                                                            styleClass="frm-field required">
+                                                                        <f:selectItem itemValue="1"
+                                                                                      itemLabel="1"/>
+                                                                        <f:selectItem itemValue="2"
+                                                                                      itemLabel="2"/>
+                                                                        <f:selectItem itemValue="3"
+                                                                                      itemLabel="3"/>
+                                                                        <f:selectItem itemValue="4"
+                                                                                      itemLabel="4"/>
+                                                                        <f:selectItem itemValue="5"
+                                                                                      itemLabel="5"/>
+                                                                        <f:selectItem itemValue="6"
+                                                                                      itemLabel="6"/>
+                                                                        <f:selectItem itemValue="7"
+                                                                                      itemLabel="7"/>
+                                                                        <f:selectItem itemValue="8"
+                                                                                      itemLabel="8"/>
+                                                                        <f:selectItem itemValue="9"
+                                                                                      itemLabel="9"/>
+                                                                        <f:selectItem itemValue="10"
+                                                                                      itemLabel="10"/>
+                                                                    </h:selectOneMenu>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="reservation">
+                                                        <ul>
+                                                            <li class="span1_of_1 economy">
+                                                                <h5><h:outputLabel
+                                                                        value="#{msgs['index.search.class']}"
+                                                                        for="class"
+                                                                />
+                                                                </h5>
+
+                                                                <div class="section_room">
+                                                                    <h:selectOneMenu id="class"
+                                                                                     converter="classTypeConverter"
+                                                                                     value="#{searchController.classType}">
+                                                                        <f:selectItems
+                                                                                value="#{searchController.classTypes}"
+                                                                                var="c" itemValue="#{c}"
+                                                                                itemLabel="#{msgs[c.labelKey]}"/>
+                                                                    </h:selectOneMenu>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="reservation">
+                                                        <ul>
+                                                            <li class="span1_of_3">
+                                                                <div class="date_btn">
+                                                                    <h:commandButton
+                                                                            value="#{msgs['index.search.search']}"
+                                                                            action="#{searchController.findAirplanes}"/>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </h:form>
+
                                             </div>
+                                            <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
-                                        <div class="facts">
-                                            <div class="booking-form">
-                                                <!--strat-date-piker-->
-                                                <h:outputScript>
-                                                    $(function() {
-                                                    $( "#datepicker,#datepicker1" ).datepicker();
-                                                    });
-                                                </h:outputScript>
-                                                <!---/End-date-piker-->
-                                                <div class="online_reservation">
-                                                    <div class="b_room">
-                                                        <div class="booking_room">
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li  class="span1_of_1 desti">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.flyingfrom']}" for="flyingfrom1"/></h5>
-                                                                        <div class="book_date">
-                                                                            <h:form>
-                                                                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                                                                                <h:inputText name="flyingfrom" id="flyingfrom1" a:placeholder="#{msgs['index.search.departure']}" styleClass="typeahead1 input-md form-control tt-input" required="true"/>
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li  class="span1_of_1 left desti">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.flyingto']}" for="flyingto1"/></h5>
-                                                                        <div class="book_date">
-                                                                            <h:form>
-                                                                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                                                                                <h:inputText name="flyingto" id="flyingto1" a:placeholder="#{msgs['index.search.destination']}" styleClass="typeahead1 input-md form-control tt-input" required="true"/>
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!--<div class="clearfix"></div>-->
-                                                                </ul>
-                                                            </div>
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li  class="span1_of_1">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.departuredate']}" for="departure1"/></h5>
-                                                                        <div class="book_date">
-                                                                            <h:form>
-                                                                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                                                                <p:calendar placeholder="mm/dd/yyyy" name="departure" id="departure1" required="true" />
-                                                                            </h:form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="span1_of_1 left adult">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.passengers']}" for="passengers1"/></h5>
-                                                                        <div class="section_room">
-                                                                            <h:selectOneMenu id="passengers1" name="passengers" onchange="change_country(this.value)" styleClass="frm-field required">
-                                                                                <f:selectItem itemValue="1" itemLabel="1"/>
-                                                                                <f:selectItem itemValue="2" itemLabel="2"/>
-                                                                                <f:selectItem itemValue="3" itemLabel="3"/>
-                                                                                <f:selectItem itemValue="4" itemLabel="4"/>
-                                                                                <f:selectItem itemValue="5" itemLabel="5"/>
-                                                                                <f:selectItem itemValue="6" itemLabel="6"/>
-                                                                                <f:selectItem itemValue="7" itemLabel="7"/>
-                                                                                <f:selectItem itemValue="8" itemLabel="8"/>
-                                                                                <f:selectItem itemValue="9" itemLabel="9"/>
-                                                                                <f:selectItem itemValue="10" itemLabel="10"/>
-                                                                            </h:selectOneMenu>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li class="span1_of_1 economy">
-                                                                        <h5><h:outputLabel value="#{msgs['index.search.class']}" for="class1"/></h5>
-                                                                        <!--start section_room-->
-                                                                        <div class="section_room">
-                                                                            <h:selectOneMenu id="class1" onchange="change_country(this.value)" styleClass="frm-field required">
-                                                                                <f:selectItem itemValue="Economy" itemLabel="#{msgs['index.search.economy']}"/>
-                                                                                <f:selectItem itemValue="Business" itemLabel="#{msgs['index.search.business']}"/>
-                                                                            </h:selectOneMenu>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!--<div class="clearfix"></div>-->
-                                                                </ul>
-                                                            </div>
-                                                            <div class="reservation">
-                                                                <ul>
-                                                                    <li class="span1_of_3">
-                                                                        <div class="date_btn">
-                                                                            <form>
-                                                                                <h:link outcome="products" value="#{msgs['index.search.search']}"/>
-                                                                            </form>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!--<div class="clearfix"></div>-->
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </div>
-                                                <!---->
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!---->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix"> </div>
                 </div>
-                <!-- //container -->
+                <div class="clearfix"></div>
             </div>
-            <!-- //banner -->
+            <!-- //container -->
+        </div>
+        <!-- //banner -->
 
-            <h:outputScript defer="" library="bootstrap-3.3.6" name="/js/jquery.flexslider.js"/>
-            <h:outputScript library="bootstrap-3.3.6" name="/js/easyResponsiveTabs.js"/>
-            <h:outputScript library="bootstrap-3.3.6" name="/js/jquery-ui.js"/>
-            <h:outputScript library="bootstrap-3.3.6" name="/js/script.js"/>
-            <h:outputScript>$(function(){
-                SyntaxHighlighter.all();
-                });
-                $(window).load(function(){
-                $('.flexslider').flexslider({
+        <h:outputScript defer="" library="bootstrap-3.3.6" name="/js/jquery.flexslider.js"/>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/easyResponsiveTabs.js"/>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/jquery-ui.js"/>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/script.js"/>
+        <h:outputScript>$(function () {
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function () {
+            $('.flexslider').flexslider({
                 animation: "slide",
-                start: function(slider){
-                $('body').removeClass('loading');
+                start: function (slider) {
+                    $('body').removeClass('loading');
                 }
-                });
-                });</h:outputScript>
-        </ui:define>
-    </ui:composition>
+            });
+        });</h:outputScript>
+    </ui:define>
+</ui:composition>
 
 </html>

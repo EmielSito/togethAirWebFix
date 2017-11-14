@@ -18,4 +18,8 @@ ECONOMY("Economy class");
         return classType;
     }
 
+    public String getLabelKey() {
+        return "index.search." + name().toLowerCase();
+    }
+
 }

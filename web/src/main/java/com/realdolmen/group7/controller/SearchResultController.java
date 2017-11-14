@@ -3,7 +3,6 @@ package com.realdolmen.group7.controller;
 import com.realdolmen.group7.domain.payment.VolumeDiscount;
 import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.search.Plane;
-import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.PlaneRepository;
 import com.realdolmen.group7.repository.VolumeDiscountRepository;
 import com.realdolmen.group7.service.SearchServiceImpl;
@@ -17,6 +16,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static com.realdolmen.group7.util.AppStartupConfig.marginPercentage;
 
@@ -27,8 +27,7 @@ import static com.realdolmen.group7.util.AppStartupConfig.marginPercentage;
 @SessionScoped
 public class SearchResultController implements Serializable {
 
-
-
+    private List<Plane> planes = new ArrayList<>();
     private List<FlightPojo> flightPojos = new ArrayList<>();
     private long selectedPlane;
     private Long planeId;
@@ -40,10 +39,14 @@ public class SearchResultController implements Serializable {
     private VolumeDiscountRepository volumeDiscountRepository;
     @Inject
     private SearchController searchController;
+
     @Inject
     private PlaneRepository planeRepository;
 
-    private List<Plane> planes = new ArrayList<>();
+    @PostConstruct
+    public void init(){
+        this.planes = searchController.getPlaneList();
+    }
 
     public String getConvertedDate(Plane plane) {
 
@@ -51,8 +54,8 @@ public class SearchResultController implements Serializable {
 
     }
 
-    @PostConstruct
-    public void init() {
+    public List<FlightPojo> getFlightPojos() {
+
         int i = 0;
         for (Plane plane : searchController.getPlaneList()) {
             i++;
@@ -68,10 +71,9 @@ public class SearchResultController implements Serializable {
             flightPojo.setDestination(flight.getDestination());
             flightPojo.setPlane(plane);
 
-            List<Seat> seats = new ArrayList<>(plane.getSeats());
-
-            double profit = (seats.get(0).getBasePrice() / 100) * marginPercentage;
-            flightPojo.setPrice(seats.get(0).getBasePrice() + profit);
+            List<Seat> seatList = new ArrayList<>(plane.getSeats());
+            double profit = (seatList.get(0).getBasePrice()/100) * marginPercentage;
+            flightPojo.setPrice(seatList.get(0).getBasePrice() + profit);
 
             // Get the available discounts for the plane
             List<VolumeDiscount> volumeDiscountList = volumeDiscountRepository.findVolumeDiscountByPlane(plane.getPlaneNumber());
@@ -86,10 +88,6 @@ public class SearchResultController implements Serializable {
             // this list is for the search result listing all the flights
             flightPojos.add(flightPojo);
         }
-
-    }
-    public List<FlightPojo> getFlightPojos() {
-
 
 
         return flightPojos;
@@ -115,19 +113,6 @@ public class SearchResultController implements Serializable {
         this.selectedPlane = selectedPlane;
     }
 
-
-    public String bookNow(long planeId) {
-        planes = searchController.getPlaneList();
-        for(Plane p: planes) {
-
-            if(p.getId() == planeId) {
-                plane = p;
-                break;
-            }
-        }
-        return "detailsPage?faces-redirect=true";
-    }
-
     public Long getPlaneId() {
         return planeId;
     }
@@ -142,5 +127,27 @@ public class SearchResultController implements Serializable {
 
     public void setPlane(Plane plane) {
         this.plane = plane;
+    }
+
+    public String bookNow(long planeId) {
+
+        for(Plane p: planes) {
+            if(p.getId() == planeId) {
+                plane = p;
+                break;
+            }
+        }
+
+        System.out.println(plane);
+        return "details?faces-redirect=true";
+    }
+
+    public double getBasePrice(Plane plane){
+        List<Seat> seats = this.convertSeatSetToList(plane.getSeats());
+        return seats.get(0).getBasePrice();
+    }
+
+    private List<Seat> convertSeatSetToList(Set<Seat> seatSet){
+        return new ArrayList<>(seatSet);
     }
 }
