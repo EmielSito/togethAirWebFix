@@ -2,6 +2,7 @@ package com.realdolmen.group7.restWebService;
 
 
 import com.realdolmen.group7.service.BookingService;
+import com.realdolmen.group7.service.BookingServiceImpl;
 import com.realdolmen.group7.service.pojo.BookingPojo;
 import com.realdolmen.group7.util.DateUtils;
 
@@ -20,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 public class BookingRest {
 
     @Inject
-    BookingService bookingService;
+    BookingServiceImpl bookingService;
 
     @GET
     @Path("{date}")
@@ -28,6 +29,5 @@ public class BookingRest {
     public List<BookingPojo> readBookindDay(@PathParam("date") String date) {
 
         return bookingService.getJaXBBookingByDay(DateUtils.createDate(date));
-
     }
 }

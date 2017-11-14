@@ -4,10 +4,12 @@ package com.realdolmen.group7.service;
 import com.realdolmen.group7.domain.booking.Booking;
 
 import com.realdolmen.group7.domain.booking.Ticket;
+import com.realdolmen.group7.domain.payment.Payment;
 import com.realdolmen.group7.domain.payment.PaymentMethod;
 import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.BookingRepository;
+import com.realdolmen.group7.repository.PaymentRepository;
 import com.realdolmen.group7.repository.SeatRepository;
 import com.realdolmen.group7.service.pojo.BookingPojo;
 
@@ -31,7 +33,7 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class BookingServiceImpl implements BookingService, Serializable {
+public class BookingServiceImpl implements Serializable {
 
 
     @Inject
@@ -46,30 +48,42 @@ public class BookingServiceImpl implements BookingService, Serializable {
     @Inject
     private TicketRepository ticketRepository;
 
-    @Override
-    public void chooseSeatNumber(List<Seat> seats) {
+    @Inject
+    private PaymentRepository paymentRepository;
 
-        for (Seat s : seats) {
-            s.setAvailable(false);
-            seatRepository.updateSeat(s);
-        }
+
+    public void chooseSeatNumber(Seat seat) {
+
+            seat.setAvailable(false);
+            seatRepository.updateSeat(seat);
+
+    }
+
+    public void savePayment(Payment payment) {
+        paymentRepository.savePayment(payment);
+
+    }
+
+    public void saveBooking(Booking booking) {
+        bookingRepository.save(booking);
+
+    }
+
+    public void updateTicket(Ticket ticket) {
+        ticketRepository.update(ticket);
     }
 
     public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type) {
         return seatRepository.findAvailableSeatsByClassType(planeNumber, type);
     }
 
-   /* @Override
-    public Plane getPlaneInResultSearch(String planeNumber) {
-        return ;
-    }
-*/
+
 
    public void saveTicket(Ticket ticket) {
         ticketRepository.save(ticket);
    }
 
-    @Override
+
     public List<BookingPojo> getJaXBBookingByDay(Date date) {
 
 

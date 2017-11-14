@@ -40,7 +40,6 @@ public class SearchResultController implements Serializable {
     private VolumeDiscountRepository volumeDiscountRepository;
     @Inject
     private SearchController searchController;
-
     @Inject
     private PlaneRepository planeRepository;
 

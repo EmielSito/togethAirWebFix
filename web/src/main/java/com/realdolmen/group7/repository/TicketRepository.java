@@ -16,4 +16,8 @@ public class TicketRepository {
         entityManager.persist(ticket);
         return ticket;
     }
+
+    public void update(Ticket ticket) {
+        entityManager.merge(ticket);
+    }
 }

@@ -23,11 +23,11 @@ public class Booking {
     @ManyToOne
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Payment payment;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "booking")
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.PERSIST)
     private List<Ticket> tickets = new ArrayList<>();
 
     @Column(nullable = false)

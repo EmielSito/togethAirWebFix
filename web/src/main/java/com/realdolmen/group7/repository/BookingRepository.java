@@ -4,6 +4,7 @@ import com.realdolmen.group7.domain.booking.Booking;
 import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.domain.booking.Booking;
 import com.realdolmen.group7.domain.search.Flight;
+import com.realdolmen.group7.util.DateUtils;
 
 
 import javax.persistence.EntityManager;
@@ -21,11 +22,9 @@ public class BookingRepository {
         return booking;
     }
 
-
-
     public List<Booking> findBookingByDay(Date date){
-        return  em.createQuery("select b from Booking b where b.bookingDate=:args",Booking.class)
-                .setParameter("args",date).getResultList();
+        return  em.createQuery("select b from Booking b where b.bookingDate BETWEEN :argDate1 AND :argDate2",Booking.class)
+                .setParameter("argDate1", DateUtils.createDateAndTime(date+" 00:00:00")).setParameter("argDate2",DateUtils.createDateAndTime(date+" 23:59:59")).getResultList();
     }
 
 }

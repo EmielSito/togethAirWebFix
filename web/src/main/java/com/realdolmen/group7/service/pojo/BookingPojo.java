@@ -3,12 +3,15 @@ package com.realdolmen.group7.service.pojo;
 
 import com.realdolmen.group7.service.DateTimeAdapter;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BookingPojo {
 
     @XmlElement
@@ -19,7 +22,6 @@ public class BookingPojo {
     @XmlElement
     private long userId;
     @XmlElement
-
     private long paymentId;
 
 
