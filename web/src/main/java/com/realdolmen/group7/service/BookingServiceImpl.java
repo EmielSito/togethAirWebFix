@@ -10,23 +10,14 @@ import com.realdolmen.group7.repository.SeatRepository;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Named
 @SessionScoped
-public class BookingServiceImpl implements BookingService {
-    @Override
-    public void chooseSeatNumber(String seatNumber) {
+public class BookingServiceImpl implements Serializable {
 
-    }
-
-    @Override
-    public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination, Date departureDate, int numberOfSeat) {
-        return null;
-    }
-
-/*
 
     @Inject
     private BookingRepository bookingRepository;
@@ -37,7 +28,6 @@ public class BookingServiceImpl implements BookingService {
     @Inject
     private SeatRepository seatRepository;
 
-    @Override
     public void chooseSeatNumber(List<Seat> seats) {
 
         for (Seat s : seats) {
@@ -57,7 +47,7 @@ public class BookingServiceImpl implements BookingService {
     }
 */
 
-    @Override
+
     public void getPaymentMethod() {
 
         if (PaymentMethod.valueOf("CreditCard").equals("CreditCard")) {
@@ -67,7 +57,7 @@ public class BookingServiceImpl implements BookingService {
 
         }
     }
-*/
+
 
 
 }

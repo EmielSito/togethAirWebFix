@@ -40,11 +40,6 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-
-    public long getId() {
-        return id;
-    }
-
     public void setId(long id) {
         this.id = id;
     }

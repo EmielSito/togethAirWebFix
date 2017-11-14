@@ -4,23 +4,23 @@ import com.realdolmen.group7.domain.booking.Ticket;
 import com.realdolmen.group7.domain.payment.Payment;
 import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Seat;
-import com.realdolmen.group7.service.BookingService;
+import com.realdolmen.group7.service.BookingServiceImpl;
 import com.realdolmen.group7.service.pojo.AccountNumber;
 
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Named
 @SessionScoped
-public class BookingController{
+public class BookingController implements Serializable{
 
 
     @Inject
-    private BookingService bookingService;
+    private BookingServiceImpl bookingService;
     private Ticket ticket = new Ticket();
     private Payment payment=new Payment();
     private AccountNumber accountNumber=new AccountNumber();
