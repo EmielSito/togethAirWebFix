@@ -1,5 +1,8 @@
 package com.realdolmen.group7.domain.booking;
 
+import com.realdolmen.group7.domain.search.Plane;
+import com.realdolmen.group7.domain.search.Seat;
+
 import javax.persistence.*;
 
 
@@ -19,12 +22,33 @@ public class Ticket {
     @Column(nullable = false, length = 50)
     private String lastName;
 
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public Plane getPlane() {
+        return plane;
+    }
+
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
+
+    @OneToOne
+    private Plane plane;
+
+    @OneToOne
+    private Seat seat;
+
     @ManyToOne
     private Booking booking;
 
     public Ticket() {
     }
-
 
     public String getFirstName() {
         return firstName;

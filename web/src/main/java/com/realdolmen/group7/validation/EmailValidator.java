@@ -1,4 +1,4 @@
-package com.realdolmen.group7.service.pojo;
+package com.realdolmen.group7.validation;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;

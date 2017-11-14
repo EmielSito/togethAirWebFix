@@ -1,14 +1,13 @@
-package com.realdolmen.group7.service.pojo;
+package com.realdolmen.group7.validation;
 
-import com.realdolmen.group7.domain.payment.PaymentMethod;
 
+import com.realdolmen.group7.service.pojo.AccountNumber;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -46,7 +45,6 @@ public class ValidatorDate implements Validator {
             return 1;
         }
     }
-
 
 }
 
