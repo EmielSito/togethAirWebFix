@@ -3,18 +3,21 @@ package com.realdolmen.group7.controller;
 import com.realdolmen.group7.domain.payment.VolumeDiscount;
 import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.search.Plane;
+import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.PlaneRepository;
 import com.realdolmen.group7.repository.VolumeDiscountRepository;
 import com.realdolmen.group7.service.SearchServiceImpl;
 import com.realdolmen.group7.service.pojo.FlightPojo;
 import com.realdolmen.group7.util.DateUtils;
 
-import javax.faces.bean.RequestScoped;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static com.realdolmen.group7.util.AppStartupConfig.marginPercentage;
 
@@ -22,9 +25,8 @@ import static com.realdolmen.group7.util.AppStartupConfig.marginPercentage;
  * Created by ESOBG49 on 11/10/2017.
  */
 @Named
-@RequestScoped
+@SessionScoped
 public class SearchResultController implements Serializable {
-
 
     private List<Plane> planes = new ArrayList<>();
     private List<FlightPojo> flightPojos = new ArrayList<>();
@@ -38,11 +40,13 @@ public class SearchResultController implements Serializable {
     private VolumeDiscountRepository volumeDiscountRepository;
     @Inject
     private SearchController searchController;
-
     @Inject
     private PlaneRepository planeRepository;
 
-
+    @PostConstruct
+    public void init(){
+        this.planes = searchController.getPlaneList();
+    }
 
     public String getConvertedDate(Plane plane) {
 
@@ -67,8 +71,9 @@ public class SearchResultController implements Serializable {
             flightPojo.setDestination(flight.getDestination());
             flightPojo.setPlane(plane);
 
-            double profit = (plane.getSeats().get(0).getBasePrice() / 100) * marginPercentage;
-            flightPojo.setPrice(plane.getSeats().get(0).getBasePrice() + profit);
+            List<Seat> seatList = new ArrayList<>(plane.getSeats());
+            double profit = (seatList.get(0).getBasePrice()/100) * marginPercentage;
+            flightPojo.setPrice(seatList.get(0).getBasePrice() + profit);
 
             // Get the available discounts for the plane
             List<VolumeDiscount> volumeDiscountList = volumeDiscountRepository.findVolumeDiscountByPlane(plane.getPlaneNumber());
@@ -111,18 +116,6 @@ public class SearchResultController implements Serializable {
         this.selectedPlane = selectedPlane;
     }
 
-
-    public String bookNow(long planeId) {
-
-        for(Plane p: planes) {
-            if(p.getId() == planeId) {
-                plane = p;
-                break;
-            }
-        }
-        return "detailsPage?faces-redirect=true";
-    }
-
     public Long getPlaneId() {
         return planeId;
     }
@@ -137,5 +130,27 @@ public class SearchResultController implements Serializable {
 
     public void setPlane(Plane plane) {
         this.plane = plane;
+    }
+
+    public String bookNow(long planeId) {
+
+        for(Plane p: planes) {
+            if(p.getId() == planeId) {
+                plane = p;
+                break;
+            }
+        }
+
+        System.out.println(plane);
+        return "details?faces-redirect=true";
+    }
+
+    public double getBasePrice(Plane plane){
+        List<Seat> seats = this.convertSeatSetToList(plane.getSeats());
+        return seats.get(0).getBasePrice();
+    }
+
+    private List<Seat> convertSeatSetToList(Set<Seat> seatSet){
+        return new ArrayList<>(seatSet);
     }
 }

@@ -6,10 +6,11 @@ import com.realdolmen.group7.util.DateUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class PlaneRepository {
+public class PlaneRepository implements Serializable{
 
     @PersistenceContext
     EntityManager em;

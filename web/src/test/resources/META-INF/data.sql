@@ -19,20 +19,21 @@ insert into volumediscount(id, numberOfTickets, percent, plane_id) values(2000, 
 insert into volumediscount(id, numberOfTickets, percent, plane_id) values(3000, 10, 5, 1000);
 
 
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(1000, '1d', 1200, 'BUSINESS', false, 1000);
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(4000, '1d', 1200, 'BUSINESS', true, 1000);
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(2000, 'fgd', 800, 'ECONOMIC',true, 2000);
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(3000, 'sdf', 650, 'ECONOMIC',true, 3000);
-
-insert into plane(id, departureDate, planeNumber, flight_id) values(1000, '2018-10-15 11:00:00', 'testPlane111', 1000);
-insert into plane(id, departureDate, planeNumber, flight_id) values(2000, '2017-12-04 20:30:00', 'testPlane222', 1000);
-insert into plane(id, departureDate, planeNumber, flight_id) values(3000, '2018-02-01 08:00:00', 'testPlane333', 2000);
+insert into plane(id, arrivalDate, departureDate, planeNumber, flight_id) values(1000, '2018-10-15 13:00:00','2018-10-15 11:00:00', 'testPlane111', 1000);
+insert into plane(id, arrivalDate, departureDate, planeNumber, flight_id) values(2000, '2017-12-04 22:30:00','2017-12-04 20:30:00', 'testPlane222', 1000);
+insert into plane(id, arrivalDate, departureDate, planeNumber, flight_id) values(3000, '2018-02-01 11:00:00','2018-02-01 08:00:00', 'testPlane333', 2000);
 
 insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(1000, '1a', 1200, 'BUSINESS', true, 1000);
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(1000, '1d', 1200, 'BUSINESS',true, 1000);
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(2000, '1a', 800, 'ECONOMIC',true,  2000);
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(2000, '2b', 800, 'ECONOMIC',true,  2000);
-insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(3000, '20f', 650, 'ECONOMIC',true,  3000);
+insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(4000, '1d', 1200, 'BUSINESS',true, 1000);
+insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(5000, '1a', 800, 'ECONOMY',true,  2000);
+insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(6000, '2b', 800, 'ECONOMY',true,  2000);
+insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) values(3000, '20f', 650, 'ECONOMY',true,  3000);
+
+insert into booking(id, bookingDate, payWithCreditCard, payment_id, user_id) values(1000, '2017-11-14', true, 1000, 1000);
+
+insert into payment(id, isPaid, paymentMethod) values(1000, TRUE , 'CREDITCARD');
+
+
 
 
 

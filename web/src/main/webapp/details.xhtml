@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+
+>
+
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+        <!-- banner-bottom -->
+        <div class="banner-bottom">
+            <!-- container -->
+            <div class="container">
+                <div class="faqs-top-grids">
+                    <!--single-page-->
+                    <div class="single-page">
+                        <div class="col-md-8 single-gd-lt">
+                            <div class="single-pg-hdr">
+                                <h2>#{msgs['products.results.title1']}#{detailsPageController.selectedPlane.flight.departure.airportName}#{msgs['products.results.title2']}#{detailsPageController.selectedPlane.flight.destination.airportName}</h2>
+                                <p>#{detailsPageController.selectedPlane.flight.airline.airlineName}</p>
+                                <p>#{msgs['products.results.departure']}#{detailsPageController.selectedPlane.departureDate}</p>
+                                <p>#{msgs['products.results.arrival']}#{detailsPageController.selectedPlane.arrivalDate}</p>
+                            </div>
+                            <div class="flexslider">
+                                <h:graphicImage library="bootstrap-3.3.6" name="/images/p1.jpg"
+                                                alt="1st holiday image"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4 single-gd-rt">
+                            <div class="spl-btn">
+                                <div class="spl-btn-bor">
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                    </a>
+                                    <p>#{msgs['details.price.offer']}</p>
+                                </div>
+                                <div class="sp-bor-btn text-right">
+                                    <h4>&#8364;<h:outputText value="#{detailsPageController.getTotalPrice()}"/></h4>
+                                    <p class="best-pri"><h:outputText value="#{detailsPageController.getNumberPassengersInfo()}"/></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--//single-page-->
+                </div>
+            </div>
+            <!-- //container -->
+        </div>
+        <!-- //banner-bottom -->
+    </ui:define>
+</ui:composition>
+</html>

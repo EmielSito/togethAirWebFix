@@ -3,6 +3,8 @@ package com.realdolmen.group7.controller;
 
 import com.realdolmen.group7.domain.search.*;
 import com.realdolmen.group7.service.SearchServiceImpl;
+import org.hibernate.sql.SelectValues;
+import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -11,25 +13,30 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Named
 @SessionScoped
 public class SearchController implements Serializable {
 
-
     private List<Plane> planeList = new ArrayList<>();
+    private String departure = "Zaventem";
+    private String destination = "Imam Khomeini";
+    private ClassType classType = ClassType.BUSINESS;
+    private int numberOfSeats = 1;
+    private Date departureDate;
+    private Date returnDate;
+    private String departureDateString="";
+    private String returnDateString="";
 
     @Inject
     private SearchServiceImpl searchService;
 
-    private String departureDate="25/11/2017";
-    private String returnDate="25/11/2017";
-    private String departure;
-    private String destination="Rome";
-    private ClassType classType=ClassType.ECONOMY;
-    private int numberOfSeats=2;
 
     public List<Plane> getPlaneList() {
         return planeList;
@@ -45,14 +52,6 @@ public class SearchController implements Serializable {
 
     public void setSearchService(SearchServiceImpl searchService) {
         this.searchService = searchService;
-    }
-
-    public String getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
     }
 
     public String getDeparture() {
@@ -87,15 +86,84 @@ public class SearchController implements Serializable {
         this.numberOfSeats = numberOfSeats;
     }
 
-    public String getReturnDate() {
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public Date getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate) {
+    public void setReturnDate(Date returnDate) {
         this.returnDate = returnDate;
     }
 
-    /*private Region region;
+    public String getDepartureDateString() {
+        return departureDateString;
+    }
+
+    public void setDepartureDateString(String departureDateString) {
+        this.departureDateString = departureDateString;
+    }
+
+    public String getReturnDateString() {
+        return returnDateString;
+    }
+
+    public void setReturnDateString(String returnDateString) {
+        this.returnDateString = returnDateString;
+    }
+
+    public String findAirplanes(){
+
+        planeList = searchService.getPlaneByAvailableSeat(departureDateString,departure,destination,classType,numberOfSeats);
+
+        System.out.println(planeList.size());
+        if(planeList.size() != 0){
+            return "products?faces-redirect=true";
+        }
+        return "index.xhtml";
+    }
+
+    public String getByDepartureDateWithoutTime() {
+
+        planeList = searchService.getPlaneByAvailableSeat(departureDateString,departure,destination,classType,numberOfSeats);
+        if (planeList.size() != 0){
+            return "searchResult?faces-redirect=true";
+        } else {
+            // TODO tell the user no planes are available
+        }
+
+
+        return null;
+    }
+
+    public List<ClassType> getClassTypes() {
+        return Arrays.asList(ClassType.values());
+    }
+
+    public void onDepartureDateSelect(SelectEvent event){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        this.setDepartureDateString(format.format(event.getObject()).toString());
+    }
+
+    public void onReturnDateSelect(SelectEvent event){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        this.setReturnDateString(format.format(event.getObject()).toString());
+    }
+
+    public void printResult() {
+        System.out.println(departure + " " + departureDateString + " " + destination + " " + returnDate
+                + " " + numberOfSeats + " " + classType);
+
+    }
+
+
+        /*private Region region;
     List<String> locations = new ArrayList<>();
     private boolean business;
     private boolean economy;
@@ -108,35 +176,6 @@ public class SearchController implements Serializable {
         this.business = true;
     }
 
-
-
-
-    public String getByDepartureDateWithoutTime() {
-        // get list of planes then go to searchResultController
-
-        if (economy) {
-            classType = ClassType.ECONOMY;
-        } else {
-            classType = ClassType.BUSINESS;
-        }
-
-
-        planeList = searchService.getPlaneByAvailableSeat(departureDate,departure,destination,classType,numberOfSeats);
-
-
-
-
-        if (planeList.size() != 0){
-            return "searchResult?faces-redirect=true";
-        } else {
-            // TODO tell the user no planes are available
-        }
-
-
-        return null;
-    }
-
-
     public List<Plane> getPlaneByAirline(String airlineId) {
         return searchService.getPlaneByAirline(airlineId);
     }
@@ -148,22 +187,6 @@ public class SearchController implements Serializable {
 
     public List<Flight> getAllFlight() {
         return searchService.getAllFlight();
-    }
-
-    public ClassType getClassType() {
-        return classType;
-    }
-
-    public void setClassType(ClassType classType) {
-        this.classType = classType;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
     }
 
     public List<Airline> getAllAirline() {
@@ -184,38 +207,6 @@ public class SearchController implements Serializable {
 
     public void setAllRegions(List<Region> allRegions) {
         this.allRegions = searchService.getAllRegions();;
-    }
-
-    public List<Plane> getPlaneList() {
-        return planeList;
-    }
-
-    public void setPlaneList(List<Plane> planeList) {
-        this.planeList = planeList;
-    }
-
-    public String getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public String getDeparture() {
-        return departure;
-    }
-
-    public void setDeparture(String departure) {
-        this.departure = departure;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public Region getRegion() {
@@ -272,12 +263,5 @@ public class SearchController implements Serializable {
     public void economyClassIsSelected() {
         if (economy) business = false;
     }*/
-
-    public String printResult(){
-        System.out.println(departure + " " + departureDate + " " + destination + " " + returnDate
-        + " " + numberOfSeats + " " + classType);
-
-        return "index.xhtml";
-    }
 
 }
