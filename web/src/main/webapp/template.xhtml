@@ -7,18 +7,61 @@
         >
 <f:view locale="#{languageSwitcher.locale}">
     <h:head>
-        <meta charset="UTF-8"/>
-        <title>#{msgs['page.template.title']}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <h:outputScript library="jquery-2.2.1" name="jquery.js"/>
+        <title>#{msgs['page.template.title']}</title>
         <h:outputScript library="bootstrap-3.3.6" name="/js/bootstrap.js"/>
+        <h:outputScript type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }</h:outputScript>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/jquery.min.js"/>
+        <h:outputScript library="jquery-2.2.1" name="jquery.js"/>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/modernizr.custom.js"/>
         <ui:insert name="customScripts"/>
 
         <h:outputStylesheet library="bootstrap-3.3.6" name="/css/bootstrap-jsf.css"/>
+        <h:outputStylesheet library="bootstrap-3.3.6" name="/css/bootstrap.css"/>
+        <h:outputStylesheet library="bootstrap-3.3.6" name="/css/style.css"/>
+        <h:outputStylesheet library="bootstrap-3.3.6" name="/css/flexslider.css"/>
+        <h:outputStylesheet library="bootstrap-3.3.6" name="/css/JFFormStyle-1.css"/>
+        <!--<link href="../css/bootstrap.css" type="text/css" rel="stylesheet" media="all"/>
+        <link href="../css/style.css" type="text/css" rel="stylesheet" media="all"/>
+        <link rel="stylesheet" href="../css/flexslider.css" type="text/css" media="screen" />
+        <link type="text/css" rel="stylesheet" href="../css/JFFormStyle-1.css" />-->
         <ui:insert name="customStylesheets"/>
+
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic' rel='stylesheet' type='text/css'/>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
+        <h:outputScript type="text/javascript">
+            $(document).ready(function () {
+                $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion
+                    width: 'auto', //auto or any width like 600px
+                    fit: true   // 100% fit in a container
+                });
+            });
+        </h:outputScript>
+        <!--pop-up-->
+        <h:outputScript library="bootstrap-3.3.6" name="/js/menu_jquery.js"/>
     </h:head>
     <h:body>
-        <div class="row">
+        <div id="page">
+            <div id="header">
+                <ui:insert name="header">
+                    <ui:include src="header.xhtml"/>
+                </ui:insert>
+            </div>
+            <div id="content">
+                <ui:insert name="content">
+                    <ui:include src="contentPlaceholder.xhtml"/>
+                </ui:insert>
+            </div>
+            <div id="footer">
+                <ui:insert name="footer">
+                    <ui:include src="footer.xhtml"/>
+                </ui:insert>
+            </div>
+        </div>
+        <!--<div class="row">
             <div class="container">
                 <div class="pull-right">
                     <h:form id="language_form">
@@ -34,22 +77,37 @@
                     </h:form>
                 </div>
             </div>
-        </div>
-        <div class="row">
+        </div>-->
+        <!--<div class="row">
         <div class="container">
             <ui:insert name="pageContent">
                 <h1>Page content</h1>
                 <p>This content should be replaced by the client page.</p>
             </ui:insert>
         </div>
-        </div>
-        <script>
+        </div>-->
+        <h:outputScript>
             var $pageContent = $('body > div.container');
             $pageContent.hide();
             $(function() {
                 $pageContent.fadeIn();
             });
-        </script>
+        </h:outputScript>
+        <h:outputScript defer="" library="bootstrap-3.3.6" name="/js/jquery.flexslider.js"/>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/easyResponsiveTabs.js"/>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/jquery-ui.js"/>
+        <h:outputScript library="bootstrap-3.3.6" name="/js/script.js"/>
+        <h:outputScript>$(function(){
+            SyntaxHighlighter.all();
+            });
+            $(window).load(function(){
+            $('.flexslider').flexslider({
+            animation: "slide",
+            start: function(slider){
+            $('body').removeClass('loading');
+            }
+            });
+            });</h:outputScript>
     </h:body>
 </f:view>
 </html>

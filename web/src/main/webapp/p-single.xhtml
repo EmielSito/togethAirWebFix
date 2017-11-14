@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+
+>
+
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+        <!-- banner-bottom -->
+        <div class="banner-bottom">
+            <!-- container -->
+            <div class="container">
+                <div class="faqs-top-grids">
+                    <!--single-page-->
+                    <div class="single-page">
+                        <div class="col-md-8 single-gd-lt">
+                            <div class="single-pg-hdr">
+                                <h2>#{msgs['products.results.title1']}#{detailsBean.selectedPlane.departureLocation}#{msgs['products.results.title2']}#{detailsBean.selectedPlane.destinationLocation}</h2>
+                                <p>#{detailsBean.selectedPlane.airlineCompany}</p>
+                                <p>#{msgs['products.results.departure']}#{detailsBean.selectedPlane.departureDateTime}</p>
+                                <p>#{msgs['products.results.arrival']}#{detailsBean.selectedPlane.arrivalDateTime}</p>
+                            </div>
+                            <!--<div class="flexslider">
+                                <ul class="slides">
+                                    <li data-thumb="images/p1.jpg">
+                                        <img src="../../images/p1.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p2.jpg">
+                                        <img src="../../images/p2.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p3.jpg">
+                                        <img src="../../images/p3.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p4.jpg">
+                                        <img src="../../images/p4.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p1.jpg">
+                                        <img src="../../images/p1.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p2.jpg">
+                                        <img src="../../images/p2.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p3.jpg">
+                                        <img src="../../images/p3.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p4.jpg">
+                                        <img src="../../images/p4.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p1.jpg">
+                                        <img src="../../images/p1.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p2.jpg">
+                                        <img src="../../images/p2.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p3.jpg">
+                                        <img src="../../images/p3.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p4.jpg">
+                                        <img src="../../images/p4.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p1.jpg">
+                                        <img src="../../images/p1.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p2.jpg">
+                                        <img src="../../images/p2.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p3.jpg">
+                                        <img src="../../images/p3.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p4.jpg">
+                                        <img src="../../images/p4.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p1.jpg">
+                                        <img src="../../images/p1.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p2.jpg">
+                                        <img src="../../images/p2.jpg" alt=""/>
+                                    </li>
+                                    <li data-thumb="images/p3.jpg">
+                                        <img src="../../images/p3.jpg" alt=""/>
+                                    </li>
+                                </ul>
+                            </div>
+                            <script src="../../js/jquery.flexslider.js"></script>
+                            <script>
+                                // Can also be used with $(document).ready()
+                                $(window).load(function() {
+                                    $('.flexslider').flexslider({
+                                        animation: "slide",
+                                        controlNav: "thumbnails"
+                                    });
+                                });
+                            </script>-->
+                            <ui:repeat value="#{detailsBean.booking.ticketList}" var="ticket">
+                                <div class="p-table">
+                                    <div class="p-table-grids">
+                                        <div class="col-md-3 p-table-grid">
+                                            <div class="p-table-grad-heading">
+                                                <h6>Person</h6>
+                                            </div>
+                                            <div class="p-table-grid-info">
+                                                <div class="room-basic-info">
+                                                    <h:form>
+                                                        <h:outputLabel value="First Name:" for="firstname"/>
+                                                        <h:inputText a:placeholder="First Name" id="firstname"
+                                                                     name="firstname" value="#{ticket.firstName}"/>
+                                                        <h:outputLabel value="Last Name:" for="lastname"/>
+                                                        <h:inputText a:placeholder="Last Name" id="lastname"
+                                                                     name="lastname" value="#{ticket.lastName}"/>
+                                                    </h:form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 p-table-grid">
+                                            <div class="p-table-grad-heading">
+                                                <h6>Seat info</h6>
+                                            </div>
+                                            <div class="rate-features">
+                                                <p>Current seat: <br/><h:outputLabel id="currentSeat"
+                                                                                     value="#{ticket.seat.seatNumber} - #{ticket.seat.seatClass}"/>
+                                                </p>
+                                                <!--<h:outputLink value="javascript:void(0)"
+                                                              onclick="PF('seatsdialog').show()">Choose your seat.
+                                                   </h:outputLink>-->
+                                                <!--<h:form>
+                                                    <h:commandLink onclick="PF('seatsdialog').show();" value="Choose your seat">
+                                                        <f:setPropertyActionListener value="#{ticket}" target="#{detailsBean.tempTicket}"/>
+                                                    </h:commandLink>
+                                                </h:form>-->
+                                                <p:commandLink value="Choose your seats"
+                                                               onclick="PF('seatsdialog').show();">
+                                                    <f:setPropertyActionListener value="#{ticket}"
+                                                                                 target="#{detailsBean.tempTicket}"/>
+                                                </p:commandLink>
+                                                <p:dialog widgetVar="seatsdialog" header="Choose your seat:"
+                                                          resizable="false" showEffect="clip" hideEffect="clip">
+                                                    <h:form>
+                                                        <h:selectOneMenu id="selectSeat"
+                                                                         value="#{detailsBean.tempNewSeat}">
+                                                            <f:selectItems value="#{detailsBean.tempSeats}" var="seat"
+                                                                           itemLabel="#{seat.seatNumber} - #{seat.seatClass}"
+                                                                           itemValue="#{seat.seatNumber}"/>
+                                                        </h:selectOneMenu>
+                                                        <h:commandButton value="Change">
+                                                            <f:ajax listener="#{detailsBean.onSeatChange}"
+                                                                    execute="selectSeat"
+                                                                    render="currentSeat reducedPrice originalPrice totalReducedPrice totalOriginalPrice"/>
+                                                        </h:commandButton>
+                                                    </h:form>
+                                                </p:dialog>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 p-table-grid">
+                                            <div class="p-table-grad-heading">
+                                                <h6>Rate per person</h6>
+                                            </div>
+                                            <div class="avg-rate">
+                                                <p>Price is now:</p>
+                                                <span class="p-offer">&#8364;<h:outputText id="reducedPrice"
+                                                                                           value="#{ticket.seat.reducedPrice}"/></span>
+                                                <span class="p-last-price">&#8364;<h:outputText id="originalPrice"
+                                                                                                value="#{ticket.seat.originalPrice}"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 p-table-grid">
+                                            <div class="p-table-grad-heading">
+                                                <h6>Confirmation</h6>
+                                            </div>
+                                            <div class="book-button-column">
+                                                <h:link outcome="p-single" value="Remove"/>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                        <div class="col-md-4 single-gd-rt">
+                            <div class="spl-btn">
+                                <div class="spl-btn-bor">
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                    </a>
+                                    <p>ToGethAir Offer</p>
+                                    <h:outputScript>
+                                        $(document).ready(function () {
+                                            $('[data-toggle="tooltip"]').tooltip();
+                                        });
+                                    </h:outputScript>
+                                </div>
+                                <div class="sp-bor-btn text-right">
+                                    <h4><span>&#8364;<h:outputText id="totalOriginalPrice"
+                                                                   value="#{detailsBean.totalOriginalPrice}"/></span>
+                                        &#8364;<h:outputText id="totalReducedPrice"
+                                                             value="#{detailsBean.totalReducedPrice}"/></h4>
+                                    <p class="best-pri">Best price</p>
+                                </div>
+                                <div class="sp-bor-btn">
+                                    <h3>Payment information</h3>
+                                    <br/>
+                                    <h:form>
+                                        <p>
+
+                                            <h:selectOneRadio value="#{detailsBean.paymentMethod}">
+                                                <f:selectItems value="#{detailsBean.paymentMethods}"/>
+                                                <f:ajax event="valueChange" listener="#{detailsBean.onPaymentChange}"
+                                                        render="@form" execute="@this"/>
+                                            </h:selectOneRadio>
+
+                                        </p>
+                                        <br/>
+                                        <p><h:outputLabel rendered="#{detailsBean.showable}" id="accountnumberlabel"
+                                                          value="Account Number" for="accountnumber"/></p>
+                                        <p><h:inputText rendered="#{detailsBean.showable}"
+                                                        a:placeholder="Account Number" id="accountnumber"
+                                                        name="accountnumber"/></p>
+                                        <p><h:outputLabel rendered="#{detailsBean.showable}" id="expirydatelabel"
+                                                          value="Expiry Date" for="expirydate"/></p>
+                                        <p><h:inputText rendered="#{detailsBean.showable}"
+                                                        a:placeholder="Account Number" id="expirydate"
+                                                        name="expirydate"/>
+                                        </p>
+                                    </h:form>
+                                </div>
+                                <div class="sp-bor-btn text-right"><a class="best-btn"
+                                                                      href="../../booking.html">Pay now</a></div>
+                            </div>
+                            <!--<div class="map-gd">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
+                            </div>-->
+                            <!--<div class="other-comments">
+                                <div class="comments-head">
+                                    <h3>Excellent</h3>
+                                    <p>4.5/5</p>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="comments-bot">
+                                    <p>"Vestibulum ullamcorper condimentum luctus. Ut ullamcorper elit eu auctor commodo."</p>
+                                    <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> John Doe</h4>
+                                </div>
+                                <div class="comments-bot">
+                                    <p>"Aliquam non purus quis tellus varius egestas ut vitae tellus. Pellentesque non est ac tortor maximus imperdiet at id quam."</p>
+                                    <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Luther</h4>
+                                </div>
+                                <div class="comments-bot">
+                                    <p>"Vestibulum sapien quam, interdum quis bibendum quis, malesuada a nisi. Proin at blandit justo."</p>
+                                    <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Patrick</h4>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--//single-page-->
+                </div>
+                <!--<div class="c-rooms">
+                    <div class="p-table">
+                        <div class="p-table-grids">
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Room type</h6>
+                                </div>
+                                <div class="p-table-grid-info">
+                                    <a href="#"><img src="../../images/p2.jpg" alt=""/></a>
+                                    <div class="room-basic-info">
+                                        <a href="#">Fusce vestibulum ultricies rutrum</a>
+                                        <h6>1 king bed or  2 single beds</h6>
+                                        <p>Vestibulum ullamcorper(condimentum luctus)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Options</h6>
+                                </div>
+                                <div class="rate-features">
+                                    <ul>
+                                        <li>Morbi mollis mattis</li>
+                                        <li>Donec egestas</li>
+                                        <li>Donec non risus</li>
+                                        <li>Pellentesque sem</li>
+                                        <li>Sed ut urna id metus</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Avg rate per night</h6>
+                                </div>
+                                <div class="avg-rate">
+                                    <h5>Recommended for you</h5>
+                                    <p>Price is now:</p>
+                                    <span class="p-offer">$140</span>
+                                    <span class="p-last-price">$230</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Book</h6>
+                                </div>
+                                <div class="book-button-column">
+                                    <a href="#">Book</a>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="p-table">
+                        <div class="p-table-grids">
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Room type</h6>
+                                </div>
+                                <div class="p-table-grid-info">
+                                    <a href="#"><img src="../../images/p1.jpg" alt=""/></a>
+                                    <div class="room-basic-info">
+                                        <a href="#">Fusce vestibulum ultricies rutrum</a>
+                                        <h6>1 king bed or  2 single beds</h6>
+                                        <p>Vestibulum ullamcorper(condimentum luctus)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Options</h6>
+                                </div>
+                                <div class="rate-features">
+                                    <ul>
+                                        <li>Morbi mollis mattis</li>
+                                        <li>Donec egestas</li>
+                                        <li>Donec non risus</li>
+                                        <li>Pellentesque sem</li>
+                                        <li>Sed ut urna id metus</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Avg rate per night</h6>
+                                </div>
+                                <div class="avg-rate">
+                                    <h5>Recommended for you</h5>
+                                    <p>Price is now:</p>
+                                    <span class="p-offer">$140</span>
+                                    <span class="p-last-price">$230</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Book</h6>
+                                </div>
+                                <div class="book-button-column">
+                                    <a href="#">Book</a>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="p-table">
+                        <div class="p-table-grids">
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Room type</h6>
+                                </div>
+                                <div class="p-table-grid-info">
+                                    <a href="#"><img src="../../images/p2.jpg" alt=""/></a>
+                                    <div class="room-basic-info">
+                                        <a href="#">Fusce vestibulum ultricies rutrum</a>
+                                        <h6>1 king bed or  2 single beds</h6>
+                                        <p>Vestibulum ullamcorper(condimentum luctus)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Options</h6>
+                                </div>
+                                <div class="rate-features">
+                                    <ul>
+                                        <li>Morbi mollis mattis</li>
+                                        <li>Donec egestas</li>
+                                        <li>Donec non risus</li>
+                                        <li>Pellentesque sem</li>
+                                        <li>Sed ut urna id metus</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Avg rate per night</h6>
+                                </div>
+                                <div class="avg-rate">
+                                    <h5>Recommended for you</h5>
+                                    <p>Price is now:</p>
+                                    <span class="p-offer">$140</span>
+                                    <span class="p-last-price">$230</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-table-grid">
+                                <div class="p-table-grad-heading">
+                                    <h6>Book</h6>
+                                </div>
+                                <div class="book-button-column">
+                                    <a href="#">Book</a>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+            <!-- //container -->
+        </div>
+        <!-- //banner-bottom -->
+    </ui:define>
+</ui:composition>
+</html>
