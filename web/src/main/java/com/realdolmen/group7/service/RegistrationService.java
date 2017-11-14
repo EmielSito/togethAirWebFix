@@ -6,24 +6,25 @@ import com.realdolmen.group7.repository.UserRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * Created by ESOBG49 on 7/11/2017.
  */
 
-
+@Named
 @ApplicationScoped
 public class RegistrationService {
 
     @Inject
-    UserRepository personRepository;
+    UserRepository userRepository;
 
-    public Person save(Person person) {
-        return personRepository.save(person);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
-    public Person findByEmail(String email) {
-        User user = (User) personRepository.findByEmail(email);
+    public User findByEmail(String email) {
+        User user = userRepository.findByEmail(email);
         return user;
     }
 

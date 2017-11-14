@@ -1,41 +1,30 @@
 package com.realdolmen.group7.repository;
 
-
+import com.realdolmen.group7.domain.users.Person;
 import com.realdolmen.group7.domain.users.User;
 
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * Created by ESOBG49 on 7/11/2017.
+ * Created by PMTBF30 on 8/11/2017.
  */
-public class UserRepository implements Serializable {
+@Named
+public class UserRepository implements Serializable{
 
     @PersistenceContext
-    private EntityManager entityManager;
+    EntityManager em;
 
-
-    public User save(User user){
-        entityManager.persist(user);
+    @Transactional
+    public User save(User user) {
+        em.persist(user);
         return user;
     }
 
-
-
-    public User findById(int id){
-        return entityManager.find(User.class, id);
+    public User findByEmail(String email) {
+        return em.find(User.class, email);
     }
-
-
-    public List<User> findAll(){
-        return entityManager.createQuery("select u FROM user u", User.class).getResultList();
-    }
-
-    public void remove(int userId){
-        entityManager.remove(findById(userId));
-    }
-
-
 }

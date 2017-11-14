@@ -1,42 +1,32 @@
-package com.realdolmen.group7.domain.search;
+package com.realdolmen.group7.service.pojo;
 
-import com.realdolmen.group7.domain.booking.Booking;
 
-import javax.persistence.*;
-import java.util.List;
+import com.realdolmen.group7.domain.search.Airline;
+import com.realdolmen.group7.domain.search.Location;
+import com.realdolmen.group7.domain.search.Plane;
 
 /**
- * Created by ESOBG49 on 6/11/2017.
+ * Created by ESOBG49 on 8/11/2017.
  */
+public class FlightPojo {
 
-@Entity
-public class Flight {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    //@Column(nullable = false)
     private String flightNumber;
 
-    @ManyToOne
     private Location departure;
 
-    @ManyToOne
     private Location destination;
 
-    @OneToMany
-    private List<Plane> planes;
+    private Plane plane;
 
-    @ManyToOne
     private Airline airline;
 
-    @ManyToMany(mappedBy = "flights")
-    private List<Booking> bookings;
+    private long planeId;
 
-    public Long getId() {
-        return id;
-    }
+
+    private double price;
+
+
+
 
 
     public String getFlightNumber() {
@@ -63,12 +53,14 @@ public class Flight {
         this.destination = destination;
     }
 
-    public List<Plane> getPlanes() {
-        return planes;
+
+    public Plane getPlane() {
+        return plane;
     }
 
-    public void setPlanes(List<Plane> planes) {
-        this.planes = planes;
+    public void setPlane(Plane plane) {
+        setPlaneId(plane.getId());
+        this.plane = plane;
     }
 
     public Airline getAirline() {
@@ -77,5 +69,22 @@ public class Flight {
 
     public void setAirline(Airline airline) {
         this.airline = airline;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+
+    public long getPlaneId() {
+        return planeId;
+    }
+
+    public void setPlaneId(long planeId) {
+        this.planeId = planeId;
     }
 }

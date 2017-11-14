@@ -3,6 +3,7 @@ package com.realdolmen.group7.repository;
 import com.realdolmen.group7.domain.search.*;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by PMTBF30 on 7/11/2017.
  */
-@Stateless
+@Named
 public class FlightRepository {
 
     @PersistenceContext
@@ -31,6 +32,10 @@ public class FlightRepository {
         return em.createQuery("select f.departure.airportName from Flight f", Location.class).getResultList();
     }
 
+
+    public Flight getFlightByPlane(long planeId) {
+        return (Flight)em.createQuery("select fp from flight_plane fp where fp.planeId = :arg").setParameter("arg", planeId).getSingleResult();
+    }
 
 
 }

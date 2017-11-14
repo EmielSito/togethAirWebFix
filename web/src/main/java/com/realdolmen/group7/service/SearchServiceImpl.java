@@ -5,11 +5,10 @@ import com.realdolmen.group7.repository.FlightRepository;
 
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.inject.Named;
+import java.util.*;
 
-
+@Named
 public class SearchServiceImpl implements SearchService {
 
     @Inject
@@ -68,5 +67,33 @@ public class SearchServiceImpl implements SearchService {
     public List<Flight> getAllFlight() {
         return  flightRepository.findAllFlights();
     }
+
+    @Override
+    public List<Region> getAllRegions() {
+        List<Region> regions = Arrays.asList(Region.values());
+//        Set<Region>regions=new HashSet<>();
+//        regions.add(Region.NORTHERNEUROPE);
+//        regions.add(Region.NORTHERNAFRICA);
+//        regions.add(Region.CENTRALASIA);
+//        regions.add(Region.NORTHERNAFRICA);
+//        regions.add(Region.CENTRALASIA);
+
+        return regions;
+    }
+
+
+//    @Override
+//    public List<Plane> getPlaneByAirline(String AirlineId) {
+//        List<Plane>planes=new
+//        return null;
+//    }
+//    public Map<String,List<String>> mappingRegionLocations(Region region){
+//        Map<String,List<String>>locationsMap=new HashMap<>();
+//        locationsMap.put("region",getLocationByRegion(region));
+//        return locationsMap;
+//    }
+
+
+
 
 }

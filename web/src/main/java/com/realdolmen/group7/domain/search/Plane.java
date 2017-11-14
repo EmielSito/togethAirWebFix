@@ -16,6 +16,7 @@ public class Plane {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
     private String planeNumber;
 
 
@@ -29,6 +30,19 @@ public class Plane {
     private List<Seat> seats;
 
 
+    private boolean volumeDiscountAvailable;
+
+
+    private int durationInMinutes;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getPlaneNumber() {
         return planeNumber;
@@ -50,16 +64,24 @@ public class Plane {
         return departureDate;
     }
 
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public int getDurationInMinutes() {
+        return durationInMinutes;
+    }
+
+    public void setDurationInMinutes(int durationInMinutes) {
+        this.durationInMinutes = durationInMinutes;
+    }
+
     public List<Seat> getSeats() {
         return seats;
     }
 
     public void setSeats(List<Seat> seats) {
         this.seats = seats;
-    }
-
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
     }
 
     public boolean isVolumeDiscountAvailable() {
@@ -69,27 +91,4 @@ public class Plane {
     public void setVolumeDiscountAvailable(boolean volumeDiscountAvailable) {
         this.volumeDiscountAvailable = volumeDiscountAvailable;
     }
-
-    public Date getDurationInMinutes() {
-        return durationInMinutes;
-    }
-
-    public void setDurationInMinutes(Date durationInMinutes) {
-        this.durationInMinutes = durationInMinutes;
-    }
-
-
-    private boolean volumeDiscountAvailable;
-
-
-    private Date durationInMinutes;
-
-
-
-
-
-
-
-
-
 }

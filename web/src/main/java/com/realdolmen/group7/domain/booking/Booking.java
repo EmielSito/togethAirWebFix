@@ -1,5 +1,6 @@
 package com.realdolmen.group7.domain.booking;
 
+
 import com.realdolmen.group7.domain.payment.Payment;
 import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.users.User;
@@ -19,13 +20,8 @@ public class Booking {
     private long id;
 
     @ManyToOne
-    @Column(nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "booking")
-    private List<Flight> flights;
-
-    @Column(nullable = false)
     @OneToOne(fetch = FetchType.LAZY)
     private Payment payment;
 

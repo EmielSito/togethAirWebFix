@@ -20,10 +20,13 @@ public class RegistrationController implements Serializable {
     @Inject
     RegistrationService registrationService;
 
-    private Person user = new User();
+    private User user = new User();
 
-    public Person getUser() {
-        return user;
+    public User getUser() {return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String savePerson() {
@@ -33,7 +36,7 @@ public class RegistrationController implements Serializable {
     }
 
     public String login(String email, String password) {
-        Person user = registrationService.findByEmail(email);
+        User user = registrationService.findByEmail(email);
         if(!user.getPassword().equals(password)) {
             return "login?faces-redirect=true" ;
         }

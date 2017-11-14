@@ -10,7 +10,9 @@ import java.util.List;
 /**
  * Created by ESOBG49 on 7/11/2017.
  */
+
 public interface FlightRepository {
+
 
     List<Flight> getFlights(Location destination);
 

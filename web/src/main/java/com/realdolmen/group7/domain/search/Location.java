@@ -9,12 +9,12 @@ import java.util.List;
  */
 
 @Entity
-
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private long locationId;
 
@@ -24,13 +24,11 @@ public class Location {
 
     private String airportCode;
 
-
     @Enumerated(EnumType.STRING)
     private Region region;
 
     @OneToMany
     private List<Flight> flights;
-
 
     public long getLocationId() {
         return locationId;
@@ -79,9 +77,4 @@ public class Location {
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
     }
-
-
-
-
-
 }
