@@ -203,21 +203,29 @@
                                 <div class="sp-bor-btn">
                                     <h3>Payment information</h3>
                                     <br/>
-                                    <p>
-                                        <h:form>
-                                        <h:selectOneRadio value="#{detailsBean.paymentMethod}">
-                                            <f:selectItems value="#{detailsBean.paymentMethods}"/>
-                                            <f:ajax event="valueChange" listener="#{detailsBean.onPaymentChange}" render="accountnumberlabel accountnumber"/>
-                                        </h:selectOneRadio>
-                                        </h:form>
-                                    </p>
-                                    <br/>
-                                    <p><h:outputLabel rendered="#{detailsBean.showable}" id="accountnumberlabel" value="Account Number" for="accountnumber"/></p>
-                                    <p><h:inputText rendered="#{detailsBean.showable}" a:placeholder="Account Number" id="accountnumber"
-                                                    name="accountnumber"/></p>
-                                    <p><h:outputLabel rendered="#{detailsBean.showable}" id="expirydatelabel" value="Expiry Date" for="expirydate"/></p>
-                                    <p><h:inputText rendered="#{detailsBean.showable}" a:placeholder="Account Number" id="expirydate" name="expirydate"/>
-                                    </p>
+                                    <h:form>
+                                        <p>
+
+                                            <h:selectOneRadio value="#{detailsBean.paymentMethod}">
+                                                <f:selectItems value="#{detailsBean.paymentMethods}"/>
+                                                <f:ajax event="valueChange" listener="#{detailsBean.onPaymentChange}"
+                                                        render="@form" execute="@this"/>
+                                            </h:selectOneRadio>
+
+                                        </p>
+                                        <br/>
+                                        <p><h:outputLabel rendered="#{detailsBean.showable}" id="accountnumberlabel"
+                                                          value="Account Number" for="accountnumber"/></p>
+                                        <p><h:inputText rendered="#{detailsBean.showable}"
+                                                        a:placeholder="Account Number" id="accountnumber"
+                                                        name="accountnumber"/></p>
+                                        <p><h:outputLabel rendered="#{detailsBean.showable}" id="expirydatelabel"
+                                                          value="Expiry Date" for="expirydate"/></p>
+                                        <p><h:inputText rendered="#{detailsBean.showable}"
+                                                        a:placeholder="Account Number" id="expirydate"
+                                                        name="expirydate"/>
+                                        </p>
+                                    </h:form>
                                 </div>
                                 <div class="sp-bor-btn text-right"><a class="best-btn"
                                                                       href="../../booking.html">Pay now</a></div>
