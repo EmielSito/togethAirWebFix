@@ -17,7 +17,7 @@ public class Airline {
     private String airlineId;
     private String airlineName;
 
-    @OneToMany(mappedBy = "airline")
+    @OneToMany(mappedBy = "airline", fetch = FetchType.EAGER)
     private List<Flight> flights = new ArrayList<>();
 
     public Long getId() {

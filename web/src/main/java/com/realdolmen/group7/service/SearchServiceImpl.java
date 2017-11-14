@@ -61,10 +61,14 @@ public class SearchServiceImpl implements Serializable {
            for(Plane p:planes) {
                seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), type);
                if (seats.size() >= numberOfSeat) {
+                   System.out.println("//////////////////////////////////////////////////////" + p.getId());
                    newList.add(p);
+
                }
            }
-           return newList;
+        System.out.println("//////////////////////////////////////////////////////" + newList.size());
+
+        return newList;
     }
 
     

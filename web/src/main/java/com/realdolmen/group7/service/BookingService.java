@@ -10,9 +10,8 @@ import java.util.List;
 
 public interface BookingService {
 
-    public void chooseSeatNumber(List<Seat> seats);
-    public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination,
-                                              Date departureDate, int numberOfSeat);
+    void chooseSeatNumber(List<Seat> seats);
+    public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type);
 
     //public Plane getPlaneInResultSearch(String planeNumber);
     public void getPaymentMethod();

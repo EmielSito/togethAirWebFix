@@ -18,29 +18,25 @@
             <h:form>
 
                 <h:outputLabel value="FirstName:"/>
-                <h:inputText  value="#{bookingController.ticket.firstName}" required="true"></h:inputText>
+                <h:inputText  value="#{bookingController.firstName}" required="true"></h:inputText>
 
                 <br/><br/>
                 <h:outputLabel value="LastName:"/>
-                <h:inputText  value="#{bookingController.ticket.lastName}" required="true"></h:inputText>
+                <h:inputText  value="#{bookingController.lastName}" required="true"></h:inputText>
                 <br/><br/>
 
-               <!-- <c:forEach items="#{bookingController}"var="list">
-                    <h:outputText value="#{list.}">
-                </h:outputText>
--->
+
                 <br/><br/>
 
-                <h:selectOneRadio value="#{bookingController.payment.paymentMethod}">
 
-                    <f:selectItem itemLabel="Credit card" iemValue="0" value="#{bookingController.getPaymentMethod}"/>
+
                     <h:outputLabel value="AccountNumber"/>
-                    <h:inputText  value="#{bookingController.accountNumber}" required="true"></h:inputText>
+                    <h:inputText  value="#{bookingController.accountNumber}" ></h:inputText>
                     <f:validateLength minimum="12" maximum="12"/>
                     <f:converter converterId="AccountConverter"/>
                     <br/>
                     <h:outputLabel value="ExpireDate"/>
-                    <h:inputText id="dueDate" required="true" value="#{submitRepairBean.dueDate}">
+                    <h:inputText id="dueDate" required="true" value="#{bookingController.expDate}">
                         <f:convertDateTime pattern="dd-MM-yyyy"/>
                         <f:validator validatorId="ValidatorDate"/>
                     </h:inputText>
@@ -48,14 +44,17 @@
 
                     <br/><br/>
 
-                    <f:selectItem itemLabel="Endorsement" itemValue="1" value="#{bookingController.getPaymentMethod}" />
+                    <h:outputText id="iban" value="#{bookingController.iban}"></h:outputText>
+                    <h:outputText id="bic" value="#{bookingController.bic}"></h:outputText>
+
+
 
                     <br/>
-                </h:selectOneRadio>
+
 
 
                 <br/><br/>
-                <h:commandButton value="Cancel" action=""/>
+                <h:commandButton value="Cancel" action="index"/>
                 <h:commandButton value="CONFIRM" action="#{registrationController.saveTicket()}"/>
 
 

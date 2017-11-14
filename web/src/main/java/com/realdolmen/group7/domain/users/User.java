@@ -9,7 +9,7 @@ import java.util.List;
  * Created by ESOBG49 on 6/11/2017.
  */
 @Entity
-public class User /*extends Person*/ {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

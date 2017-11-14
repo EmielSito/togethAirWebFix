@@ -30,8 +30,6 @@ public class Booking {
     @OneToMany(mappedBy = "booking")
     private List<Ticket> tickets = new ArrayList<>();
 
-    //private List<TogethAirPromotion> togethAirPromotions;
-
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date bookingDate;

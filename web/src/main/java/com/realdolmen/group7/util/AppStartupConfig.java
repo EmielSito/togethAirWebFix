@@ -23,7 +23,8 @@ public class AppStartupConfig {
     private Properties properties = new Properties();
 
     public static double marginPercentage = 0;
-
+    public static String iban = "";
+    public static String bic = "";
 
 
     public AppStartupConfig() throws ConfigException {
@@ -51,7 +52,8 @@ public class AppStartupConfig {
 
     private void getConfigurations(){
         String marginPercentageString = properties.getProperty("marginPercentage","25");
-
+        iban = properties.getProperty("iban", "");
+        bic = properties.getProperty("bic", "");
 
         try {
             marginPercentage = Double.parseDouble(marginPercentageString);

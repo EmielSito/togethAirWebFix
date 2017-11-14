@@ -1,12 +1,14 @@
 package com.realdolmen.group7.service;
 
 
+import com.realdolmen.group7.domain.booking.Ticket;
 import com.realdolmen.group7.domain.payment.PaymentMethod;
 import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Plane;
 import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.BookingRepository;
 import com.realdolmen.group7.repository.SeatRepository;
+import com.realdolmen.group7.repository.TicketRepository;
 
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -29,6 +31,9 @@ public class BookingServiceImpl implements BookingService {
     @Inject
     private SeatRepository seatRepository;
 
+    @Inject
+    private TicketRepository ticketRepository;
+
     @Override
     public void chooseSeatNumber(List<Seat> seats) {
 
@@ -38,9 +43,8 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-    public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination,
-                                              Date departureDate, int numberOfSeat) {
-        return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
+    public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type) {
+        return seatRepository.findAvailableSeatsByClassType(planeNumber, type);
     }
 
    /* @Override
@@ -48,6 +52,10 @@ public class BookingServiceImpl implements BookingService {
         return ;
     }
 */
+
+   public void saveTicket(Ticket ticket) {
+        ticketRepository.save(ticket);
+   }
 
     @Override
     public void getPaymentMethod() {

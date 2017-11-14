@@ -24,47 +24,53 @@
                 <h:outputLabel for="depDate">
                     <h:outputText value="Departure Date"/>
                 </h:outputLabel>
-                <h:inputText id="depDate" value="#{detailsPageController.searchResultController.plane.departureDate}"></h:inputText>
+                <h:outputText id="depDate" value="#{detailsPageController.searchResultController.plane.departureDate}"></h:outputText>
 
                 <br/>
 
                 <h:outputLabel for="ArrDate">
                     <h:outputText value="Arrival Date"/>
                 </h:outputLabel>
-                <h:inputText id="ArrDate" value="#{detailsPageController.searchResultController.plane.arrivalDate}"></h:inputText>
+                <h:outputText id="ArrDate" value="#{detailsPageController.searchResultController.plane.arrivalDate}"></h:outputText>
 
                 <br/>
 
                 <h:outputLabel for="airline">
                     <h:outputText value="Airline"/>
                 </h:outputLabel>
-                <h:inputText id="airline" value="#{detailsPageController.searchResultController.plane.flight.airline}"></h:inputText>
+                <h:outputText id="airline" value="#{detailsPageController.searchResultController.plane.flight.airline.airlineName}"></h:outputText>
 
                 <br/>
 
                 <h:outputLabel for="departure">
                     <h:outputText value="Departure"/>
                 </h:outputLabel>
-                <h:inputText id="departure" value="#{detailsPageController.searchResultController.plane.flight.departure}"></h:inputText>
+                <h:outputText id="departure" value="#{detailsPageController.searchResultController.plane.flight.departure.airportName}"></h:outputText>
 
                 <br/>
 
                 <h:outputLabel for="destination">
                     <h:outputText value="destination"/>
                 </h:outputLabel>
-                <h:inputText id="destination" value="#{detailsPageController.searchResultController.plane.flight.destination}"></h:inputText>
+                <h:outputText id="destination" value="#{detailsPageController.searchResultController.plane.flight.destination.airportName}"></h:outputText>
 
                 <br/>
 
-                <h:outputLabel for="discount">
-                    <h:outputText value="Discount"/>
-                </h:outputLabel>
-                <h:inputText id="discount" value="#{detailsPageController.searchResultController.plane.discount}"></h:inputText>
 
+                <h:dataTable border="1" value="#{detailsPageController.searchResultController.plane.discount}" var="discount">
+
+
+                <h:column>
+                    <f:facet name="header"> - </f:facet>
+                    Number of tickets: #{discount.numberOfTickets}
+                    <br/>
+                    Perscent: #{discount.percent}
+                </h:column>
+                </h:dataTable>
                 <br/>
 
                 <h:commandButton value="Cancel" action="index"/>
-                <h:commandButton value="SIGN IN" action="booking"/>
+                <h:commandButton value="Book Now" action="booking"/>
             </h:form>
 
         </h:body>
