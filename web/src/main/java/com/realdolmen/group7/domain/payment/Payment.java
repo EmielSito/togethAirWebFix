@@ -1,6 +1,5 @@
 package com.realdolmen.group7.domain.payment;
 
-
 import javax.persistence.*;
 
 /**
@@ -19,6 +18,11 @@ public class Payment {
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
+
+
+    public long getId() {
+        return id;
+    }
 
     public boolean isPaid() {
         return isPaid;

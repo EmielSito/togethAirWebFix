@@ -1,10 +1,10 @@
 package com.realdolmen.group7.repository;
 
-
 import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Seat;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by PMTBF30 on 7/11/2017.
  */
-@Stateless
+@Named
 public class SeatRepository {
 
     @PersistenceContext

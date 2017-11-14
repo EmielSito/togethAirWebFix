@@ -16,7 +16,17 @@ import java.util.List;
 @Named
 @SessionScoped
 public class BookingServiceImpl implements BookingService {
+    @Override
+    public void chooseSeatNumber(String seatNumber) {
 
+    }
+
+    @Override
+    public List<Seat> getAvailableSeatByPlane(String planeNumber, ClassType type, String departure, String destination, Date departureDate, int numberOfSeat) {
+        return null;
+    }
+
+/*
 
     @Inject
     private BookingRepository bookingRepository;
@@ -57,6 +67,7 @@ public class BookingServiceImpl implements BookingService {
 
         }
     }
+*/
 
 
 }
