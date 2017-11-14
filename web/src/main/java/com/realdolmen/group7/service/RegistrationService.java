@@ -6,14 +6,13 @@ import com.realdolmen.group7.repository.UserRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 
 /**
  * Created by ESOBG49 on 7/11/2017.
  */
-
-
 @ApplicationScoped
-public class RegistrationService {
+public class RegistrationService implements Serializable{
 
     @Inject
     UserRepository userRepository;

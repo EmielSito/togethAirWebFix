@@ -30,9 +30,8 @@
             </h:column>
 
             <h:column>
-                <f:facet name="header">Duration (Min)</f:facet>
-                <!-- TODO calculate duration-->
-                60 Min
+                <f:facet name="header">Arrival date</f:facet>
+                #{searchResultController.getConvertedDate(flightPlane.plane)}
             </h:column>
 
             <h:column>
@@ -57,7 +56,7 @@
                 <!-- <f:facet name = "header">Book Now</f:facet>-->
                 <h:form>
                     <!--TODO navigate to booking page while passing on the selected flight 'FlightNumber'-->
-                    <h:commandButton action="#{searchResultController.bookNow(flightPlane.plane.id)}" value="Book Now"/>
+                    <h:commandButton action="#{searchResultController.bookNow(flightPlane.plane.id)}" value="View Details"/>
                 </h:form>
             </h:column>
 

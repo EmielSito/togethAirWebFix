@@ -24,60 +24,64 @@ public class SearchServiceImpl implements Serializable {
     @Inject
     private AirlineRepository airlineRepository;
 
-    
+
     public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type) {
         return seatRepository.findAvailableSeatsByClassType(planeNumber, type);
 
     }
 
-    
+
     public List<Plane> getByDepartureDate(Date departureDate, String departure, String destination) {
         return planeRepository.findByDepartureDate(departureDate, departure, destination);
 
     }
 
-    
+
     public List<Plane> getPlaneByAirline(String airlineId) {
         return planeRepository.findPlaneByAirline(airlineId);
     }
 
-    
+
     public List<Location> getLocationByRegion(Region region) {
         return locationRepository.getLocationByRegion(region);
     }
 
-    
+
     public List<Flight> getAllFlight() {
         return flightRepository.findAllFlights();
     }
 
 
     public List<Plane> getPlaneByAvailableSeat(String departureDate, String departure, String destination, ClassType type, int numberOfSeat) {
-        List<Plane> planes =planeRepository.findByDepartureDateWithoutTime(departureDate,departure,destination);
+        List<Plane> planes = planeRepository.findByDepartureDateWithoutTime(departureDate, departure, destination);
         List<Seat> seats;
 
         List<Plane> newList = new ArrayList<>();
 
-           for(Plane p:planes) {
-               seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), type);
-               if (seats.size() >= numberOfSeat) {
-                   newList.add(p);
-               }
-           }
-           return newList;
+        for (Plane p : planes) {
+            seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), type);
+            if (seats.size() >= numberOfSeat) {
+
+                newList.add(p);
+
+            }
+        }
+
+
+        return newList;
     }
 
-    
+
     public List<Airline> getAllAirline() {
         return airlineRepository.findAllAirline();
     }
 
-    
+
     public Airline getAirlineByName(String name) {
         return airlineRepository.findByName(name);
     }
 
-    
+
     public List<Location> getAllLocation() {
         return locationRepository.findAllLocation();
     }

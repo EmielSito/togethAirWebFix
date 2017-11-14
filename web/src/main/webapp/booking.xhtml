@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:p="http://java.sun.com/jsp/jstl/fmt">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
 
 <ui:composition template="/template.xhtml">
     <ui:define name="pageContent">
@@ -13,51 +13,53 @@
             <title>Booking page</title>
         </h:head>
         <h:body>
-
             <h1>Booking</h1>
-            <h:form>
+            <h:outputText value="#{bookingController.searchResultController.plane.planeNumber}"></h:outputText>
+
+
+
+
+
+
+    <h:form>
+
+
+                <h:selectOneMenu value="#{bookingController.seatNumber}">
+                    <f:selectItems value="#{bookingController.seats}" var="seat" itemLabel="#{seat.seatNumber}" itemValue="s-#{seat.seatNumber}"/>
+                </h:selectOneMenu>
+                <br/><br/>
 
                 <h:outputLabel value="FirstName:"/>
-                <h:inputText  value="#{bookingController.ticket.firstName}" required="true"></h:inputText>
-
+                <h:inputText value="#{bookingController.firstName}" required="true"></h:inputText>
                 <br/><br/>
                 <h:outputLabel value="LastName:"/>
-                <h:inputText  value="#{bookingController.ticket.lastName}" required="true"></h:inputText>
+                <h:inputText value="#{bookingController.lastName}" required="true"></h:inputText>
+                <br/><br/>
                 <br/><br/>
 
-               <!-- <c:forEach items="#{bookingController}"var="list">
-                    <h:outputText value="#{list.}">
-                </h:outputText>
--->
-                <br/><br/>
-
-                <h:selectOneRadio value="#{bookingController.payment.paymentMethod}">
-
-                    <f:selectItem itemLabel="Credit card" iemValue="0" value="#{bookingController.getPaymentMethod}"/>
-                    <h:outputLabel value="AccountNumber"/>
-                    <h:inputText  value="#{bookingController.accountNumber}" required="true"></h:inputText>
-                    <f:validateLength minimum="12" maximum="12"/>
-                    <f:converter converterId="AccountConverter"/>
-                    <br/>
-                    <h:outputLabel value="ExpireDate"/>
-                    <h:inputText id="dueDate" required="true" value="#{submitRepairBean.dueDate}">
-                        <f:convertDateTime pattern="dd-MM-yyyy"/>
-                        <f:validator validatorId="ValidatorDate"/>
-                    </h:inputText>
-
-
-                    <br/><br/>
-
-                    <f:selectItem itemLabel="Endorsement" itemValue="1" value="#{bookingController.getPaymentMethod}" />
-
-                    <br/>
+                <h:selectOneRadio value="#{bookingController.paymentMethod}">
+                    <f:selectItem itemLabel="Credit card" itemValue="creditCard"/>
+                    <f:ajax event="change" listener="#{bookingController.show}" execute="@this" render="choice" />
+                    <f:selectItem itemLabel="Endorsement" itemValue="endorsement"/>
                 </h:selectOneRadio>
+                <h:panelGrid id="choice">
+                    <h:outputLabel value="AccountNumber"/>
+                    <h:inputText id="accountNumber" value="#{bookingController.accountNumber}">
+                        <f:validateLength minimum="12" maximum="12"/>
+                    </h:inputText>
+                    <h:message for="accountNumber" errorClass="control-label has-error" style="Color:red;"/>
+                    <br/>
+
+                    <h:outputLabel value="ExpiryDate"/>
+                    <h:inputText id="expiryDate" value="#{bookingController.expiryDate}">
+                        <f:convertDateTime pattern="yyyy-mm-dd"/></h:inputText>
+                    <h:message for="expiryDate" errorClass="control-label has-error" style="Color:red;"/>
+                </h:panelGrid>
 
 
                 <br/><br/>
-                <h:commandButton value="Cancel" action=""/>
-                <h:commandButton value="CONFIRM" action="#{registrationController.saveTicket()}"/>
-
+                <h:commandButton value="Cancel" action="/index"/>
+                <h:commandButton value="CONFIRM" action="#{ bookingController.confirmBooking}"/>
 
             </h:form>
 

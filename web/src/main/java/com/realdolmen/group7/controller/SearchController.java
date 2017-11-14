@@ -59,9 +59,6 @@ public class SearchController implements Serializable {
 
         planeList = searchService.getPlaneByAvailableSeat(departureDate,departure,destination,classType,numberOfSeats);
 
-
-
-
         if (planeList.size() != 0){
             return "searchResult?faces-redirect=true";
         } else {

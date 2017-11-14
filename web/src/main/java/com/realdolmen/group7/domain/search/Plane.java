@@ -3,9 +3,7 @@ package com.realdolmen.group7.domain.search;
 import com.realdolmen.group7.domain.payment.VolumeDiscount;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ESOBG49 on 6/11/2017.
@@ -18,13 +16,13 @@ public class Plane {
     private Long id;
 
     @OneToMany(mappedBy = "plane", fetch = FetchType.EAGER)
-    private List<Seat> seats = new ArrayList<>();
+    private Set<Seat> seats = new LinkedHashSet<>();
 
     @ManyToOne
     private Flight flight;
 
     @OneToMany(mappedBy = "plane", fetch = FetchType.EAGER)
-    private List<VolumeDiscount> discount=new ArrayList<>();
+    private Set<VolumeDiscount> discount = new LinkedHashSet<>();
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date departureDate;
@@ -50,13 +48,7 @@ public class Plane {
         return id;
     }
 
-    public List<VolumeDiscount> getDiscount() {
-        return discount;
-    }
 
-    public void setDiscount(List<VolumeDiscount> discount) {
-        this.discount = discount;
-    }
 
     public String getPlaneNumber() {
         return planeNumber;
@@ -82,24 +74,21 @@ public class Plane {
         this.arrivalDate = arrivalDate;
     }
 
-    public List<Seat> getSeats() {
+    public Set<Seat> getSeats() {
         return seats;
     }
 
-    public void setSeats(List<Seat> seats) {
+    public void setSeats(Set<Seat> seats) {
         this.seats = seats;
     }
 
-    @Override
-    public String toString() {
-        return "Plane{" +
-                "id=" + id +
-                ", seats=" + seats +
-                ", flight=" + flight +
-                ", discount=" + discount +
-                ", departureDate=" + departureDate +
-                ", arrivalDate=" + arrivalDate +
-                ", planeNumber='" + planeNumber + '\'' +
-                '}';
+    public Set<VolumeDiscount> getDiscount() {
+        return discount;
     }
+
+    public void setDiscount(Set<VolumeDiscount> discount) {
+        this.discount = discount;
+    }
+
+
 }
