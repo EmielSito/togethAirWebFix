@@ -4,9 +4,10 @@ import com.realdolmen.group7.domain.payment.VolumeDiscount;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 import java.util.List;
 
-public class VolumeDiscountRepository {
+public class VolumeDiscountRepository implements Serializable {
 
     @PersistenceContext
     EntityManager entityManager;

@@ -17,9 +17,10 @@
                 <h:outputLabel for="txtEmail">
                     <h:outputText value="Email"/>
                 </h:outputLabel>
-                <h:inputText id="txtEmail" value="#{registrationController.user.email}"></h:inputText>
-                 <f:validator validatorId="EmailValidator"/>
-
+                <h:inputText id="txtEmail" value="#{registrationController.user.email}">
+                    <f:validator validatorId="EmailValidator"/>
+                </h:inputText>
+                <h:message for="txtEmail" errorClass="control-label has-error" style="Color:red;" />
                 <br/>
 
                 <h:outputLabel for="txtPsw">
@@ -29,7 +30,7 @@
 
                 <br/>
 
-                <h:commandButton value="Cancel" action=""/>
+                <h:commandButton value="Cancel" action="/index/"/>
                 <h:commandButton value="SIGN UP" action="#{registrationController.savePerson()}"/>
             </h:form>
 

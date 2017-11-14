@@ -1,19 +1,24 @@
-package com.realdolmen.group7.service.pojo;
+package com.realdolmen.group7.validation;
+import com.realdolmen.group7.service.pojo.AccountNumber;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+import javax.faces.validator.Validator;
 
 
 @FacesConverter(forClass=AccountNumber.class,value = "AccountConverter")
 public class AccountConverter implements Converter {
 
+
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if(value==null || value.trim().equals("")) {
-            return null;
+            FacesMessage message=new FacesMessage("error: enter 12 number");
+            throw new ConverterException(message);
         }
 
         if(value.length()!=12) {

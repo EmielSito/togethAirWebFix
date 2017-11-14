@@ -24,6 +24,26 @@ public class FlightPojo {
 
     private double price;
 
+    private int numberOfTickets;
+
+    private double percentage;
+
+
+    public int getNumberOfTickets() {
+        return numberOfTickets;
+    }
+
+    public void setNumberOfTickets(int numberOfTickets) {
+        this.numberOfTickets = numberOfTickets;
+    }
+
+    public double getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(double percentage) {
+        this.percentage = percentage;
+    }
 
     public String getFlightNumber() {
         return flightNumber;
@@ -55,7 +75,7 @@ public class FlightPojo {
     }
 
     public void setPlane(Plane plane) {
-      //  setPlaneId(plane.getId());
+        setPlaneId(plane.getId());
         this.plane = plane;
     }
 

@@ -14,6 +14,14 @@ import java.util.List;
 public class Plane {
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,6 +46,14 @@ public class Plane {
     private Date departureDate;
 
     private boolean volumeDiscountAvailable;
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
 
     @ManyToOne
     private Flight flight;

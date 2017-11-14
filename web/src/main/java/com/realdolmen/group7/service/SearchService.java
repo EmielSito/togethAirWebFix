@@ -11,9 +11,9 @@ import java.util.List;
 public interface SearchService {
 
 
-   public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type);
+   public List<Seat> getAvailableSeat(String planeNumber, ClassType type);
 
-   public List<Plane> getByDepartureDate(Date departureDate, String departure, String destination);
+   public List<Plane> getByDepartureDate(String departureDate, String departure, String destination);
 
    public List<Plane> getPlaneByAirline(String airlineId);
 
@@ -21,7 +21,7 @@ public interface SearchService {
 
    public List<Flight> getAllFlight();
 
-   public List<Plane> getPlaneByAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type, int numberOfSeat);
+   public List<Plane> getPlaneByAvailableSeat( String departure, String destination, String departureDate, ClassType type, int numberOfSeat);
 
    public List<Airline> getAllAirline();
 
@@ -29,5 +29,6 @@ public interface SearchService {
 
    public List<Location> getAllLocation();
 
+   public  List<Region> getAllRegions();
 
 }

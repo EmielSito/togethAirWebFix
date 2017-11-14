@@ -5,16 +5,17 @@ import com.realdolmen.group7.domain.search.Plane;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class PlaneRepository {
+public class PlaneRepository implements Serializable {
 
     @PersistenceContext
     EntityManager em;
 
 
-    public List<Plane> findByDepartureDate(Date departureDate, String departure, String destination){
+    public List<Plane> findByDepartureDate(String departureDate, String departure, String destination){
         return em.createQuery("select p from Flight f join f.planes p where f.departure " +
                 "=:args1 and f.destination =:args2 and p.departureDate=:args3",Plane.class).setParameter("args1",departure)
                 .setParameter("args2",destination).setParameter("args3",departureDate).getResultList();

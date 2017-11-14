@@ -5,12 +5,14 @@ import com.realdolmen.group7.repository.*;
 
 
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 
-public class SearchServiceImpl implements SearchService {
+public class SearchServiceImpl implements SearchService,Serializable{
 
     @Inject
     private FlightRepository flightRepository;
@@ -25,13 +27,13 @@ public class SearchServiceImpl implements SearchService {
 
 
     @Override
-    public List<Seat> getAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type) {
-        return seatRepository.findAvailableSeatsByClassType(planeNumber, departure, destination, departureDate, type);
+    public List<Seat> getAvailableSeat(String planeNumber, ClassType type) {
+        return seatRepository.findAvailableSeatsByClassType(planeNumber, type);
 
     }
 
     @Override
-    public List<Plane> getByDepartureDate(Date departureDate, String departure, String destination) {
+    public List<Plane> getByDepartureDate(String departureDate, String departure, String destination) {
         return planeRepository.findByDepartureDate(departureDate, departure, destination);
 
     }
@@ -51,12 +53,12 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Plane> getPlaneByAvailableSeat(String planeNumber, String departure, String destination, Date departureDate, ClassType type, int numberOfSeat) {
+    public List<Plane> getPlaneByAvailableSeat(String departure, String destination, String departureDate, ClassType type, int numberOfSeat) {
         List<Plane> planes=planeRepository.findByDepartureDate(departureDate,departure,destination);
         List<Seat> seats;
         List<Plane>resultPlaneList=new ArrayList<>();
            for(Plane p:planes) {
-               seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), departure, destination, departureDate, type);
+               seats = seatRepository.findAvailableSeatsByClassType(p.getPlaneNumber(), type);
                if (seats.size() >= numberOfSeat) {
                    resultPlaneList.add(p);
                }
@@ -77,6 +79,11 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public List<Location> getAllLocation() {
         return locationRepository.findAllLocation();
+    }
+
+    @Override
+    public List<Region> getAllRegions() {
+        return Arrays.asList(Region.values());
     }
 
 }
