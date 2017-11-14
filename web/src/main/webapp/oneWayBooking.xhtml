@@ -40,19 +40,21 @@
                 <h:outputLabel for="txtFlyingFrom">
                     <h:outputText value="Flying From"/>
                 </h:outputLabel>
-                <h:inputText id="txtFlyingFrom" value="#{flight.departure}" required="true"/>
+                <!--h:inputText id="txtFlyingFrom" value="#{searchController}" required="true"/--><!--departure-->
                 <br/><br/><br/>
 
                 <h:outputLabel for="txtFlyingTo">
                     <h:outputText value="Flying To"/>
                 </h:outputLabel>
-                <h:inputText id="txtFlyingTo" value="#{flight.destination}" required="true"/>
+                <!--h:inputText id="txtFlyingTo" value="#{searchController}" required="true"/--><!--destination-->
                 <br/><br/><br/>
 
                 <h:outputLabel for="txtDepartureDate">
                     <h:outputText value="Departure Date"/>
                 </h:outputLabel>
-                <h:inputText id="txtDepartureDate" value="#{plane.departureTime}" required="true"/>
+                <!--h:inputText id="txtDepartureDate" value="#{searchController.departureTime}" required="true"--><!--departureTime-->
+                    <!--f:convertDateTime pattern="dd/MM/yyyy"/-->
+                <!--/h:inputText-->
                 <br/><br/><br/>
 
                 <h:outputLabel for="active">
@@ -74,8 +76,8 @@
                 <h:outputLabel for="txtNbreSeats">
                     <h:outputText value="Number of Seats: "/>
                 </h:outputLabel>
-                <h:inputText id="txtNbreSeats" value="#{searchController.}" required="true"/>
-
+                <h:inputText id="txtNbreSeats" value="#{searchController.nbreOfSeats}" required="true"/>
+                <br/><br/><br/>
                 <h:commandButton value="Search" action="#{searchController.getAllFlight}"/>
 
             </h:form>

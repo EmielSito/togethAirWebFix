@@ -17,15 +17,26 @@ import java.util.*;
 public class SearchController {
     @Inject
     private SearchServiceImpl searchService;
+    private int nbreOfSeats;
 
     private Region test;
     List<String> locations = new ArrayList<>();
     private boolean business;
     private boolean economy;
 
+    public int getNbreOfSeats() {
+        return nbreOfSeats;
+    }
+
+    public void setNbreOfSeats(int nbreOfSeats) {
+        this.nbreOfSeats = nbreOfSeats;
+    }
+
     @PostConstruct
     public void prepareCheckBox() {
         this.business = true;
+
+
     }
     public Region getTest() {
         return test;
