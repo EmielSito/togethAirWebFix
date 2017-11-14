@@ -4,18 +4,13 @@ import com.realdolmen.group7.domain.booking.Booking;
 import com.realdolmen.group7.domain.booking.Ticket;
 import com.realdolmen.group7.domain.payment.Payment;
 import com.realdolmen.group7.domain.payment.PaymentMethod;
-import com.realdolmen.group7.domain.search.ClassType;
-
 import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.search.Plane;
 import com.realdolmen.group7.domain.search.Seat;
-import com.realdolmen.group7.service.BookingService;
 import com.realdolmen.group7.service.BookingServiceImpl;
 import com.realdolmen.group7.service.TicketService;
-
 import com.realdolmen.group7.service.pojo.SeatAvailable;
 import com.realdolmen.group7.util.DateUtils;
-
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -23,7 +18,6 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
-
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -200,7 +194,7 @@ public class BookingController implements Serializable {
         bookingService.saveTicket(ticket);
 
         ticket.setSeat(tempSeats.get(0));
-        bookingService.savePayment(payment);
+        bookingService.updatePayment(payment);
         bookingService.updateTicket(ticket);
         return "thank?faces-redirect=true";
     }

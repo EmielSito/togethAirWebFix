@@ -95,8 +95,6 @@ public class SearchResultController implements Serializable {
         return flightPojos;
     }
 
-
-
     public void setFlightPojos(List<FlightPojo> flightPojos) {
         this.flightPojos = flightPojos;
     }
@@ -108,7 +106,6 @@ public class SearchResultController implements Serializable {
     public void setPlanes(List<Plane> planes) {
         this.planes = planes;
     }
-
 
     public long getSelectedPlane() {
         return selectedPlane;
@@ -124,12 +121,7 @@ public class SearchResultController implements Serializable {
         for(Plane p: planes) {
 
             if(p.getId() == planeId) {
-
-
                 plane = p;
-
-
-
                 break;
             }
         }

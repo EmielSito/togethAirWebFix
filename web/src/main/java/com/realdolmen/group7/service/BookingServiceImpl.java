@@ -2,31 +2,24 @@ package com.realdolmen.group7.service;
 
 
 import com.realdolmen.group7.domain.booking.Booking;
-
 import com.realdolmen.group7.domain.booking.Ticket;
 import com.realdolmen.group7.domain.payment.Payment;
-import com.realdolmen.group7.domain.payment.PaymentMethod;
 import com.realdolmen.group7.domain.search.ClassType;
 import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.BookingRepository;
 import com.realdolmen.group7.repository.PaymentRepository;
 import com.realdolmen.group7.repository.SeatRepository;
-import com.realdolmen.group7.service.pojo.BookingPojo;
-
 import com.realdolmen.group7.repository.TicketRepository;
+import com.realdolmen.group7.service.pojo.BookingPojo;
 
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.ManyToMany;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -61,6 +54,11 @@ public class BookingServiceImpl implements Serializable {
 
     public void savePayment(Payment payment) {
         paymentRepository.savePayment(payment);
+
+    }
+
+    public void updatePayment(Payment payment) {
+        paymentRepository.updatePayment(payment);
 
     }
 

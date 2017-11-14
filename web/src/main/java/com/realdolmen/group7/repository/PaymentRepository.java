@@ -17,4 +17,8 @@ public class PaymentRepository {
         em.persist(payment);
     }
 
+    public void updatePayment (Payment payment) {
+        em.merge(payment);
+    }
+
 }
