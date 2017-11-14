@@ -13,4 +13,14 @@ import java.util.List;
 public interface FlightService {
 
 
+    public Flight getFlightByPlane(long planeId) ;
+
+    public Flight createFlight(Flight flight);
+
+    public void deleteFlight(Flight flight);
+
+    public Flight updateFlight(Flight flight);
+
+
+
 }

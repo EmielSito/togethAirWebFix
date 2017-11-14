@@ -15,21 +15,26 @@ public class PlaneRepository implements Serializable {
     EntityManager em;
 
 
-    public List<Plane> findByDepartureDate(String departureDate, String departure, String destination){
+    public List<Plane> findByDepartureDate(String departureDate, String departure, String destination) {
         return em.createQuery("select p from Flight f join f.planes p where f.departure " +
-                "=:args1 and f.destination =:args2 and p.departureDate=:args3",Plane.class).setParameter("args1",departure)
-                .setParameter("args2",destination).setParameter("args3",departureDate).getResultList();
+                "=:args1 and f.destination =:args2 and p.departureDate=:args3", Plane.class).setParameter("args1", departure)
+                .setParameter("args2", destination).setParameter("args3", departureDate).getResultList();
     }
 
-    public List<Plane> findPlaneByAirline(String airlineId){
-        return em.createQuery("select p from Airline a join a.flights f join f.planes p where a.airlineId =:args",Plane.class)
-                .setParameter("args",airlineId)
+    public List<Plane> findPlaneByAirline(String airlineId) {
+        return em.createQuery("select p from Airline a join a.flights f join f.planes p where a.airlineId =:args", Plane.class)
+                .setParameter("args", airlineId)
                 .getResultList();
     }
 
 
-    public Plane findPlaneById(String planeNumber ){
+    public Plane findPlaneById(String planeNumber) {
         return em.find(Plane.class, planeNumber);
     }
 
+
+    public List<Plane> findPlanesByFlightNumber(String flightNumber){
+        return em.createQuery("select p from Plane p where p.flight.flightNumber=:args",Plane.class)
+                .setParameter("args",flightNumber).getResultList();
+    }
 }

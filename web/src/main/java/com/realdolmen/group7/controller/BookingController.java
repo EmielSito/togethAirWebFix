@@ -51,10 +51,9 @@ public class BookingController implements Serializable{
     private Payment payment;
     private SeatAvailable seat;
     private boolean showable=false;
-    private String paymentMethod="";
+    private String paymentMethod="creditCard";
     private String accountNumber;
     private Date expiryDate;
-
     public SeatAvailable getSeat() {
         return seat;
     }
@@ -64,12 +63,9 @@ public class BookingController implements Serializable{
     }
 
 
-
     public String getAccountNumber() {
         return accountNumber;
     }
-
-
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
@@ -118,15 +114,6 @@ public class BookingController implements Serializable{
         }
     }
 
-    public void changeValue(ValueChangeEvent event) {
-
-        if(event.getNewValue().equals(PaymentMethod.CREDITCARD)){
-            setShowable(true);
-
-        }else if( event.getNewValue().equals(PaymentMethod.ENDORSEMENT));
-        setShowable(false);
-    }
-
     public Ticket getTicket() {
         return ticket;
     }
@@ -144,10 +131,6 @@ public class BookingController implements Serializable{
         return ticketService.save(ticket);
     }
 
-    public PaymentMethod[] listPaymentMethod(){
-
-        return PaymentMethod.values();
-    }
 
 
 }

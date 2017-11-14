@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+<ui:composition template="/template.xhtml">
+    <ui:define name="pageContent">
+
+        <h:head>
+            <title>FlightMagament page</title>
+        </h:head>
+        <h:body>
+            <h1>Flight Management</h1>
+            <h:form>
+
+
+                <h:commandButton value="SEARCH" action="#{searchResultController}"/>
+
+
+
+
+
+
+
+                <h:commandButton value="CREATE" action="#{airlineAdministrationController.createFlight()}"/>
+                <h:commandButton value="UPDATE" action="#{airlineAdministrationController.updateFlight()}"/>
+                <h:commandButton value="DELETE" action="#{airlineAdministrationController.deleteFlight()}"/>
+
+
+
+                <br/><br/>
+                <h:commandButton value="Cancel" action="/index"/>
+
+
+            </h:form>
+
+        </h:body>
+
+    </ui:define>
+</ui:composition>
+
+</html>

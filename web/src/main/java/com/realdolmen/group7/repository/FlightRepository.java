@@ -1,5 +1,6 @@
 package com.realdolmen.group7.repository;
 
+import com.realdolmen.group7.domain.booking.Booking;
 import com.realdolmen.group7.domain.search.*;
 
 import javax.ejb.Stateless;
@@ -36,5 +37,15 @@ public class FlightRepository {
         return (Flight)em.createQuery("select fp from flight_plane fp where fp.planeId = :arg").setParameter("arg", planeId).getSingleResult();
     }
 
+    public Flight createFlight(Flight flight){
+       em.persist(flight);
+       return flight;
+    }
 
+    public void deleteFlight(Flight flight){
+        em.remove(flight);
+    }
+    public Flight updateFlight(Flight flight){
+        return em.merge(flight);
+    }
 }
