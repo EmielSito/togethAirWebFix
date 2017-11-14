@@ -22,6 +22,7 @@ public class FlightPojo {
 
     private long planeId;
 
+
     private double price;
 
     private int numberOfTickets;
