@@ -24,14 +24,78 @@ public class SearchController implements Serializable {
     @Inject
     private SearchServiceImpl searchService;
 
-    private String departureDate;
+    private String departureDate="25/11/2017";
+    private String returnDate="25/11/2017";
     private String departure;
-    private String destination;
-    private ClassType classType;
-    private int numberOfSeats;
+    private String destination="Rome";
+    private ClassType classType=ClassType.ECONOMY;
+    private int numberOfSeats=2;
 
+    public List<Plane> getPlaneList() {
+        return planeList;
+    }
 
-    private Region region;
+    public void setPlaneList(List<Plane> planeList) {
+        this.planeList = planeList;
+    }
+
+    public SearchServiceImpl getSearchService() {
+        return searchService;
+    }
+
+    public void setSearchService(SearchServiceImpl searchService) {
+        this.searchService = searchService;
+    }
+
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public String getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public ClassType getClassType() {
+        return classType;
+    }
+
+    public void setClassType(ClassType classType) {
+        this.classType = classType;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    /*private Region region;
     List<String> locations = new ArrayList<>();
     private boolean business;
     private boolean economy;
@@ -207,6 +271,13 @@ public class SearchController implements Serializable {
 
     public void economyClassIsSelected() {
         if (economy) business = false;
+    }*/
+
+    public String printResult(){
+        System.out.println(departure + " " + departureDate + " " + destination + " " + returnDate
+        + " " + numberOfSeats + " " + classType);
+
+        return "index.xhtml";
     }
 
 }

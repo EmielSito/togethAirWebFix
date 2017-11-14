@@ -23,8 +23,6 @@ public class LanguageSwitcher implements Serializable {
 
     public void changeLanguage(String language) {
         locale = new Locale(language);
-        HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        session.setAttribute("locale", locale);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
     }
 
