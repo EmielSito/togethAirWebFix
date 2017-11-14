@@ -196,16 +196,30 @@
                                 <div class="product-right-top">
                                     <div class="p-left">
                                         <div class="p-right-img">
-                                            <h:link outcome="p-single"/>
+                                            <h:form>
+                                            <h:commandLink action="p-single">
+                                                <f:setPropertyActionListener value="#{searchResult}" target="#{detailsBean.selectedPlane}"/>
+                                            </h:commandLink>
+                                            </h:form>
                                         </div>
                                     </div>
                                     <div class="p-right">
                                         <div class="col-md-6 p-right-left">
-                                            <h:link outcome="p-single" value="#{msgs['products.results.title1']}#{searchResult.departureLocation}#{msgs['products.results.title2']}#{searchResult.destinationLocation}"/>
+                                            <h:form>
+                                                <h:commandLink action="p-single" value="#{msgs['products.results.title1']}#{searchResult.departureLocation}#{msgs['products.results.title2']}#{searchResult.destinationLocation}">
+                                                    <f:setPropertyActionListener value="#{searchResult}" target="#{detailsBean.selectedPlane}"/>
+                                                </h:commandLink>
+                                            </h:form>
                                             <p>#{msgs['products.results.departure']}#{searchResult.departureDateTime}</p>
                                             <p>#{msgs['products.results.arrival']}#{searchResult.arrivalDateTime}</p>
                                             <br/>
-                                            <p class="p-call"><h:link value="#{msgs['products.results.check']}" outcome="p-single"/></p>
+                                            <p class="p-call">
+                                                <h:form>
+                                                    <h:commandLink action="p-single" value="#{msgs['products.results.check']}">
+                                                        <f:setPropertyActionListener value="#{searchResult}" target="#{detailsBean.selectedPlane}"/>
+                                                    </h:commandLink>
+                                                </h:form>
+                                            </p>
                                         </div>
                                         <div class="col-md-6 p-right-right">
                                             <h6>#{searchResult.airlineCompany}</h6>

@@ -2208,6 +2208,7 @@ top:0;
 span.menu {
     display: none;
 }
+
 /*-- responsive-start-here --*/
 @media (max-width:1080px){
 	.top-nav ul li a {
@@ -2777,6 +2778,7 @@ span.menu {
 	.single-pg-hdr p {
 		font-size: .9em;
 	}
+
 	.single-gd-lt {
 		padding: 0;
 	}

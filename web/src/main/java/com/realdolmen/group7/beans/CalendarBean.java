@@ -2,10 +2,10 @@ package com.realdolmen.group7.beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 import java.util.Date;
 
-@ManagedBean
-@SessionScoped
+@Named
 public class CalendarBean {
     private Date date = new Date();
 
