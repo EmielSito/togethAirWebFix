@@ -3,6 +3,7 @@ package com.realdolmen.group7.controller;
 import com.realdolmen.group7.domain.payment.VolumeDiscount;
 import com.realdolmen.group7.domain.search.Flight;
 import com.realdolmen.group7.domain.search.Plane;
+import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.repository.PlaneRepository;
 import com.realdolmen.group7.repository.VolumeDiscountRepository;
 import com.realdolmen.group7.service.SearchServiceImpl;
