@@ -15,17 +15,12 @@
         <h:body>
             <h1>Booking</h1>
             <h:outputText value="#{bookingController.searchResultController.plane.planeNumber}"></h:outputText>
-
-
-
-
-
-
-    <h:form>
-
+            <h:form>
+            <ui:repeat value="#{bookingController.tickets}" var="ticket">
 
                 <h:selectOneMenu value="#{bookingController.seatNumber}">
-                    <f:selectItems value="#{bookingController.seats}" var="seat" itemLabel="#{seat.seatNumber}" itemValue="s-#{seat.seatNumber}"/>
+                    <f:selectItems value="#{bookingController.seats}" var="seat" itemLabel="#{seat.seatNumber}"
+                                   itemValue="s-#{seat.seatNumber}"/>
                 </h:selectOneMenu>
                 <br/><br/>
 
@@ -37,9 +32,18 @@
                 <br/><br/>
                 <br/><br/>
 
+
+
+
+                <br/><br/>
+
+
+
+            </ui:repeat>
+
                 <h:selectOneRadio value="#{bookingController.paymentMethod}">
                     <f:selectItem itemLabel="Credit card" itemValue="creditCard"/>
-                    <f:ajax event="change" listener="#{bookingController.show}" execute="@this" render="choice" />
+                    <f:ajax event="change" listener="#{bookingController.show}" execute="@this" render="choice"/>
                     <f:selectItem itemLabel="Endorsement" itemValue="endorsement"/>
                 </h:selectOneRadio>
                 <h:panelGrid id="choice">
@@ -55,12 +59,8 @@
                         <f:convertDateTime pattern="yyyy-mm-dd"/></h:inputText>
                     <h:message for="expiryDate" errorClass="control-label has-error" style="Color:red;"/>
                 </h:panelGrid>
-
-
-                <br/><br/>
                 <h:commandButton value="Cancel" action="/index"/>
                 <h:commandButton value="CONFIRM" action="#{ bookingController.confirmBooking}"/>
-
             </h:form>
 
         </h:body>

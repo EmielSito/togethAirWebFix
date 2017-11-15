@@ -139,7 +139,6 @@ public class SearchResultController implements Serializable {
             }
         }
 
-        System.out.println(plane);
         return "details?faces-redirect=true";
     }
 

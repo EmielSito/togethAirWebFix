@@ -22,6 +22,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -45,17 +46,23 @@ public class BookingController implements Serializable {
     private String lastName;
 
     private SeatAvailable seat;
-    private boolean showable = false;
-    private String paymentMethod = "creditCard";
+    private boolean showable = true;
+    private String paymentMethod = "CREDITCARD";
     private String accountNumber;
     private Date expiryDate;
     private String seatNumber;
     private Payment payment = new Payment();
+    private Plane selectedPlane;
+    private List<Ticket> tickets = new ArrayList<>();
+    private int numberOfPassengers;
+    private Ticket tempTicket;
 
     @PostConstruct
     public void init() {
-        seats = bookingService.getAvailableSeatByPlane(searchResultController.getPlane().getPlaneNumber(), searchController.getClassType());
-        System.out.println("-----------------------------" + seats.size());
+        selectedPlane = searchResultController.getPlane();
+        seats = bookingService.getAvailableSeatByPlane(selectedPlane.getPlaneNumber(), searchController.getClassType());
+        numberOfPassengers = searchController.getNumberOfSeats();
+        this.initTickets();
     }
 
     public String getFirstName() {
@@ -141,10 +148,41 @@ public class BookingController implements Serializable {
         return payment;
     }
 
+    public Plane getSelectedPlane() {
+        return selectedPlane;
+    }
+
+    public void setSelectedPlane(Plane selectedPlane) {
+        this.selectedPlane = selectedPlane;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
+    }
+
+    public void setNumberOfPassengers(int numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
+    }
+
+    public Ticket getTempTicket() {
+        return tempTicket;
+    }
+
+    public void setTempTicket(Ticket tempTicket) {
+        this.tempTicket = tempTicket;
+    }
 
     public void show(AjaxBehaviorEvent event) {
 
-        if (paymentMethod.equals("creditCard")) {
+        if (paymentMethod.equals("CREDITCARD")) {
 
             this.payment.setPaymentMethod(PaymentMethod.CREDITCARD);
             setShowable(true);
@@ -156,7 +194,11 @@ public class BookingController implements Serializable {
 
     @Transactional
     public String confirmBooking() {
-        Seat seat = new Seat();
+
+        for(Ticket ticket : getTickets()){
+            System.out.println(ticket.getFirstName() + ticket.getLastName() + ticket.getSeat().getSeatNumber());
+        }
+        /*Seat seat = new Seat();
 
         List<Seat> tempSeats = new ArrayList<>();
         tempSeats = seats;
@@ -196,7 +238,38 @@ public class BookingController implements Serializable {
         ticket.setSeat(tempSeats.get(0));
         bookingService.updatePayment(payment);
         bookingService.updateTicket(ticket);
-        return "thank?faces-redirect=true";
+        return "thank?faces-redirect=true";*/
+
+        return "p-single.xhtml";
+    }
+
+    public double getTotalPrice(){
+        double result = 0.0;
+        for(Ticket ticket : tickets){
+            result += ticket.getSeat().getBasePrice();
+        }
+
+        return result;
+
+
+    }
+
+    public List<PaymentMethod> getPaymentMethods(){
+        return Arrays.asList(PaymentMethod.values());
+    }
+
+    public void initTicket(Ticket ticket){
+        System.out.println(firstName);
+        System.out.println(ticket.getSeat().getSeatNumber());
+    }
+
+    private void initTickets() {
+        for(int i=0; i < numberOfPassengers; i++){
+            Ticket newTicket = new Ticket();
+            newTicket.setSeat(seats.remove(0));
+            newTicket.setPlane(selectedPlane);
+            tickets.add(newTicket);
+        }
     }
 
 

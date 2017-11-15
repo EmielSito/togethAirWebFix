@@ -5,7 +5,7 @@ import com.realdolmen.group7.domain.search.Seat;
 import com.realdolmen.group7.service.SearchServiceImpl;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -37,8 +37,6 @@ public class DetailsPageController implements Serializable{
 
     @PostConstruct
     private void init(){
-
-        System.out.println(searchResultController.getPlane().getPlaneNumber());
         this.selectedPlane = searchResultController.getPlane();
         this.numberOfPassenger = searchController.getNumberOfSeats();
     }
@@ -93,18 +91,8 @@ public class DetailsPageController implements Serializable{
         return result;
     }
 
-    public String getNumberPassengersInfo(){
-        String messageBundle= FacesContext.getCurrentInstance().getApplication().getMessageBundle();
-        ResourceBundle bundle = ResourceBundle.getBundle(messageBundle);
-        if(this.getNumberOfPassenger()==1){
-            String value = bundle.getString("details.price.totalone");
-            return value;
-        }
-
-        else{
-            String value = bundle.getString("details.price.totalone");
-            return value;
-        }
+    public String bookNow(){
+        return "booking?faces-redirect=true";
     }
 
     private List<Seat> convertSeatSetToList(Set<Seat> seatSet){

@@ -40,7 +40,10 @@
                                 </div>
                                 <div class="sp-bor-btn text-right">
                                     <h4>&#8364;<h:outputText value="#{detailsPageController.getTotalPrice()}"/></h4>
-                                    <p class="best-pri"><h:outputText value="#{detailsPageController.getNumberPassengersInfo()}"/></p>
+                                    <p class="best-pri"><h:outputFormat value="#{msgs['details.price.totalone']}">
+                                        <f:param value="#{detailsPageController.numberOfPassenger}"/>
+                                    </h:outputFormat></p>
+                                    <h:form><h:commandLink styleClass="best-btn" action="#{detailsPageController.bookNow()}" value="#{msgs['details.price.pay']}"/></h:form>
                                 </div>
                             </div>
                         </div>
