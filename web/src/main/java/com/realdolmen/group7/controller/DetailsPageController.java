@@ -92,7 +92,7 @@ public class DetailsPageController implements Serializable{
     }
 
     public String bookNow(){
-        return "booking?faces-redirect=true";
+        return "p-single?faces-redirect=true";
     }
 
     private List<Seat> convertSeatSetToList(Set<Seat> seatSet){

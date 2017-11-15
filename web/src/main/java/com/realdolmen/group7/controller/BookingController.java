@@ -44,10 +44,12 @@ public class BookingController implements Serializable {
 
     private String firstName;
     private String lastName;
+    private List<String> tempFirstNames;
+    private List<String> tempLastNames;
 
     private SeatAvailable seat;
-    private boolean showable = true;
-    private String paymentMethod = "CREDITCARD";
+    private boolean showable = false;
+    private String paymentMethod;
     private String accountNumber;
     private Date expiryDate;
     private String seatNumber;
@@ -62,6 +64,8 @@ public class BookingController implements Serializable {
         selectedPlane = searchResultController.getPlane();
         seats = bookingService.getAvailableSeatByPlane(selectedPlane.getPlaneNumber(), searchController.getClassType());
         numberOfPassengers = searchController.getNumberOfSeats();
+        tempFirstNames = new ArrayList<>();
+        tempLastNames = new ArrayList<>();
         this.initTickets();
     }
 
@@ -71,6 +75,7 @@ public class BookingController implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+        this.tempFirstNames.add(this.firstName);
     }
 
     public String getLastName() {
@@ -79,6 +84,7 @@ public class BookingController implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+        this.tempLastNames.add(lastName);
     }
 
     public SearchResultController getSearchResultController() {
@@ -180,13 +186,30 @@ public class BookingController implements Serializable {
         this.tempTicket = tempTicket;
     }
 
+    public List<String> getTempFirstNames() {
+        return tempFirstNames;
+    }
+
+    public void setTempFirstNames(List<String> tempFirstNames) {
+        this.tempFirstNames = tempFirstNames;
+    }
+
+    public List<String> getTempLastNames() {
+        return tempLastNames;
+    }
+
+    public void setTempLastNames(List<String> tempLastNames) {
+        this.tempLastNames = tempLastNames;
+    }
+
     public void show(AjaxBehaviorEvent event) {
 
-        if (paymentMethod.equals("CREDITCARD")) {
+        if(paymentMethod.equals("creditCard")){
 
             this.payment.setPaymentMethod(PaymentMethod.CREDITCARD);
             setShowable(true);
-        } else {
+        }
+        else {
             this.payment.setPaymentMethod(PaymentMethod.ENDORSEMENT);
             setShowable(false);
         }
@@ -194,9 +217,14 @@ public class BookingController implements Serializable {
 
     @Transactional
     public String confirmBooking() {
-
+        for(int i = 0; i < tempFirstNames.size();i++){
+            this.getTickets().get(i).setFirstName(tempFirstNames.get(i));
+            this.getTickets().get(i).setLastName(tempLastNames.get(i));
+        }
         for(Ticket ticket : getTickets()){
             System.out.println(ticket.getFirstName() + ticket.getLastName() + ticket.getSeat().getSeatNumber());
+            System.out.println(firstName);
+            bookingService.chooseSeatNumber(ticket.getSeat());
         }
         /*Seat seat = new Seat();
 
@@ -206,9 +234,9 @@ public class BookingController implements Serializable {
 
         bookingService.chooseSeatNumber(tempSeats.get(0));
 
+        List<Ticket> tickets = new ArrayList<>();*/
 
         List<Flight> flights = new ArrayList<>();
-        List<Ticket> tickets = new ArrayList<>();
 
         Booking booking = new Booking();
         Plane plane = searchResultController.getPlane();
@@ -224,23 +252,29 @@ public class BookingController implements Serializable {
         booking.setPayment(payment);
         //booking.setUser();
         bookingService.savePayment(payment);
-        Ticket ticket = new Ticket();
+        /*Ticket ticket = new Ticket();
         ticket.setLastName(lastName);
         ticket.setFirstName(firstName);
         ticket.setPlane(searchResultController.getPlane());
         ticket.setBooking(booking);
-        tickets.add(ticket);
+        tickets.add(ticket);*/
 
-        booking.setTickets(tickets);
+        booking.setTickets(this.getTickets());
         bookingService.saveBooking(booking);
-        bookingService.saveTicket(ticket);
 
-        ticket.setSeat(tempSeats.get(0));
+        for(Ticket ticket : this.getTickets()){
+            bookingService.saveTicket(ticket);
+        }
+
+
+        //ticket.setSeat(tempSeats.get(0));
         bookingService.updatePayment(payment);
-        bookingService.updateTicket(ticket);
-        return "thank?faces-redirect=true";*/
 
-        return "p-single.xhtml";
+        for(Ticket ticket : this.getTickets()){
+            bookingService.updateTicket(ticket);
+        }
+
+        return "thank?faces-redirect=true";
     }
 
     public double getTotalPrice(){
@@ -258,15 +292,11 @@ public class BookingController implements Serializable {
         return Arrays.asList(PaymentMethod.values());
     }
 
-    public void initTicket(Ticket ticket){
-        System.out.println(firstName);
-        System.out.println(ticket.getSeat().getSeatNumber());
-    }
 
     private void initTickets() {
         for(int i=0; i < numberOfPassengers; i++){
             Ticket newTicket = new Ticket();
-            newTicket.setSeat(seats.remove(0));
+            newTicket.setSeat(seats.get(i));
             newTicket.setPlane(selectedPlane);
             tickets.add(newTicket);
         }
