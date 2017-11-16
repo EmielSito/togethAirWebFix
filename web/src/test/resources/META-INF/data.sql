@@ -32,17 +32,3 @@ insert into seat(id, seatNumber, basePrice, classType, isAvailable, plane_id) va
 insert into booking(id, bookingDate, payWithCreditCard, payment_id, user_id) values(1000, '2017-11-14', true, 1000, 1000);
 
 insert into payment(id, isPaid, paymentMethod) values(1000, TRUE , 'CREDITCARD');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
